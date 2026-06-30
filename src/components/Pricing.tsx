@@ -47,6 +47,20 @@ const transformationImages = [
 
 export default function Pricing() {
   const [activeImg, setActiveImg] = React.useState(0);
+  const [activeIndex, setActiveIndex] = React.useState(0);
+  const carouselRef = React.useRef<HTMLDivElement>(null);
+
+  const handleScroll = () => {
+    if (!carouselRef.current) return;
+    const scrollLeft = carouselRef.current.scrollLeft;
+    const scrollWidth = carouselRef.current.scrollWidth;
+    const clientWidth = carouselRef.current.clientWidth;
+    const maxScroll = scrollWidth - clientWidth;
+    if (maxScroll <= 0) return;
+    const percentage = scrollLeft / maxScroll;
+    const index = Math.round(percentage * 2);
+    setActiveIndex(Math.max(0, Math.min(index, 2)));
+  };
 
   React.useEffect(() => {
     const timer = setInterval(() => {
@@ -75,13 +89,22 @@ export default function Pricing() {
               The phases are built to hand off to each other — Calm prepares your skin for Clear, Clear sets up Maintain. The Complete Transformation is the full path in order.
             </p>
           </motion.div>
+          {/* Fallback Swipe indicator above product card */}
+          <div className="block md:hidden text-center mb-4">
+            <span className="text-[10px] uppercase tracking-[0.2em] font-semibold text-[#6B6E68]/80">
+              ← Swipe to Compare Packages →
+            </span>
+          </div>
+
           {/* New Merged Staggered Grid/Carousel Wrapper */}
           <motion.div 
+            ref={carouselRef}
+            onScroll={handleScroll}
             variants={listContainerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: false, amount: 0.15 }}
-            className="flex flex-row overflow-x-auto snap-x snap-mandatory gap-4 pb-6 w-full max-w-5xl mx-auto md:grid md:grid-cols-2 md:gap-8 md:overflow-visible md:pb-0"
+            className="flex flex-row overflow-x-auto snap-x snap-mandatory gap-4 pb-6 w-full max-w-5xl mx-auto md:grid md:grid-cols-2 md:gap-8 md:overflow-visible md:pb-0 px-6 md:px-0 scroll-px-6 md:scroll-px-0"
             style={{ willChange: "transform, opacity" }}
           >
             {/* Card 1: Complete Transformation */}
@@ -89,7 +112,7 @@ export default function Pricing() {
               variants={listItemVariants}
               whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(45,38,36,0.04)" }}
               transition={{ duration: 0.2 }}
-              className="w-[85vw] shrink-0 snap-center md:col-span-2 md:w-full md:shrink relative group h-full rounded-[14px]"
+              className="w-[80vw] shrink-0 snap-center md:col-span-2 md:w-full md:shrink relative group h-full rounded-[14px]"
               style={{ willChange: "transform, opacity" }}
             >
               <SpotlightWrapper 
@@ -222,7 +245,7 @@ export default function Pricing() {
               variants={listItemVariants}
               whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(45,38,36,0.04)" }}
               transition={{ duration: 0.2 }}
-              className="w-[85vw] shrink-0 snap-center md:w-full md:shrink h-full rounded-[10px]"
+              className="w-[80vw] shrink-0 snap-center md:w-full md:shrink h-full rounded-[10px]"
               style={{ willChange: "transform, opacity" }}
             >
               <SpotlightWrapper 
@@ -300,7 +323,7 @@ export default function Pricing() {
               variants={listItemVariants}
               whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(45,38,36,0.04)" }}
               transition={{ duration: 0.2 }}
-              className="w-[85vw] shrink-0 snap-center md:w-full md:shrink h-full rounded-[10px]"
+              className="w-[80vw] shrink-0 snap-center md:w-full md:shrink h-full rounded-[10px]"
               style={{ willChange: "transform, opacity" }}
             >
               <SpotlightWrapper 
@@ -373,6 +396,31 @@ export default function Pricing() {
                 </div>
               </SpotlightWrapper>
             </motion.div>
+
+          {/* Pagination Dots Indicator for Mobile Swipe Tray */}
+          <div className="flex md:hidden justify-center gap-2 mt-4">
+            {[0, 1, 2].map((idx) => (
+              <button
+                key={idx}
+                onClick={() => {
+                  if (carouselRef.current) {
+                    const scrollWidth = carouselRef.current.scrollWidth;
+                    const clientWidth = carouselRef.current.clientWidth;
+                    const maxScroll = scrollWidth - clientWidth;
+                    carouselRef.current.scrollTo({
+                      left: (maxScroll / 2) * idx,
+                      behavior: "smooth",
+                    });
+                    setActiveIndex(idx);
+                  }
+                }}
+                className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+                  activeIndex === idx ? "bg-[#1A1B12] scale-110" : "bg-[#1A1B12]/20"
+                }`}
+                aria-label={`Go to product package ${idx + 1}`}
+              />
+            ))}
+          </div>
           </motion.div>
         </div>
       </section>
