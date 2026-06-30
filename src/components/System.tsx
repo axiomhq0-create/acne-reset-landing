@@ -81,22 +81,33 @@ export default function System() {
         {/* Soft editorial top transition fade (eliminates hard cut top edge border) */}
         <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#FAF7F2] to-transparent z-10 pointer-events-none" />
 
-        {/* Background Image - Full Bleed with zero filter/blur (z-0) */}
-        <div className="absolute inset-0 w-full h-full z-0">
+        {/* Background Image - Desktop Only */}
+        <div className="hidden md:block absolute inset-0 w-full h-full z-0">
           <Image 
             src="/assets/hero-portrait.jpg" 
             alt="Skincare sequence framework visual representation"
             fill
-            className="object-cover animate-none"
+            className="object-cover animate-none object-center"
             sizes="100vw"
             style={{ filter: "none", WebkitFilter: "none" }}
           />
         </div>
 
-        {/* Branded Blush Overlay Tint for text contrast (z-10) */}
-        <div className="absolute inset-0 bg-[#EBC8BE]/80 z-10 pointer-events-none" />
+        {/* Branded Blush Overlay Tint for text contrast - Desktop Only */}
+        <div className="hidden md:block absolute inset-0 bg-[#EBC8BE]/80 z-10 pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-6 relative z-20">
+        <div className="max-w-7xl mx-auto px-6 relative z-20 flex flex-col">
+          {/* Mobile Only Portrait Image - completely on top */}
+          <div className="block md:hidden w-full mb-10 rounded-[10px] overflow-hidden" style={{ border: '1px solid rgba(255, 255, 255, 0.45)', boxShadow: '0 4px 20px rgba(0, 0, 0, 0.05)' }}>
+            <Image 
+              src="/assets/hero-portrait.jpg" 
+              alt="Skincare sequence framework visual representation"
+              width={800}
+              height={600}
+              className="w-full h-auto object-contain"
+              priority
+            />
+          </div>
           {/* Header */}
           <motion.div 
             {...scrollAnimateProps}
