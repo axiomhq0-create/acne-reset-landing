@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@theme {
+  --color-linen: #FAF7F2;
+  --color-softOffWhite: #FBF9F6;
+  --color-productCanvas: #F4E9DD;
+  --color-signatureBlush: #EBC8BE;
+  --color-mutedTaupe: #E3DCD5;
+  --color-bloomDeep: #DCA596;
+  --color-ink: #1A1B12;
+  --color-stone: #6B6E68;
+  --color-dust: #A09995;
+
+  --font-serif: var(--font-cormorant), 'Cormorant Garamond', serif;
+  --font-sans: var(--font-inter), 'Inter', sans-serif;
+}
+
+:root {
+  --background: #FAF7F2; /* Linen / Cream */
+  --foreground: #1A1B12; /* Ink */
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Glassmorphism Utility - Light Fill */
+.glass-panel {
+  background-color: rgba(250, 247, 244, 0.55);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.50);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
+}
+
+/* Glassmorphism Utility - Dark Fill */
+.glass-panel-dark {
+  background-color: rgba(26, 22, 18, 0.55);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(232, 196, 184, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.35);
+}
+
+/* Details arrow removal */
+details summary::-webkit-details-marker {
+  display: none;
+}
+details summary {
+  list-style: none;
+}
+
+/* Native Hardware-Accelerated Sunlight-Linen Texture Animation */
+@keyframes sunlight-plasma {
+  0% {
+    transform: translate3d(0%, 0%, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(5%, -4%, 0) scale(1.06);
+  }
+  66% {
+    transform: translate3d(-4%, 4%, 0) scale(0.96);
+  }
+  100% {
+    transform: translate3d(0%, 0%, 0) scale(1);
+  }
+}
+
+.sunlight-mesh {
+  will-change: transform;
+  animation: sunlight-plasma 20s infinite ease-in-out;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(250, 247, 242, 0.8) 0%, rgba(250, 247, 242, 0) 55%),
+    radial-gradient(circle at 75% 75%, rgba(235, 200, 190, 0.8) 0%, rgba(235, 200, 190, 0) 55%);
+}
