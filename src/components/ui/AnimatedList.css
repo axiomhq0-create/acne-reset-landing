@@ -1,0 +1,44 @@
+.scroll-list-container {
+  position: relative;
+  width: 100%;
+  max-width: 800px; /* Expand reading runway width */
+  margin: 0 auto;
+}
+.scroll-list {
+  max-height: 500px;
+  padding: 12px;
+}
+.scroll-list.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.item {
+  padding: 24px;
+  background-color: #FAF6F0; /* Matches Premium Rich Cream Canvas Section 6 */
+  border: 1px solid rgba(120, 113, 108, 0.12);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+.item.selected {
+  background-color: #ffffff; /* Pop background color cleanly when focused/hovered */
+  border-color: rgba(28, 25, 23, 0.25);
+  box-shadow: 0 10px 30px -10px rgba(120, 113, 108, 0.15);
+}
+/* Style the inner components */
+.faq-question {
+  color: #1c1917;
+  font-weight: 600;
+  font-size: 1.125rem;
+  margin-bottom: 8px;
+}
+.faq-answer {
+  color: #57534e;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+/* Gradient overscroll blends to match the Cream Section base */
+.top-gradient {
+  background: linear-gradient(to bottom, #FAF6F0, transparent);
+}
+.bottom-gradient {
+  background: linear-gradient(to top, #FAF6F0, transparent);
+}
