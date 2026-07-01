@@ -41,8 +41,8 @@ const itemVariants = {
 export default function Hero({ scrollToSection }: HeroProps) {
   return (
     <section className="relative min-h-screen flex flex-col justify-between py-24 overflow-hidden bg-[#E8C4B8]">
-      {/* 1. IMAGE_PLACEMENT: Place "download (12).jpg" on the right side, constrained to h-[45vh] on mobile */}
-      <div className="absolute right-0 bottom-0 h-[45vh] w-full md:top-0 md:h-full md:w-1/2 z-0 pointer-events-none opacity-40 md:opacity-100">
+      {/* 1. IMAGE_PLACEMENT: Place "download (12).jpg" with responsive absolute layout bounds */}
+      <div className="absolute right-0 top-auto bottom-0 h-[40vh] w-full md:top-0 md:h-full md:w-1/2 z-0 pointer-events-none opacity-40 md:opacity-100 mix-blend-soft-light md:mix-blend-normal">
         <Image
           src="/assets/download-12.jpg"
           alt="Acne Reset Radiant Skin portrait"
