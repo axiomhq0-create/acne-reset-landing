@@ -40,24 +40,23 @@ const itemVariants = {
 
 export default function Hero({ scrollToSection }: HeroProps) {
   return (
-    <section className="relative min-h-screen flex flex-col justify-between py-24 overflow-hidden bg-[#E8C4B8]">
-      {/* 1. IMAGE_PLACEMENT: Place "download (12).jpg" with responsive absolute layout bounds */}
-      <div className="absolute right-0 top-auto bottom-0 h-[40vh] w-full md:top-0 md:h-full md:w-1/2 z-0 pointer-events-none opacity-40 md:opacity-100 mix-blend-soft-light md:mix-blend-normal">
+    <section className="relative min-h-[85vh] md:min-h-screen flex flex-col justify-between py-24 md:py-24 overflow-hidden bg-[#E8C4B8]">
+      {/* 1. IMAGE_PLACEMENT: Place "download (12).jpg" with responsive layout */}
+      <div className="absolute inset-x-0 top-0 h-[50vh] w-full md:left-auto md:right-0 md:top-0 md:h-full md:w-1/2 z-0 pointer-events-none">
         <Image
           src="/assets/download-12.jpg"
           alt="Acne Reset Radiant Skin portrait"
           fill
-          className="object-cover object-center"
+          className="object-cover object-top md:object-center"
           priority
         />
         {/* EDGE_MASK: Gradient mask to erase top hard lines on mobile and left hard lines on desktop */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#E8C4B8] via-transparent to-transparent md:bg-gradient-to-r md:from-[#E8C4B8] z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#E8C4B8] md:bg-gradient-to-r md:from-[#E8C4B8] md:to-transparent z-10" />
       </div>
 
-      {/* 2. PLASMA BLENDING LAYER: Position on top of the image layer (z-10) with mix-blend-mode: soft-light */}
+      {/* 2. PLASMA BLENDING LAYER: mix-blend-color-burn on mobile, soft-light on desktop */}
       <div 
-        className="absolute inset-0 z-10 overflow-hidden pointer-events-none opacity-75"
-        style={{ mixBlendMode: "soft-light" }}
+        className="absolute inset-0 z-10 overflow-hidden pointer-events-none opacity-80 md:opacity-75 mix-blend-color-burn md:mix-blend-soft-light"
       >
         <div className="sunlight-mesh absolute inset-[-10%] w-[120%] h-[120%]" />
       </div>
@@ -65,15 +64,15 @@ export default function Hero({ scrollToSection }: HeroProps) {
       {/* Content Center Overlaid - relative zIndex 20 sitting perfectly over the background layers */}
       <div 
         style={{ position: "relative", zIndex: 20 }}
-        className="flex-grow flex items-center justify-center"
+        className="flex-grow flex flex-col justify-end pb-12 px-6 md:w-1/2 md:justify-center md:px-12 md:ml-0 md:mr-auto h-full w-full"
       >
-        <div className="max-w-5xl mx-auto px-6 flex flex-col items-center text-center">
+        <div className="max-w-5xl mx-auto flex flex-col items-center text-center md:items-start md:text-left w-full bg-gradient-to-b from-transparent via-[#E8C4B8]/40 to-[#E8C4B8] md:bg-none pt-24 pb-6 px-4 md:p-0 rounded-b-[14px]">
           <motion.div 
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: false, amount: 0.15 }} // Bi-directional scroll wrapper
-            className="flex flex-col items-center"
+            className="flex flex-col items-center md:items-start w-full"
             style={{ willChange: "transform, opacity" }}
           >
             <motion.h1 
@@ -95,7 +94,7 @@ export default function Hero({ scrollToSection }: HeroProps) {
             {/* Sequence steps preview */}
             <motion.div 
               variants={itemVariants} 
-              className="mt-8 flex flex-wrap items-center justify-center gap-2 text-xs md:text-sm font-medium text-[#2D2624] bg-white/20 backdrop-blur-md rounded-full px-5 py-2.5 border border-[#2D2624]/15"
+              className="mt-8 flex flex-wrap items-center justify-center md:justify-start gap-2 text-xs md:text-sm font-medium text-[#2D2624] bg-white/20 backdrop-blur-md rounded-full px-5 py-2.5 border border-[#2D2624]/15"
               style={{ willChange: "transform, opacity" }}
             >
               <span className="text-[#2D2624] font-semibold">Calm</span>
@@ -114,7 +113,7 @@ export default function Hero({ scrollToSection }: HeroProps) {
             {/* CTA Button Row */}
             <motion.div 
               variants={itemVariants} 
-              className="mt-16 flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center"
+              className="mt-16 flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center md:justify-start"
               style={{ willChange: "transform, opacity" }}
             >
               <SpotlightWrapper 
