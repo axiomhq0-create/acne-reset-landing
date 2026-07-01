@@ -41,8 +41,8 @@ const itemVariants = {
 export default function Hero({ scrollToSection }: HeroProps) {
   return (
     <section className="relative min-h-screen flex flex-col justify-between py-24 overflow-hidden bg-[#E8C4B8]">
-      {/* 1. IMAGE_PLACEMENT: Place "download (12).jpg" as an absolute element on the right side */}
-      <div className="absolute right-0 top-0 h-full w-full md:w-1/2 z-0 pointer-events-none">
+      {/* 1. IMAGE_PLACEMENT: Place "download (12).jpg" on the right side, constrained to h-[45vh] on mobile */}
+      <div className="absolute right-0 bottom-0 h-[45vh] w-full md:top-0 md:h-full md:w-1/2 z-0 pointer-events-none opacity-40 md:opacity-100">
         <Image
           src="/assets/download-12.jpg"
           alt="Acne Reset Radiant Skin portrait"
@@ -50,8 +50,8 @@ export default function Hero({ scrollToSection }: HeroProps) {
           className="object-cover object-center"
           priority
         />
-        {/* EDGE_MASK: Use a Tailwind gradient mask over the left edge to erase hard vertical lines */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#E8C4B8] via-transparent to-transparent z-10" />
+        {/* EDGE_MASK: Gradient mask to erase top hard lines on mobile and left hard lines on desktop */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#E8C4B8] via-transparent to-transparent md:bg-gradient-to-r md:from-[#E8C4B8] z-10" />
       </div>
 
       {/* 2. PLASMA BLENDING LAYER: Position on top of the image layer (z-10) with mix-blend-mode: soft-light */}
