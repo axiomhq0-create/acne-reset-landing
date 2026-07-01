@@ -91,7 +91,7 @@ export default function Carousel({
                     opacity: 0,
                     scale: 0.8,
                   }}
-                  whileTap={{ scale: 0.97, y: 1 }}
+                  whileTap={{ scale: 0.97, filter: "brightness(0.98)" }}
                   transition={{
                     type: "spring",
                     stiffness: 260,

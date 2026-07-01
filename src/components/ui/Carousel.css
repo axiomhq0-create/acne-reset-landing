@@ -6,18 +6,17 @@
   padding: 16px;
 }
 .carousel-item {
-  background-color: rgba(255, 255, 255, 0.6) !important; /* bg-white/60 */
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.4) !important; /* border-white/40 */
+  background: linear-gradient(135deg, rgba(254, 219, 211, 0.85) 0%, rgba(251, 234, 230, 0.95) 100%) !important; /* Premium Pink Plasma Backing */
+  border: 1px solid rgba(212, 212, 216, 0.8) !important; /* Crisp Metallic Silver Outline */
+  box-shadow: 0 10px 25px -5px rgba(212, 212, 216, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.6) !important;
   border-radius: 24px !important;
-  box-shadow: 0 4px 20px -2px rgba(120, 113, 108, 0.05);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start; /* Do not space-between so text stays grouped */
-  padding: 32px !important; /* Expanded padding for breathing room */
-  overflow: hidden;
-  height: 290px; /* Explicit size to prevent vertical card text clipping */
+  padding: 32px !important; /* Massive internal breathing room */
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  gap: 16px !important;
+  min-height: 280px !important; /* Force vertical tracking footprint */
+  height: auto !important; /* Allow dynamic extension up to min-height */
 }
 .carousel-item-header {
   margin-bottom: 12px;
@@ -30,11 +29,14 @@
   gap: 8px;
 }
 .carousel-item-title {
-  color: #1c1917; /* Elegant dark stone typography */
-  font-family: serif; /* Match your editorial headers */
+  color: #1c1917 !important;
+  font-family: serif !important;
+  font-size: 1.35rem !important;
 }
 .carousel-item-description {
-  color: #57534e; /* Soft read text */
+  color: #44403c !important;
+  font-size: 0.95rem !important;
+  line-height: 1.6 !important;
 }
 .carousel-icon-container {
   background-color: #1c1917; /* Dark elegant container accents */

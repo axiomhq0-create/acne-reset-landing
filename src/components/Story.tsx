@@ -51,7 +51,7 @@ export default function Story() {
           <Carousel 
             items={STORY_CAROUSEL_ITEMS}
             autoplay={false}
-            baseWidth={380}
+            baseWidth={420}
             loop={true}
             round={false}
           />
