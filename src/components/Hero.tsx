@@ -40,25 +40,29 @@ interface HeroProps {
 export default function Hero({ scrollToSection }: HeroProps) {
   return (
     <section className="relative min-h-screen w-full flex flex-col justify-between py-24 overflow-hidden bg-[#E8C4B8]">
-      {/* 1. IMAGE_PLACEMENT: Place "download (12).jpg" universally */}
-      <div className="absolute right-0 top-0 h-full w-full md:w-1/2 z-0 pointer-events-none">
-        <Image
-          src="/assets/download-12.jpg"
-          alt="Acne Reset Radiant Skin portrait"
-          fill
-          className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none z-0"
-          priority
-        />
-        {/* EDGE_MASK: Gradient mask to erase left hard lines on desktop and bottom lines on mobile */}
-        <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#E8C4B8] via-[#E8C4B8]/50 to-transparent z-10" />
-      </div>
+      {/* 1. Foundational Background Asset: Universal cover scaling with z-0 */}
+      <Image
+        src="/ChatGPT Image Jul 1, 2026, 01_08_27 PM.png"
+        alt="Acne Reset Radiant Skin portrait"
+        fill
+        className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none z-0 will-change-transform"
+        style={{ transform: "translateZ(0)" }}
+        priority
+      />
 
-      {/* 2. PLASMA BLENDING LAYER: mix-blend-color-burn on mobile, soft-light on desktop */}
-      <div 
-        className="absolute inset-0 z-10 overflow-hidden pointer-events-none opacity-80 md:opacity-75 mix-blend-color-burn md:mix-blend-soft-light"
-      >
-        <div className="sunlight-mesh absolute inset-[-10%] w-[120%] h-[120%]" />
-      </div>
+      {/* 2. Plasma-infused Glass Vignette Overlay: backdrop blur and radial mask overlay with z-10 */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.2 }}
+        className="absolute inset-0 z-10 backdrop-blur-[16px] pointer-events-none will-change-transform"
+        style={{
+          transform: "translateZ(0)",
+          background: 'radial-gradient(circle at center, transparent 15%, rgba(250,246,240,0.4) 45%, rgba(245,235,225,0.95) 85%)',
+          maskImage: 'radial-gradient(circle at center, transparent 20%, black 75%)',
+          WebkitMaskImage: 'radial-gradient(circle at center, transparent 20%, black 75%)'
+        }}
+      />
 
       {/* 3. Content Layer: Your text elements, headers, and CTA buttons */}
       <div 
