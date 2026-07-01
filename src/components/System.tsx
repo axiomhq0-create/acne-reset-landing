@@ -104,7 +104,7 @@ export default function System() {
             The Order Was Always The Missing Piece.
           </h2>
           <p className="text-[#6B6E68] text-base md:text-lg leading-relaxed">
-            Most people start with treatment because it feels like progress. But skin that's still inflamed isn't ready to respond to anything yet — it just fights back. That's the cycle you've probably already lived.
+            Most people start with treatment because it feels like progress. But skin that is still inflamed isn't ready to respond to anything yet, it just fights back. That's the cycle you've probably already lived.
           </p>
           <p className="text-[#1A1B12] font-medium mt-4">
             Here is what actually has to happen, in order:
@@ -160,7 +160,7 @@ export default function System() {
                       </div>
                       <h3 className="text-2xl font-serif font-semibold text-[#2D2624] mb-4">The Calm Phase</h3>
                       <p className="text-[#2D2624]/85 text-sm md:text-base leading-relaxed">
-                        First, your skin has to stop fighting you. Nothing gets treated here. It gets stabilized, so treatment has something to work with later.
+                        First, your skin has to stop fighting you. Nothing gets treated here, it gets stabilized, so treatment has something to work with later.
                       </p>
                     </div>
                   </div>
