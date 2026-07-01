@@ -100,25 +100,25 @@ export default function Carousel({
                     width: `${baseWidth}px`,
                     borderRadius: round ? "50%" : "24px",
                   }}
-                  className={`carousel-item absolute p-6 md:p-8 flex flex-col items-start text-left justify-between h-[280px] select-none ${
+                  className={`carousel-item absolute select-none ${
                     round ? "aspect-square justify-center items-center text-center" : ""
                   }`}
                 >
-                  <div className="w-full flex flex-col items-start gap-5">
+                  <div className="carousel-item-header">
                     {/* Icon with container */}
                     <div className="carousel-icon-container w-10 h-10 rounded-full flex items-center justify-center text-white shrink-0">
                       {item.icon}
                     </div>
+                  </div>
 
-                    {/* Content details */}
-                    <div className="flex flex-col gap-2">
-                      <h3 className="carousel-item-title text-xl font-serif font-bold text-[#1c1917]">
-                        {item.title}
-                      </h3>
-                      <p className="carousel-item-description text-sm md:text-base text-[#57534e] leading-relaxed">
-                        {item.description}
-                      </p>
-                    </div>
+                  {/* Content details */}
+                  <div className="carousel-item-content">
+                    <h3 className="carousel-item-title text-xl font-serif font-bold text-[#1c1917]">
+                      {item.title}
+                    </h3>
+                    <p className="carousel-item-description text-sm md:text-base text-[#57534e] leading-relaxed">
+                      {item.description}
+                    </p>
                   </div>
                 </motion.div>
               );

@@ -59,7 +59,7 @@ export default function FAQ() {
       </div>
 
       {/* Carousel Frame Window */}
-      <div className="w-full max-w-5xl h-[450px] relative flex items-center justify-center px-4">
+      <div className="w-full max-w-5xl h-[520px] relative flex items-center justify-center px-4">
         <Carousel 
           items={FAQ_CAROUSEL_ITEMS}
           autoplay={false}

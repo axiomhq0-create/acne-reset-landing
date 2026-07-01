@@ -10,6 +10,21 @@
   border: 1px solid rgba(120, 113, 108, 0.15); /* Soft stone border shadow */
   border-radius: 24px;
   box-shadow: 0 4px 20px -2px rgba(120, 113, 108, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Do not space-between so text stays grouped */
+  padding: 24px; /* Uniform internal balance */
+  overflow: hidden;
+}
+.carousel-item-header {
+  margin-bottom: 12px;
+  padding: 0; /* Remove duplicate structural padding */
+}
+.carousel-item-content {
+  padding: 0; /* Remove extra bottom padding walls pushing content out */
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 .carousel-item-title {
   color: #1c1917; /* Elegant dark stone typography */
