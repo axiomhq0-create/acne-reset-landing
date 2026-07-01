@@ -62,13 +62,13 @@ export default function System() {
 
   // Dynamic transforms mapped to progress for Card 2 (Clear)
   const scale1 = useTransform(scrollYProgress, [0, 0.3, 0.35, 0.7, 0.75, 1], [1, 1, 1, 0.96, 0.92, 0.92]);
-  const y1 = useTransform(scrollYProgress, [0, 0.3, 0.65, 1], ["50vh", "0vh", "0vh", "0vh"]);
+  const y1 = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], ["40vh", "0vh", "0vh", "0vh"]);
   const opacity1 = useTransform(scrollYProgress, [0, 0.25, 0.3, 0.7, 0.75], [0, 0.3, 1, 1, 0.95]);
 
-  // Dynamic transforms mapped to progress for Card 3 (Clef)
+  // Dynamic transforms mapped to progress for Card 3 (Maintain)
   const scale2 = useTransform(scrollYProgress, [0, 1], [1, 1]);
-  const y2 = useTransform(scrollYProgress, [0, 0.6, 0.9, 1], ["90vh", "0vh", "0vh", "0vh"]);
-  const opacity2 = useTransform(scrollYProgress, [0, 0.55, 0.6, 1], [0, 0.3, 1, 1]);
+  const y2 = useTransform(scrollYProgress, [0, 0.55, 0.85, 1], ["80vh", "0vh", "0vh", "0vh"]);
+  const opacity2 = useTransform(scrollYProgress, [0, 0.5, 0.55, 1], [0, 0.3, 1, 1]);
 
   return (
     <section id="system" className="relative bg-[#EBC8BE] overflow-visible py-32">
@@ -99,14 +99,14 @@ export default function System() {
         </motion.div>
       </div>
 
-      {/* ScrollStack Runway Extension Container (180vh Compact Height) */}
-      <div ref={containerRef} className="relative h-[180vh] w-full z-20 overflow-visible">
-        {/* Sticky viewport container */}
-        <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-visible">
-          {/* Inner card loop */}
-          <div className="relative w-full max-w-xl md:max-w-2xl px-4 h-[60vh] flex items-center justify-center overflow-visible">
+      {/* ScrollStack Runway Extension Container (120vh Compressed Height) */}
+      <div ref={containerRef} className="relative h-[120vh] w-full z-20 overflow-visible">
+        {/* Sticky inner container holding h-[85vh] max */}
+        <div className="sticky top-0 h-[85vh] w-full flex items-center justify-center overflow-visible">
+          {/* Inner card loop centered on mobile */}
+          <div className="relative w-full max-w-[90vw] md:max-w-xl mx-auto flex items-center justify-center justify-items-center px-4 overflow-visible h-[60vh]">
             
-            {/* Card 1: CALM */}
+            {/* Card 1: The Calm Phase */}
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -119,9 +119,9 @@ export default function System() {
                 transform: "translateZ(0)",
                 willChange: "transform, opacity",
               }}
-              className="absolute w-full origin-top will-change-transform"
+              className="absolute w-full origin-top will-change-transform flex items-center justify-center justify-items-center mx-auto"
             >
-              <div className="!h-auto !p-6 md:!p-8 max-w-[90vw] md:max-w-full bg-[#fcfaf7]/75 backdrop-blur-lg border border-white/30 rounded-[30px] shadow-xl">
+              <div className="!h-auto !p-6 md:!p-8 w-full bg-[#fcfaf7] backdrop-blur-md border border-white/20 rounded-[30px] shadow-xl">
                 <div className="flex flex-col md:flex-row items-stretch justify-between gap-6 md:gap-8 overflow-hidden h-full">
                   <div className="w-full md:w-1/2 flex flex-col justify-between text-left">
                     <div>
@@ -145,7 +145,7 @@ export default function System() {
                         </div>
                         <span className="font-serif italic text-2xl md:text-3xl text-[#2D2624]">Days 1–21</span>
                       </div>
-                      <h3 className="text-2xl font-serif font-semibold text-[#2D2624] mb-4">CALM</h3>
+                      <h3 className="text-2xl font-serif font-semibold text-[#2D2624] mb-4">The Calm Phase</h3>
                       <p className="text-[#2D2624]/85 text-sm md:text-base leading-relaxed">
                         First, your skin has to stop fighting you. Nothing gets treated here — it gets stabilized, so treatment has something to work with later.
                       </p>
@@ -164,7 +164,7 @@ export default function System() {
               </div>
             </motion.div>
 
-            {/* Card 2: CLEAR */}
+            {/* Card 2: The Clear Phase */}
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -177,9 +177,9 @@ export default function System() {
                 transform: "translateZ(0)",
                 willChange: "transform, opacity",
               }}
-              className="absolute w-full origin-top will-change-transform"
+              className="absolute w-full origin-top will-change-transform flex items-center justify-center justify-items-center mx-auto"
             >
-              <div className="!h-auto !p-6 md:!p-8 max-w-[90vw] md:max-w-full bg-[#fcfaf7]/75 backdrop-blur-lg border border-white/30 rounded-[30px] shadow-xl">
+              <div className="!h-auto !p-6 md:!p-8 w-full bg-[#fcfaf7] backdrop-blur-md border border-white/20 rounded-[30px] shadow-xl">
                 <div className="flex flex-col md:flex-row items-stretch justify-between gap-6 md:gap-8 overflow-hidden h-full">
                   <div className="w-full md:w-1/2 flex flex-col justify-between text-left">
                     <div>
@@ -200,7 +200,7 @@ export default function System() {
                         </div>
                         <span className="font-serif italic text-2xl md:text-3xl text-[#2D2624]">Days 22–66</span>
                       </div>
-                      <h3 className="text-2xl font-serif font-semibold text-[#2D2624] mb-4">CLEAR</h3>
+                      <h3 className="text-2xl font-serif font-semibold text-[#2D2624] mb-4">The Clear Phase</h3>
                       <p className="text-[#2D2624]/85 text-sm md:text-base leading-relaxed">
                         Only once it's stable does treatment actually work. One consistent approach, given enough time to do what it was supposed to do in the first place.
                       </p>
@@ -219,7 +219,7 @@ export default function System() {
               </div>
             </motion.div>
 
-            {/* Card 3: CLEF */}
+            {/* Card 3: The Maintain Phase */}
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -232,9 +232,9 @@ export default function System() {
                 transform: "translateZ(0)",
                 willChange: "transform, opacity",
               }}
-              className="absolute w-full origin-top will-change-transform"
+              className="absolute w-full origin-top will-change-transform flex items-center justify-center justify-items-center mx-auto"
             >
-              <div className="!h-auto !p-6 md:!p-8 max-w-[90vw] md:max-w-full bg-[#fcfaf7]/75 backdrop-blur-lg border border-white/30 rounded-[30px] shadow-xl">
+              <div className="!h-auto !p-6 md:!p-8 w-full bg-[#fcfaf7] backdrop-blur-md border border-white/20 rounded-[30px] shadow-xl">
                 <div className="flex flex-col md:flex-row items-stretch justify-between gap-6 md:gap-8 overflow-hidden h-full">
                   <div className="w-full md:w-1/2 flex flex-col justify-between text-left">
                     <div>
@@ -265,7 +265,7 @@ export default function System() {
                         </div>
                         <span className="font-serif italic text-2xl md:text-3xl text-[#2D2624]">Day 67 Onward</span>
                       </div>
-                      <h3 className="text-2xl font-serif font-semibold text-[#2D2624] mb-4">CLEF</h3>
+                      <h3 className="text-2xl font-serif font-semibold text-[#2D2624] mb-4">The Maintain Phase</h3>
                       <p className="text-[#2D2624]/85 text-sm md:text-base leading-relaxed">
                         Once it's working, the only thing left to lose is consistency. Not a new routine — protection for the one that already proved itself.
                       </p>
@@ -274,7 +274,7 @@ export default function System() {
                   <div className="relative w-full md:w-1/2 min-h-[220px] md:min-h-[300px] overflow-hidden rounded-[20px] shrink-0 shadow-sm border border-white/20">
                     <Image
                       src="/Remove_the_black_dress_and_202606261411.jpeg"
-                      alt="Phase 3 Clef visual representation"
+                      alt="Phase 3 Maintain visual representation"
                       fill
                       className="object-cover object-center"
                       sizes="(max-width: 768px) 100vw, 50vw"
