@@ -171,7 +171,7 @@ export default function Pricing() {
                     </div>
                     
                     <p className="text-sm md:text-base text-[#6B6E68] max-w-lg mx-auto tracking-tight leading-snug">
-                      Every tool, tracker, dashboard, and selection guide. The absolute path from red and reactive to calm and clear skin. Includes the full $97 Complete Reset Kit with all templates, tracker sheets, and dashboard layouts.
+                      Every tool, tracker, dashboard, and selection guide. The absolute path from red and reactive to calm and clear skin.
                     </p>
                   </div>
 

@@ -80,19 +80,11 @@ export default function Hero({ scrollToSection }: HeroProps) {
           >
             <motion.h1 
               variants={itemVariants} 
-              className="text-xs uppercase tracking-[0.25em] font-semibold text-[#2D2624]/60 mb-4"
-              style={{ willChange: "transform, opacity" }}
-            >
-              THE ACNE RESET
-            </motion.h1>
-
-            <motion.h2 
-              variants={itemVariants} 
               className="text-5xl sm:text-6xl lg:text-8xl font-serif text-[#2D2624] font-semibold leading-[1.1] tracking-tight max-w-4xl"
               style={{ willChange: "transform, opacity" }}
             >
               You don't have to pretend the mirror doesn't matter.
-            </motion.h2>
+            </motion.h1>
             
             <motion.p 
               variants={itemVariants} 
@@ -105,7 +97,7 @@ export default function Hero({ scrollToSection }: HeroProps) {
             {/* Sequence steps preview */}
             <motion.div 
               variants={itemVariants} 
-              className="mt-8 flex items-center gap-2.5 text-xs md:text-sm font-medium text-[#2D2624] bg-white/20 backdrop-blur-md rounded-full px-5 py-2.5 border border-[#2D2624]/15"
+              className="mt-8 hidden md:flex items-center gap-2.5 text-xs md:text-sm font-medium text-[#2D2624] bg-white/20 backdrop-blur-md rounded-full px-5 py-2.5 border border-[#2D2624]/15"
               style={{ willChange: "transform, opacity" }}
             >
               <span className="font-semibold uppercase tracking-[0.1em]">Calm. Clear. Maintain.</span>
