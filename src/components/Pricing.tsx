@@ -72,11 +72,11 @@ export default function Pricing() {
   return (
     <>
       {/* Complete Transformation Main Tier (bg-[#F4E9DD]) */}
-      <section id="pricing" className="py-32 bg-[#F4E9DD]">
+      <section id="pricing" className="py-12 md:py-32 bg-[#F4E9DD]">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div 
             {...scrollAnimateProps}
-            className="text-center max-w-3xl mx-auto mb-16"
+            className="text-center max-w-3xl mx-auto mb-8 md:mb-16"
             style={{ willChange: "transform, opacity" }}
           >
             <span className="text-xs uppercase tracking-[0.2em] font-semibold text-[#6B6E68] mb-4 block">

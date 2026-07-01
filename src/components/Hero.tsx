@@ -39,7 +39,7 @@ interface HeroProps {
 
 export default function Hero({ scrollToSection }: HeroProps) {
   return (
-    <section className="relative min-h-screen w-full flex flex-col justify-between py-24 overflow-hidden bg-[#E8C4B8]">
+    <section className="relative min-h-screen w-full flex flex-col justify-between pt-16 pb-8 md:py-24 overflow-hidden bg-[#E8C4B8]">
       {/* 1. Foundational Background Asset: Universal cover scaling with z-0 */}
       <Image
         src="/ChatGPT Image Jul 1, 2026, 01_08_27 PM.png"

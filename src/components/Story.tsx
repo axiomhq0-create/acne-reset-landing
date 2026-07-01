@@ -30,7 +30,7 @@ const STORY_CAROUSEL_ITEMS = [
 
 export default function Story() {
   return (
-    <section id="philosophy" className="py-24 bg-white">
+    <section id="philosophy" className="py-12 md:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6 text-center">
         {/* Headline Architecture */}
         <motion.div
