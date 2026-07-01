@@ -80,43 +80,43 @@ export default function Hero({ scrollToSection }: HeroProps) {
           >
             <motion.h1 
               variants={itemVariants} 
+              className="text-xs uppercase tracking-[0.25em] font-semibold text-[#2D2624]/60 mb-4"
+              style={{ willChange: "transform, opacity" }}
+            >
+              THE ACNE RESET
+            </motion.h1>
+
+            <motion.h2 
+              variants={itemVariants} 
               className="text-5xl sm:text-6xl lg:text-8xl font-serif text-[#2D2624] font-semibold leading-[1.1] tracking-tight max-w-4xl"
               style={{ willChange: "transform, opacity" }}
             >
               You don't have to pretend the mirror doesn't matter.
-            </motion.h1>
+            </motion.h2>
             
             <motion.p 
               variants={itemVariants} 
-              className="text-lg md:text-xl text-[#2D2624]/90 mt-6 max-w-2xl leading-relaxed"
+              className="text-base md:text-lg text-[#2D2624]/90 mt-6 max-w-2xl leading-relaxed"
               style={{ willChange: "transform, opacity" }}
             >
-              This page won't tell you to love yourself first and skincare second. It's here to help with both, in the right order.
+              For years, you've been told to just 'drink more water' or 'give it time.' But you know what it feels like to delete a photo before anyone else can see it. The 3-Phase Acne Reset is not another cleanser. It’s the process to finally become yourself again.
             </motion.p>
 
             {/* Sequence steps preview */}
             <motion.div 
               variants={itemVariants} 
-              className="mt-8 flex flex-wrap items-center justify-center md:justify-start gap-2 text-xs md:text-sm font-medium text-[#2D2624] bg-white/20 backdrop-blur-md rounded-full px-5 py-2.5 border border-[#2D2624]/15"
+              className="mt-8 flex items-center gap-2.5 text-xs md:text-sm font-medium text-[#2D2624] bg-white/20 backdrop-blur-md rounded-full px-5 py-2.5 border border-[#2D2624]/15"
               style={{ willChange: "transform, opacity" }}
             >
-              <span className="text-[#2D2624] font-semibold">Calm</span>
-              <span className="text-[#2D2624]/40">/</span>
-              <span className="text-[#2D2624]/80">21 Days</span>
-              <ArrowRight size={12} className="mx-1 text-[#2D2624]/60" />
-              <span className="text-[#2D2624] font-semibold">Clear</span>
-              <span className="text-[#2D2624]/40">/</span>
-              <span className="text-[#2D2624]/80">45 Days</span>
-              <ArrowRight size={12} className="mx-1 text-[#2D2624]/60" />
-              <span className="text-[#2D2624] font-semibold">Maintain</span>
-              <span className="text-[#2D2624]/40">/</span>
-              <span className="text-[#2D2624]/80">Ongoing</span>
+              <span className="font-semibold uppercase tracking-[0.1em]">Calm. Clear. Maintain.</span>
+              <span className="text-[#2D2624]/30">|</span>
+              <span className="text-[#2D2624]/80">21 Days → 45 Days → Ongoing</span>
             </motion.div>
 
             {/* CTA Button Row */}
             <motion.div 
               variants={itemVariants} 
-              className="mt-16 flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center md:justify-start"
+              className="mt-12 flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center md:justify-start"
               style={{ willChange: "transform, opacity" }}
             >
               <SpotlightWrapper 
@@ -131,7 +131,7 @@ export default function Hero({ scrollToSection }: HeroProps) {
                     boxShadow: '0 0 0 1px rgba(212, 212, 216, 0.15), 0 4px 20px rgba(212, 212, 216, 0.08)'
                   }}
                 >
-                  Find Your Starting Phase
+                  Find Your Starting Phase →
                 </button>
               </SpotlightWrapper>
 

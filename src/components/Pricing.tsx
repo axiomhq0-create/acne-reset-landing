@@ -338,14 +338,7 @@ export default function Pricing() {
                     <p className="text-sm text-[#6B6E68] mb-6 leading-relaxed flex-grow">
                       All three phases, fully explained. No trackers. No worksheets. Just the process. Built for people who prefer to map the territory before they move.
                     </p>
-                    <div className="border-t border-[#1A1B12]/5 pt-4 mb-6">
-                      <span className="text-xs text-[#1A1B12] font-medium block mb-2">Includes:</span>
-                      <ul className="text-xs text-[#6B6E68] space-y-1.5">
-                        <li>✓ 3-Phase Reset core strategy</li>
-                        <li>✓ Educational guidelines</li>
-                        <li>✓ Lifelong maintenance parameters</li>
-                      </ul>
-                    </div>
+
                   </div>
                   
                   <SpotlightWrapper 

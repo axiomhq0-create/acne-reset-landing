@@ -43,15 +43,9 @@ export default function Footer({ scrollToSection }: FooterProps) {
               The mirror used to mean something good. <span className="italic block font-normal text-3xl md:text-4xl text-[#6B6E68] mt-4">It still can.</span>
             </h2>
 
-            <div className="max-w-xl text-[#6B6E68] space-y-4 text-base md:text-lg leading-relaxed mb-10">
+            <div className="max-w-xl text-[#6B6E68] mb-10 text-base md:text-lg leading-relaxed text-center">
               <p>
-                The person who stopped checking — who learned not to care, not to look, not to hope — that's not you.
-              </p>
-              <p>
-                That's just who you became while you were waiting for something that worked.
-              </p>
-              <p className="font-semibold text-[#1A1B12] text-xl">
-                This is what works.
+                The person who stopped checking — who learned not to care, not to look, not to hope — that's not you. That's just who you became while you were waiting for something that worked. This is what works. Start where you are.
               </p>
             </div>
 
@@ -61,16 +55,15 @@ export default function Footer({ scrollToSection }: FooterProps) {
             >
               <button 
                 onClick={() => scrollToSection("pricing")}
-                className="w-full bg-[#E8C4B8] text-[#1A1B12] px-12 py-4 font-semibold text-lg transition-all duration-200 hover:scale-[1.02] hover:bg-[#DCA596] rounded-full font-serif"
+                className="w-full bg-[#E8C4B8] text-[#1A1B12] px-12 py-4 font-semibold text-lg transition-all duration-200 hover:scale-[1.02] hover:bg-[#DCA596] rounded-full font-serif cursor-pointer"
                 style={{
                   border: '1px solid rgba(255, 255, 255, 0.45)', // Razor-sharp silver boundary seam
                   boxShadow: '0 0 0 1px rgba(212, 212, 216, 0.15), 0 4px 20px rgba(212, 212, 216, 0.08)'
                 }}
               >
-                Begin Your Reset
+                Start Your Acne Reset
               </button>
             </SpotlightWrapper>
-            <span className="text-xs text-[#6B6E68] mt-4">Start where you are.</span>
           </motion.div>
         </div>
       </section>

@@ -41,9 +41,12 @@ export default function Story() {
           className="max-w-3xl mx-auto mb-12"
           style={{ willChange: "transform, opacity" }}
         >
-          <h2 className="text-3xl md:text-5xl font-serif text-[#2D2624] font-semibold tracking-tight leading-[1.15]">
-            Why this works when everything else didn't.
+          <h2 className="text-3xl md:text-5xl font-serif text-[#2D2624] font-semibold tracking-tight leading-[1.15] mb-6">
+            YOU'RE NOT IMAGINING IT. This was never just about your skin.
           </h2>
+          <p className="text-[#6B6E68] text-base md:text-lg max-w-2xl leading-relaxed mx-auto">
+            You've canceled plans for reasons you never said out loud. Taken photos and deleted them before anyone else saw. Searched for better lighting, better angles — not for vanity, but for relief. You've tried products. Some of them probably should have worked. They didn't. Not because you did something wrong. Because products without process are just ingredients. And ingredients without order are just hope. What you needed wasn't another thing to try. It was a sequence.
+          </p>
         </motion.div>
 
         {/* Carousel Frame Window */}
