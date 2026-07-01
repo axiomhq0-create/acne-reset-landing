@@ -55,43 +55,33 @@ export default function System() {
     offset: ["start start", "end end"]
   });
 
-  // Dynamic transforms mapped to [0, 1] progress for Card 1 (Calm)
+  // Dynamic transforms mapped to progress for Card 1 (Calm)
   const scale0 = useTransform(scrollYProgress, [0, 0.4, 0.8, 1], [1, 0.92, 0.86, 0.86]);
   const y0 = useTransform(scrollYProgress, [0, 1], ["0px", "0px"]);
   const opacity0 = useTransform(scrollYProgress, [0, 0.4, 0.45], [1, 1, 0.9]);
 
-  // Dynamic transforms mapped to [0, 1] progress for Card 2 (Clear)
-  const scale1 = useTransform(scrollYProgress, [0, 0.35, 0.4, 0.75, 0.8, 1], [1, 1, 1, 0.96, 0.92, 0.92]);
-  const y1 = useTransform(scrollYProgress, [0, 0.35, 0.7, 1], ["60vh", "0vh", "0vh", "0vh"]);
-  const opacity1 = useTransform(scrollYProgress, [0, 0.3, 0.35, 0.75, 0.8], [0, 0.3, 1, 1, 0.95]);
+  // Dynamic transforms mapped to progress for Card 2 (Clear)
+  const scale1 = useTransform(scrollYProgress, [0, 0.3, 0.35, 0.7, 0.75, 1], [1, 1, 1, 0.96, 0.92, 0.92]);
+  const y1 = useTransform(scrollYProgress, [0, 0.3, 0.65, 1], ["50vh", "0vh", "0vh", "0vh"]);
+  const opacity1 = useTransform(scrollYProgress, [0, 0.25, 0.3, 0.7, 0.75], [0, 0.3, 1, 1, 0.95]);
 
-  // Dynamic transforms mapped to [0, 1] progress for Card 3 (Clef)
+  // Dynamic transforms mapped to progress for Card 3 (Clef)
   const scale2 = useTransform(scrollYProgress, [0, 1], [1, 1]);
-  const y2 = useTransform(scrollYProgress, [0, 0.65, 0.95, 1], ["100vh", "0vh", "0vh", "0vh"]);
-  const opacity2 = useTransform(scrollYProgress, [0, 0.6, 0.65, 1], [0, 0.3, 1, 1]);
+  const y2 = useTransform(scrollYProgress, [0, 0.6, 0.9, 1], ["90vh", "0vh", "0vh", "0vh"]);
+  const opacity2 = useTransform(scrollYProgress, [0, 0.55, 0.6, 1], [0, 0.3, 1, 1]);
 
   return (
-    <section id="system" className="relative bg-[#EBC8BE] overflow-visible">
+    <section id="system" className="relative bg-[#EBC8BE] overflow-visible py-32">
       {/* Soft editorial top transition fade (eliminates hard cut top edge border) */}
       <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#FAF7F2] to-transparent z-10 pointer-events-none" />
 
-      {/* Background Image - Desktop Only */}
-      <div className="hidden md:block absolute inset-0 w-full h-full z-0">
-        <Image 
-          src="/assets/hero-portrait.jpg" 
-          alt="Skincare sequence framework visual representation"
-          fill
-          className="object-cover animate-none object-center"
-          sizes="100vw"
-          style={{ filter: "none", WebkitFilter: "none" }}
-        />
+      {/* Background Blended Plasma Mesh Overlay Tint - mirrors Hero style */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-80 md:opacity-75 mix-blend-color-burn md:mix-blend-soft-light">
+        <div className="sunlight-mesh absolute inset-[-10%] w-[120%] h-[120%]" />
       </div>
 
-      {/* Branded Blush Overlay Tint for text contrast - Desktop Only */}
-      <div className="hidden md:block absolute inset-0 bg-[#EBC8BE]/80 z-10 pointer-events-none" />
-
       {/* Header Info Block */}
-      <div className="max-w-7xl mx-auto px-6 relative z-20 pt-32 pb-16 flex flex-col items-center">
+      <div className="max-w-7xl mx-auto px-6 relative z-20 pb-16 flex flex-col items-center">
         <motion.div 
           {...scrollAnimateProps}
           className="text-center max-w-3xl mx-auto"
@@ -109,8 +99,8 @@ export default function System() {
         </motion.div>
       </div>
 
-      {/* ScrollStack Runway Extension Container */}
-      <div ref={containerRef} className="relative h-[300vh] w-full z-20 overflow-visible">
+      {/* ScrollStack Runway Extension Container (180vh Compact Height) */}
+      <div ref={containerRef} className="relative h-[180vh] w-full z-20 overflow-visible">
         {/* Sticky viewport container */}
         <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-visible">
           {/* Inner card loop */}
@@ -126,11 +116,12 @@ export default function System() {
                 scale: scale0,
                 opacity: opacity0,
                 zIndex: 1,
+                transform: "translateZ(0)",
                 willChange: "transform, opacity",
               }}
-              className="absolute w-full origin-top"
+              className="absolute w-full origin-top will-change-transform"
             >
-              <div className="!h-auto !p-6 md:!p-8 max-w-[90vw] md:max-w-full bg-[#fcfaf7] border border-stone-200 rounded-[30px] shadow-[0_0_30px_rgba(0,0,0,0.05)]">
+              <div className="!h-auto !p-6 md:!p-8 max-w-[90vw] md:max-w-full bg-[#fcfaf7]/75 backdrop-blur-lg border border-white/30 rounded-[30px] shadow-xl">
                 <div className="flex flex-col md:flex-row items-stretch justify-between gap-6 md:gap-8 overflow-hidden h-full">
                   <div className="w-full md:w-1/2 flex flex-col justify-between text-left">
                     <div>
@@ -148,19 +139,19 @@ export default function System() {
                               suppressHydrationWarning
                             />
                           </svg>
-                          <div className="bg-bloomDeep/20 text-[#1A1B12] rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wider w-max">
+                          <div className="bg-[#2D2624]/10 text-[#2D2624] rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wider w-max">
                             Phase 01
                           </div>
                         </div>
-                        <span className="font-serif italic text-2xl md:text-3xl text-bloomDeep">Days 1–21</span>
+                        <span className="font-serif italic text-2xl md:text-3xl text-[#2D2624]">Days 1–21</span>
                       </div>
-                      <h3 className="text-2xl font-serif font-semibold text-[#1A1B12] mb-4">CALM</h3>
-                      <p className="text-[#6B6E68] text-sm md:text-base leading-relaxed">
+                      <h3 className="text-2xl font-serif font-semibold text-[#2D2624] mb-4">CALM</h3>
+                      <p className="text-[#2D2624]/85 text-sm md:text-base leading-relaxed">
                         First, your skin has to stop fighting you. Nothing gets treated here — it gets stabilized, so treatment has something to work with later.
                       </p>
                     </div>
                   </div>
-                  <div className="relative w-full md:w-1/2 min-h-[220px] md:min-h-[300px] overflow-hidden rounded-[20px] shrink-0">
+                  <div className="relative w-full md:w-1/2 min-h-[220px] md:min-h-[300px] overflow-hidden rounded-[20px] shrink-0 shadow-sm border border-white/20">
                     <Image
                       src="/Reduce_the_intensity_of_the_202606261417.jpeg"
                       alt="Phase 1 Calm visual representation"
@@ -183,11 +174,12 @@ export default function System() {
                 scale: scale1,
                 opacity: opacity1,
                 zIndex: 2,
+                transform: "translateZ(0)",
                 willChange: "transform, opacity",
               }}
-              className="absolute w-full origin-top"
+              className="absolute w-full origin-top will-change-transform"
             >
-              <div className="!h-auto !p-6 md:!p-8 max-w-[90vw] md:max-w-full bg-[#fcfaf7] border border-stone-200 rounded-[30px] shadow-[0_0_30px_rgba(0,0,0,0.05)]">
+              <div className="!h-auto !p-6 md:!p-8 max-w-[90vw] md:max-w-full bg-[#fcfaf7]/75 backdrop-blur-lg border border-white/30 rounded-[30px] shadow-xl">
                 <div className="flex flex-col md:flex-row items-stretch justify-between gap-6 md:gap-8 overflow-hidden h-full">
                   <div className="w-full md:w-1/2 flex flex-col justify-between text-left">
                     <div>
@@ -202,19 +194,19 @@ export default function System() {
                             </defs>
                             <circle cx="20" cy="20" r="16" fill="currentColor" clipPath="url(#half-clip-system)" suppressHydrationWarning />
                           </svg>
-                          <div className="bg-bloomDeep/20 text-[#1A1B12] rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wider w-max">
+                          <div className="bg-[#2D2624]/10 text-[#2D2624] rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wider w-max">
                             Phase 02
                           </div>
                         </div>
-                        <span className="font-serif italic text-2xl md:text-3xl text-bloomDeep">Days 22–66</span>
+                        <span className="font-serif italic text-2xl md:text-3xl text-[#2D2624]">Days 22–66</span>
                       </div>
-                      <h3 className="text-2xl font-serif font-semibold text-[#1A1B12] mb-4">CLEAR</h3>
-                      <p className="text-[#6B6E68] text-sm md:text-base leading-relaxed">
+                      <h3 className="text-2xl font-serif font-semibold text-[#2D2624] mb-4">CLEAR</h3>
+                      <p className="text-[#2D2624]/85 text-sm md:text-base leading-relaxed">
                         Only once it's stable does treatment actually work. One consistent approach, given enough time to do what it was supposed to do in the first place.
                       </p>
                     </div>
                   </div>
-                  <div className="relative w-full md:w-1/2 min-h-[220px] md:min-h-[300px] overflow-hidden rounded-[20px] shrink-0">
+                  <div className="relative w-full md:w-1/2 min-h-[220px] md:min-h-[300px] overflow-hidden rounded-[20px] shrink-0 shadow-sm border border-white/20">
                     <Image
                       src="/The_background_is_light_and_202606261423.jpeg"
                       alt="Phase 2 Clear visual representation"
@@ -237,11 +229,12 @@ export default function System() {
                 scale: scale2,
                 opacity: opacity2,
                 zIndex: 3,
+                transform: "translateZ(0)",
                 willChange: "transform, opacity",
               }}
-              className="absolute w-full origin-top"
+              className="absolute w-full origin-top will-change-transform"
             >
-              <div className="!h-auto !p-6 md:!p-8 max-w-[90vw] md:max-w-full bg-[#fcfaf7] border border-stone-200 rounded-[30px] shadow-[0_0_30px_rgba(0,0,0,0.05)]">
+              <div className="!h-auto !p-6 md:!p-8 max-w-[90vw] md:max-w-full bg-[#fcfaf7]/75 backdrop-blur-lg border border-white/30 rounded-[30px] shadow-xl">
                 <div className="flex flex-col md:flex-row items-stretch justify-between gap-6 md:gap-8 overflow-hidden h-full">
                   <div className="w-full md:w-1/2 flex flex-col justify-between text-left">
                     <div>
@@ -266,19 +259,19 @@ export default function System() {
                               suppressHydrationWarning
                             />
                           </svg>
-                          <div className="bg-bloomDeep/20 text-[#1A1B12] rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wider w-max">
+                          <div className="bg-[#2D2624]/10 text-[#2D2624] rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wider w-max">
                             Phase 03
                           </div>
                         </div>
-                        <span className="font-serif italic text-2xl md:text-3xl text-bloomDeep">Day 67 Onward</span>
+                        <span className="font-serif italic text-2xl md:text-3xl text-[#2D2624]">Day 67 Onward</span>
                       </div>
-                      <h3 className="text-2xl font-serif font-semibold text-[#1A1B12] mb-4">CLEF</h3>
-                      <p className="text-[#6B6E68] text-sm md:text-base leading-relaxed">
+                      <h3 className="text-2xl font-serif font-semibold text-[#2D2624] mb-4">CLEF</h3>
+                      <p className="text-[#2D2624]/85 text-sm md:text-base leading-relaxed">
                         Once it's working, the only thing left to lose is consistency. Not a new routine — protection for the one that already proved itself.
                       </p>
                     </div>
                   </div>
-                  <div className="relative w-full md:w-1/2 min-h-[220px] md:min-h-[300px] overflow-hidden rounded-[20px] shrink-0">
+                  <div className="relative w-full md:w-1/2 min-h-[220px] md:min-h-[300px] overflow-hidden rounded-[20px] shrink-0 shadow-sm border border-white/20">
                     <Image
                       src="/Remove_the_black_dress_and_202606261411.jpeg"
                       alt="Phase 3 Clef visual representation"
