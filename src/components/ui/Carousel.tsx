@@ -91,6 +91,7 @@ export default function Carousel({
                     opacity: 0,
                     scale: 0.8,
                   }}
+                  whileTap={{ scale: 0.97, y: 1 }}
                   transition={{
                     type: "spring",
                     stiffness: 260,
@@ -99,6 +100,8 @@ export default function Carousel({
                   style={{
                     width: `${baseWidth}px`,
                     borderRadius: round ? "50%" : "24px",
+                    willChange: "transform",
+                    transform: "translateZ(0)",
                   }}
                   className={`carousel-item absolute select-none ${
                     round ? "aspect-square justify-center items-center text-center" : ""
