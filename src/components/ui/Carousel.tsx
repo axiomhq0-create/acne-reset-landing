@@ -98,7 +98,6 @@ export default function Carousel({
                     damping: 28,
                   }}
                   style={{
-                    width: `${baseWidth}px`,
                     borderRadius: round ? "50%" : "24px",
                     willChange: "transform",
                     transform: "translateZ(0)",
