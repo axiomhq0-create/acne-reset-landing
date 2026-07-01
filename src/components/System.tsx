@@ -55,81 +55,23 @@ export default function System() {
     offset: ["start start", "end end"]
   });
 
-  const phases = [
-    {
-      id: "phase-01",
-      phaseNum: "Phase 01",
-      days: "Days 1–21",
-      title: "CALM",
-      description: "First, your skin has to stop fighting you. Nothing gets treated here — it gets stabilized, so treatment has something to work with later.",
-      image: "/Reduce_the_intensity_of_the_202606261417.jpeg",
-      icon: (
-        <svg viewBox="0 0 40 40" className="w-12 h-12 text-[#2D2624]" suppressHydrationWarning>
-          <motion.circle 
-            cx="20" 
-            cy="20" 
-            r="16" 
-            stroke="currentColor" 
-            strokeWidth="2" 
-            fill="none" 
-            variants={strokeVariants}
-            suppressHydrationWarning
-          />
-        </svg>
-      )
-    },
-    {
-      id: "phase-02",
-      phaseNum: "Phase 02",
-      days: "Days 22–66",
-      title: "CLEAR",
-      description: "Only once it's stable does treatment actually work. One consistent approach, given enough time to do what it was supposed to do in the first place.",
-      image: "/The_background_is_light_and_202606261423.jpeg",
-      icon: (
-        <svg viewBox="0 0 40 40" className="w-12 h-12 text-[#2D2624]" suppressHydrationWarning>
-          <circle cx="20" cy="20" r="16" stroke="currentColor" strokeWidth="2" fill="none" suppressHydrationWarning />
-          <defs>
-            <clipPath id="half-clip-system">
-              <motion.rect x="4" y="4" height="32" variants={rectVariants} />
-            </clipPath>
-          </defs>
-          <circle cx="20" cy="20" r="16" fill="currentColor" clipPath="url(#half-clip-system)" suppressHydrationWarning />
-        </svg>
-      )
-    },
-    {
-      id: "phase-03",
-      phaseNum: "Phase 03",
-      days: "Day 67 Onward",
-      title: "CLEF",
-      description: "Once it's working, the only thing left to lose is consistency. Not a new routine — protection for the one that already proved itself.",
-      image: "/Remove_the_black_dress_and_202606261411.jpeg",
-      icon: (
-        <svg viewBox="0 0 40 40" className="w-12 h-12 text-[#2D2624]" suppressHydrationWarning>
-          <motion.circle 
-            cx="20" 
-            cy="20" 
-            r="16" 
-            fill="currentColor" 
-            className="blur-[4px]"
-            variants={glowVariants}
-            suppressHydrationWarning
-          />
-          <motion.circle 
-            cx="20" 
-            cy="20" 
-            r="16" 
-            fill="currentColor" 
-            variants={solidCircleVariants}
-            suppressHydrationWarning
-          />
-        </svg>
-      )
-    }
-  ];
+  // Dynamic transforms mapped to [0, 1] progress for Card 1 (Calm)
+  const scale0 = useTransform(scrollYProgress, [0, 0.4, 0.8, 1], [1, 0.92, 0.86, 0.86]);
+  const y0 = useTransform(scrollYProgress, [0, 1], ["0px", "0px"]);
+  const opacity0 = useTransform(scrollYProgress, [0, 0.4, 0.45], [1, 1, 0.9]);
+
+  // Dynamic transforms mapped to [0, 1] progress for Card 2 (Clear)
+  const scale1 = useTransform(scrollYProgress, [0, 0.35, 0.4, 0.75, 0.8, 1], [1, 1, 1, 0.96, 0.92, 0.92]);
+  const y1 = useTransform(scrollYProgress, [0, 0.35, 0.7, 1], ["60vh", "0vh", "0vh", "0vh"]);
+  const opacity1 = useTransform(scrollYProgress, [0, 0.3, 0.35, 0.75, 0.8], [0, 0.3, 1, 1, 0.95]);
+
+  // Dynamic transforms mapped to [0, 1] progress for Card 3 (Clef)
+  const scale2 = useTransform(scrollYProgress, [0, 1], [1, 1]);
+  const y2 = useTransform(scrollYProgress, [0, 0.65, 0.95, 1], ["100vh", "0vh", "0vh", "0vh"]);
+  const opacity2 = useTransform(scrollYProgress, [0, 0.6, 0.65, 1], [0, 0.3, 1, 1]);
 
   return (
-    <section id="system" className="py-32 bg-[#EBC8BE] relative">
+    <section id="system" className="relative bg-[#EBC8BE] overflow-visible">
       {/* Soft editorial top transition fade (eliminates hard cut top edge border) */}
       <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#FAF7F2] to-transparent z-10 pointer-events-none" />
 
@@ -148,11 +90,11 @@ export default function System() {
       {/* Branded Blush Overlay Tint for text contrast - Desktop Only */}
       <div className="hidden md:block absolute inset-0 bg-[#EBC8BE]/80 z-10 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-20 flex flex-col">
-        {/* Header */}
+      {/* Header Info Block */}
+      <div className="max-w-7xl mx-auto px-6 relative z-20 pt-32 pb-16 flex flex-col items-center">
         <motion.div 
           {...scrollAnimateProps}
-          className="text-center max-w-3xl mx-auto mb-20"
+          className="text-center max-w-3xl mx-auto"
           style={{ willChange: "transform, opacity" }}
         >
           <h2 className="text-3xl md:text-5xl font-serif text-[#1A1B12] font-semibold tracking-tight leading-[1.1] mb-6">
@@ -165,82 +107,202 @@ export default function System() {
             Here is what actually has to happen, in order:
           </p>
         </motion.div>
+      </div>
 
-        {/* Stacking Cards Container */}
-        <div ref={containerRef} className="relative w-full max-w-xl mx-auto md:max-w-2xl px-4 flex flex-col">
-          {phases.map((phase, index) => {
-            const offsetTop = 120 + index * 25;
+      {/* ScrollStack Runway Extension Container */}
+      <div ref={containerRef} className="relative h-[300vh] w-full z-20 overflow-visible">
+        {/* Sticky viewport container */}
+        <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-visible">
+          {/* Inner card loop */}
+          <div className="relative w-full max-w-xl md:max-w-2xl px-4 h-[60vh] flex items-center justify-center overflow-visible">
             
-            // Calculate scale transition based on viewport scroll progress
-            const startSegment = index / phases.length;
-            const endSegment = (index + 1) / phases.length;
-            
-            const scale = useTransform(
-              scrollYProgress,
-              [startSegment, endSegment],
-              [1, 0.92 + (phases.length - index - 1) * 0.015]
-            );
-
-            return (
-              <motion.div
-                key={phase.id}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: false, amount: 0.15 }}
-                style={{
-                  position: 'sticky',
-                  top: `${offsetTop}px`,
-                  scale,
-                  zIndex: index + 1,
-                  marginBottom: index < phases.length - 1 ? '10vh' : '0vh',
-                  willChange: "transform, opacity",
-                }}
-                className="w-full origin-top"
-              >
-                <div className="!h-auto !p-6 md:!p-8 max-w-[90vw] md:max-w-full bg-[#fcfaf7] border border-stone-200 rounded-[30px] shadow-[0_0_30px_rgba(0,0,0,0.05)]">
-                  <div className="flex flex-col md:flex-row items-stretch justify-between gap-6 md:gap-8 overflow-hidden h-full">
-                    {/* Left Column: Text block and sequence animations */}
-                    <div className="w-full md:w-1/2 flex flex-col justify-between text-left">
-                      <div>
-                        <div className="flex justify-between items-start mb-6">
-                          <div className="flex flex-col gap-4">
-                            {phase.icon}
-                            <div className="bg-bloomDeep/20 text-[#1A1B12] rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wider w-max">
-                              {phase.phaseNum}
-                            </div>
+            {/* Card 1: CALM */}
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.15 }}
+              style={{
+                y: y0,
+                scale: scale0,
+                opacity: opacity0,
+                zIndex: 1,
+                willChange: "transform, opacity",
+              }}
+              className="absolute w-full origin-top"
+            >
+              <div className="!h-auto !p-6 md:!p-8 max-w-[90vw] md:max-w-full bg-[#fcfaf7] border border-stone-200 rounded-[30px] shadow-[0_0_30px_rgba(0,0,0,0.05)]">
+                <div className="flex flex-col md:flex-row items-stretch justify-between gap-6 md:gap-8 overflow-hidden h-full">
+                  <div className="w-full md:w-1/2 flex flex-col justify-between text-left">
+                    <div>
+                      <div className="flex justify-between items-start mb-6">
+                        <div className="flex flex-col gap-4">
+                          <svg viewBox="0 0 40 40" className="w-12 h-12 text-[#2D2624]" suppressHydrationWarning>
+                            <motion.circle 
+                              cx="20" 
+                              cy="20" 
+                              r="16" 
+                              stroke="currentColor" 
+                              strokeWidth="2" 
+                              fill="none" 
+                              variants={strokeVariants}
+                              suppressHydrationWarning
+                            />
+                          </svg>
+                          <div className="bg-bloomDeep/20 text-[#1A1B12] rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wider w-max">
+                            Phase 01
                           </div>
-                          <span className="font-serif italic text-2xl md:text-3xl text-bloomDeep">{phase.days}</span>
                         </div>
-                        <h3 className="text-2xl font-serif font-semibold text-[#1A1B12] mb-4">{phase.title}</h3>
-                        <p className="text-[#6B6E68] text-sm md:text-base leading-relaxed">
-                          {phase.description}
-                        </p>
+                        <span className="font-serif italic text-2xl md:text-3xl text-bloomDeep">Days 1–21</span>
                       </div>
-                    </div>
-                    {/* Right Column: Image Asset */}
-                    <div className="relative w-full md:w-1/2 min-h-[220px] md:min-h-[300px] overflow-hidden rounded-[20px] shrink-0">
-                      <Image
-                        src={phase.image}
-                        alt={`${phase.title} phase visual representation`}
-                        fill
-                        className="object-cover object-center"
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                      />
+                      <h3 className="text-2xl font-serif font-semibold text-[#1A1B12] mb-4">CALM</h3>
+                      <p className="text-[#6B6E68] text-sm md:text-base leading-relaxed">
+                        First, your skin has to stop fighting you. Nothing gets treated here — it gets stabilized, so treatment has something to work with later.
+                      </p>
                     </div>
                   </div>
+                  <div className="relative w-full md:w-1/2 min-h-[220px] md:min-h-[300px] overflow-hidden rounded-[20px] shrink-0">
+                    <Image
+                      src="/Reduce_the_intensity_of_the_202606261417.jpeg"
+                      alt="Phase 1 Calm visual representation"
+                      fill
+                      className="object-cover object-center"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                  </div>
                 </div>
-              </motion.div>
-            );
-          })}
-        </div>
+              </div>
+            </motion.div>
 
-        {/* Footer Summary Closing */}
+            {/* Card 2: CLEAR */}
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.15 }}
+              style={{
+                y: y1,
+                scale: scale1,
+                opacity: opacity1,
+                zIndex: 2,
+                willChange: "transform, opacity",
+              }}
+              className="absolute w-full origin-top"
+            >
+              <div className="!h-auto !p-6 md:!p-8 max-w-[90vw] md:max-w-full bg-[#fcfaf7] border border-stone-200 rounded-[30px] shadow-[0_0_30px_rgba(0,0,0,0.05)]">
+                <div className="flex flex-col md:flex-row items-stretch justify-between gap-6 md:gap-8 overflow-hidden h-full">
+                  <div className="w-full md:w-1/2 flex flex-col justify-between text-left">
+                    <div>
+                      <div className="flex justify-between items-start mb-6">
+                        <div className="flex flex-col gap-4">
+                          <svg viewBox="0 0 40 40" className="w-12 h-12 text-[#2D2624]" suppressHydrationWarning>
+                            <circle cx="20" cy="20" r="16" stroke="currentColor" strokeWidth="2" fill="none" suppressHydrationWarning />
+                            <defs>
+                              <clipPath id="half-clip-system">
+                                <motion.rect x="4" y="4" height="32" variants={rectVariants} />
+                              </clipPath>
+                            </defs>
+                            <circle cx="20" cy="20" r="16" fill="currentColor" clipPath="url(#half-clip-system)" suppressHydrationWarning />
+                          </svg>
+                          <div className="bg-bloomDeep/20 text-[#1A1B12] rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wider w-max">
+                            Phase 02
+                          </div>
+                        </div>
+                        <span className="font-serif italic text-2xl md:text-3xl text-bloomDeep">Days 22–66</span>
+                      </div>
+                      <h3 className="text-2xl font-serif font-semibold text-[#1A1B12] mb-4">CLEAR</h3>
+                      <p className="text-[#6B6E68] text-sm md:text-base leading-relaxed">
+                        Only once it's stable does treatment actually work. One consistent approach, given enough time to do what it was supposed to do in the first place.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="relative w-full md:w-1/2 min-h-[220px] md:min-h-[300px] overflow-hidden rounded-[20px] shrink-0">
+                    <Image
+                      src="/The_background_is_light_and_202606261423.jpeg"
+                      alt="Phase 2 Clear visual representation"
+                      fill
+                      className="object-cover object-center"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Card 3: CLEF */}
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.15 }}
+              style={{
+                y: y2,
+                scale: scale2,
+                opacity: opacity2,
+                zIndex: 3,
+                willChange: "transform, opacity",
+              }}
+              className="absolute w-full origin-top"
+            >
+              <div className="!h-auto !p-6 md:!p-8 max-w-[90vw] md:max-w-full bg-[#fcfaf7] border border-stone-200 rounded-[30px] shadow-[0_0_30px_rgba(0,0,0,0.05)]">
+                <div className="flex flex-col md:flex-row items-stretch justify-between gap-6 md:gap-8 overflow-hidden h-full">
+                  <div className="w-full md:w-1/2 flex flex-col justify-between text-left">
+                    <div>
+                      <div className="flex justify-between items-start mb-6">
+                        <div className="flex flex-col gap-4">
+                          <svg viewBox="0 0 40 40" className="w-12 h-12 text-[#2D2624]" suppressHydrationWarning>
+                            <motion.circle 
+                              cx="20" 
+                              cy="20" 
+                              r="16" 
+                              fill="currentColor" 
+                              className="blur-[4px]"
+                              variants={glowVariants}
+                              suppressHydrationWarning
+                            />
+                            <motion.circle 
+                              cx="20" 
+                              cy="20" 
+                              r="16" 
+                              fill="currentColor" 
+                              variants={solidCircleVariants}
+                              suppressHydrationWarning
+                            />
+                          </svg>
+                          <div className="bg-bloomDeep/20 text-[#1A1B12] rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wider w-max">
+                            Phase 03
+                          </div>
+                        </div>
+                        <span className="font-serif italic text-2xl md:text-3xl text-bloomDeep">Day 67 Onward</span>
+                      </div>
+                      <h3 className="text-2xl font-serif font-semibold text-[#1A1B12] mb-4">CLEF</h3>
+                      <p className="text-[#6B6E68] text-sm md:text-base leading-relaxed">
+                        Once it's working, the only thing left to lose is consistency. Not a new routine — protection for the one that already proved itself.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="relative w-full md:w-1/2 min-h-[220px] md:min-h-[300px] overflow-hidden rounded-[20px] shrink-0">
+                    <Image
+                      src="/Remove_the_black_dress_and_202606261411.jpeg"
+                      alt="Phase 3 Clef visual representation"
+                      fill
+                      className="object-cover object-center"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+          </div>
+        </div>
+      </div>
+
+      {/* Footer Summary Closing */}
+      <div className="max-w-7xl mx-auto px-6 relative z-20 py-32 flex flex-col items-center">
         <motion.div 
           initial={{ opacity: 0, transform: "translate3d(0, 10px, 0)" }}
           whileInView={{ opacity: 1, transform: "translate3d(0, 0, 0)" }}
           viewport={{ once: false, amount: 0.15 }}
           transition={{ duration: 0.45, ease: easeOutPremium }}
-          className="text-center mt-20 flex flex-col items-center gap-2"
+          className="text-center flex flex-col items-center gap-2"
           style={{ willChange: "transform, opacity" }}
         >
           <p className="text-[#2D2624] text-xl md:text-2xl font-serif italic">

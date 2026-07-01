@@ -24,7 +24,7 @@ export default function Home() {
   };
 
   return (
-    <div className="bg-linen text-ink min-h-screen font-sans antialiased overflow-x-hidden selection:bg-bloomDeep selection:text-[#1A1B12]">
+    <div className="bg-linen text-ink min-h-screen font-sans antialiased selection:bg-bloomDeep selection:text-[#1A1B12]">
       {/* Navigation Header */}
       <Header scrollToSection={scrollToSection} />
 
