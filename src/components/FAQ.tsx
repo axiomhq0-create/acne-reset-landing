@@ -4,13 +4,13 @@ import React from "react";
 import AnimatedList from "./ui/AnimatedList";
 
 const faqItems = [
-  "<div><p class='faq-question'>Is this a replacement for seeing a dermatologist?</p><p class='faq-answer'>No — and it doesn't try to be. If your skin needs medical treatment, this works alongside that care, not instead of it. The system is built around skincare education and structure, not diagnosis.</p></div>",
+  "<div><p class='faq-question'>Is this a replacement for seeing a dermatologist?</p><p class='faq-answer'>No, and it doesn't try to be. If your skin needs medical treatment, this works alongside that care instead of replacing it. The system is built entirely around skincare education and structure, not diagnosis.</p></div>",
   "<div><p class='faq-question'>How long until I see results?</p><p class='faq-answer'>Calm is 21 days. Clear is 45 days. Maintain is ongoing. We're not going to give you a number we can't stand behind. What we can tell you is that the phases are designed so your skin is never working against the step it's in.</p></div>",
-  "<div><p class='faq-question'>I don't know my skin type or which actives to use?</p><p class='faq-answer'>That's what the Product Selection Guide and Calm Phase Product Guide are built for. You don't need to know anything before you start — the guides walk you through exactly what to use and why.</p></div>",
+  "<div><p class='faq-question'>I don't know my skin type or which actives to use?</p><p class='faq-answer'>That's what the Product Selection Guide and Calm Phase Product Guide are built for. You don't need to know anything before you start, as the guides walk you through exactly what to use and why.</p></div>",
   "<div><p class='faq-question'>Can I start with Calm or The Roadmap and upgrade later?</p><p class='faq-answer'>Yes. Both are built as entry points into the same system. When you're ready to continue, the path is already there.</p></div>",
-  "<div><p class='faq-question'>I've already tried everything.</p><p class='faq-answer'>Then you already know the problem isn't the ingredients. The 3-Phase Reset wasn't built around finding one miracle product. It was built around giving your skin a structure that makes whatever you use actually work. The missing piece was never the product. It was the order.</p></div>",
+  "<div><p class='faq-question'>I've already tried everything.</p><p class='faq-answer'>Then you already know the problem isn't the ingredients. The 3-Phase Reset was not built around finding a single miracle product. It was designed to give your skin a clear structure that makes whatever you choose to use actually work. The missing piece was never the product. It was the order.</p></div>",
   "<div><p class='faq-question'>Is this a subscription?</p><p class='faq-answer'>No. Every product is a one-time purchase. No recurring charges. No surprises.</p></div>",
-  "<div><p class='faq-question'>How do I get support?</p><p class='faq-answer'>Through our official social channels. We respond within 24–48 hours.</p></div>"
+  "<div><p class='faq-question'>How do I get support?</p><p class='faq-answer'>Through our official social channels. We respond within 24 to 48 hours.</p></div>"
 ];
 
 export default function FAQ() {

@@ -86,7 +86,7 @@ export default function Pricing() {
               Three Phases. One Connected System.
             </h2>
             <p className="text-[#6B6E68] text-base md:text-lg mt-4">
-              The phases are built to hand off to each other — Calm prepares your skin for Clear, Clear sets up Maintain. The Complete Transformation is the full path in order.
+              The phases are built to hand off to each other. Calm prepares your skin for Clear, while Clear sets up Maintain. The Complete Transformation is the full path in order.
             </p>
           </motion.div>
           {/* Fallback Swipe indicator above product card */}

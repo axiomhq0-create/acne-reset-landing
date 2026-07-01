@@ -160,7 +160,7 @@ export default function System() {
                       </div>
                       <h3 className="text-2xl font-serif font-semibold text-[#2D2624] mb-4">The Calm Phase</h3>
                       <p className="text-[#2D2624]/85 text-sm md:text-base leading-relaxed">
-                        First, your skin has to stop fighting you. Nothing gets treated here — it gets stabilized, so treatment has something to work with later.
+                        First, your skin has to stop fighting you. Nothing gets treated here. It gets stabilized, so treatment has something to work with later.
                       </p>
                     </div>
                   </div>
@@ -280,7 +280,7 @@ export default function System() {
                       </div>
                       <h3 className="text-2xl font-serif font-semibold text-[#2D2624] mb-4">The Maintain Phase</h3>
                       <p className="text-[#2D2624]/85 text-sm md:text-base leading-relaxed">
-                        Once it's working, the only thing left to lose is consistency. Not a new routine — protection for the one that already proved itself.
+                        Once it's working, the only thing left to lose is consistency. Not a new routine, but protection for the one that already proved itself.
                       </p>
                     </div>
                   </div>

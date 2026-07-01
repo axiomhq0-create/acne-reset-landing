@@ -91,7 +91,7 @@ export default function Hero({ scrollToSection }: HeroProps) {
               className="text-base md:text-lg text-[#2D2624]/90 mt-6 max-w-2xl leading-relaxed"
               style={{ willChange: "transform, opacity" }}
             >
-              For years, you've been told to just 'drink more water' or 'give it time.' But you know what it feels like to delete a photo before anyone else can see it. The 3-Phase Acne Reset is not another cleanser. It’s the process to finally become yourself again.
+              For years, you've been told to just 'drink more water' or 'give it time.' But you know what it feels like to delete a photo before anyone else can see it. The 3-Phase Acne Reset is not another cleanser. It is the process to finally become yourself again.
             </motion.p>
 
             {/* Sequence steps preview */}

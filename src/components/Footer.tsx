@@ -45,7 +45,7 @@ export default function Footer({ scrollToSection }: FooterProps) {
 
             <div className="max-w-xl text-[#6B6E68] mb-10 text-base md:text-lg leading-relaxed text-center">
               <p>
-                The person who stopped checking — who learned not to care, not to look, not to hope — that's not you. That's just who you became while you were waiting for something that worked. This is what works. Start where you are.
+                The person who stopped checking, who learned not to care or look or hope, that is not you. That's just who you became while you were waiting for something that worked. This is what works. Start where you are.
               </p>
             </div>
 
