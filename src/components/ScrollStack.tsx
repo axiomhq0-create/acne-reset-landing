@@ -2,6 +2,7 @@
 
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import './ScrollStack.css';
 
 export interface ScrollStackItemProps {
   itemClassName?: string;
@@ -28,6 +29,7 @@ interface ScrollStackProps {
   itemDistance?: number;
   itemStackDistance?: number;
   baseScale?: number;
+  useWindowScroll?: boolean;
 }
 
 const ScrollStack: React.FC<ScrollStackProps> = ({
@@ -36,14 +38,19 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
   itemDistance = 120,
   itemStackDistance = 25,
   baseScale = 0.92,
+  useWindowScroll = false,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const items = React.Children.toArray(children) as React.ReactElement[];
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  });
+  const { scrollYProgress } = useScroll(
+    useWindowScroll
+      ? undefined
+      : {
+          target: containerRef,
+          offset: ["start start", "end end"]
+        }
+  );
 
   return (
     <div ref={containerRef} className={`relative w-full ${className}`}>

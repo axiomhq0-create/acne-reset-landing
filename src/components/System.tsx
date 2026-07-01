@@ -116,7 +116,7 @@ export default function System() {
           </motion.div>
 
           {/* ScrollStack Stacking Cards list */}
-          <ScrollStack baseScale={0.92} className="max-w-xl mx-auto md:max-w-2xl px-4" itemDistance={120} itemStackDistance={25}>
+          <ScrollStack baseScale={0.92} className="max-w-xl mx-auto md:max-w-2xl px-4" itemDistance={120} itemStackDistance={25} useWindowScroll={true}>
             <ScrollStackItem itemClassName="!h-auto !p-6 md:!p-8 max-w-[90vw] md:max-w-full bg-[#fcfaf7] border border-stone-200 rounded-[30px]">
               <div className="flex flex-col md:flex-row items-stretch justify-between gap-6 md:gap-8 overflow-hidden h-full">
                 {/* Left Column: Text block and sequence animations */}

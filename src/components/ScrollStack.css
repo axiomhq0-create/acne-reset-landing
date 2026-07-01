@@ -1,0 +1,13 @@
+/* ScrollStack.css - Companion styles for React Bits ScrollStack component */
+
+.scroll-stack-container {
+  position: relative;
+  width: 100%;
+}
+
+.scroll-stack-card {
+  box-sizing: border-box;
+  will-change: transform;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
