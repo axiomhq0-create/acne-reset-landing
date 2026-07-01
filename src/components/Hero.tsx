@@ -40,17 +40,17 @@ interface HeroProps {
 export default function Hero({ scrollToSection }: HeroProps) {
   return (
     <section className="relative min-h-screen w-full flex flex-col justify-between py-24 overflow-hidden bg-[#E8C4B8]">
-      {/* 1. IMAGE_PLACEMENT: Place "download (12).jpg" - Desktop Only */}
-      <div className="hidden md:block absolute right-0 top-0 h-full w-1/2 z-0 pointer-events-none">
+      {/* 1. IMAGE_PLACEMENT: Place "download (12).jpg" universally */}
+      <div className="absolute right-0 top-0 h-full w-full md:w-1/2 z-0 pointer-events-none">
         <Image
           src="/assets/download-12.jpg"
           alt="Acne Reset Radiant Skin portrait"
           fill
-          className="object-cover object-center"
+          className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none z-0"
           priority
         />
-        {/* EDGE_MASK: Gradient mask to erase left hard lines on desktop */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#E8C4B8] to-transparent z-10" />
+        {/* EDGE_MASK: Gradient mask to erase left hard lines on desktop and bottom lines on mobile */}
+        <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#E8C4B8] via-[#E8C4B8]/50 to-transparent z-10" />
       </div>
 
       {/* 2. PLASMA BLENDING LAYER: mix-blend-color-burn on mobile, soft-light on desktop */}
@@ -153,7 +153,7 @@ export default function Hero({ scrollToSection }: HeroProps) {
       </div>
 
       {/* Slim, elegant Trust Strip section */}
-      <div className="relative z-30 border-t border-[#2D2624]/10 pt-8 pb-4 w-full mt-auto">
+      <div className="relative z-20 border-t border-[#2D2624]/10 pt-8 pb-4 w-full mt-auto">
         <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-center items-center gap-8 md:gap-16 text-center text-[13px] uppercase tracking-[0.2em] font-semibold text-[#2D2624]/70">
           <span>90-Day Framework</span>
           <span>Works With Any Products</span>
