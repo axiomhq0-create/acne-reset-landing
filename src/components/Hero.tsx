@@ -3,7 +3,7 @@ import React from 'react';
 
 export default function Hero() {
   return (
-    <section className="relative w-full bg-[#FAF6F0] pt-32 pb-20 flex flex-col items-center justify-center overflow-hidden">
+    <section className="relative w-full bg-gradient-to-b from-[#F2E7DC] via-[#FAF6F0] to-[#FFFFFF] pt-32 pb-20 flex flex-col items-center justify-center overflow-hidden">
       <div className="w-full max-w-4xl mx-auto text-center px-6 flex flex-col items-center">
         
         <h1 className="text-4xl md:text-6xl font-serif text-[#1c1917] tracking-tight max-w-3xl leading-[1.15] mb-6">
