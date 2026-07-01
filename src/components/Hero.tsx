@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import SpotlightWrapper from "./SpotlightWrapper";
@@ -40,14 +41,30 @@ const itemVariants = {
 export default function Hero({ scrollToSection }: HeroProps) {
   return (
     <section className="relative min-h-screen flex flex-col justify-between py-24 overflow-hidden bg-[#E8C4B8]">
-      {/* Native Ambient sunlight-and-linen visual texture (hardware-accelerated CSS animations) */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+      {/* 1. IMAGE_PLACEMENT: Place "download (12).jpg" as an absolute element on the right side */}
+      <div className="absolute right-0 top-0 h-full w-full md:w-1/2 z-0 pointer-events-none">
+        <Image
+          src="/assets/download-12.jpg"
+          alt="Acne Reset Radiant Skin portrait"
+          fill
+          className="object-cover object-center"
+          priority
+        />
+        {/* EDGE_MASK: Use a Tailwind gradient mask over the left edge to erase hard vertical lines */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#E8C4B8] via-transparent to-transparent z-10" />
+      </div>
+
+      {/* 2. PLASMA BLENDING LAYER: Position on top of the image layer (z-10) with mix-blend-mode: soft-light */}
+      <div 
+        className="absolute inset-0 z-10 overflow-hidden pointer-events-none opacity-75"
+        style={{ mixBlendMode: "soft-light" }}
+      >
         <div className="sunlight-mesh absolute inset-[-10%] w-[120%] h-[120%]" />
       </div>
 
-      {/* Content Center Overlaid - relative zIndex 10 sitting perfectly over the working fluid canvas */}
+      {/* Content Center Overlaid - relative zIndex 20 sitting perfectly over the background layers */}
       <div 
-        style={{ position: "relative", zIndex: 10 }}
+        style={{ position: "relative", zIndex: 20 }}
         className="flex-grow flex items-center justify-center"
       >
         <div className="max-w-5xl mx-auto px-6 flex flex-col items-center text-center">
