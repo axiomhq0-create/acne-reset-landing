@@ -97,12 +97,39 @@ export default function Hero({ scrollToSection }: HeroProps) {
             {/* Sequence steps preview */}
             <motion.div 
               variants={itemVariants} 
-              className="mt-8 hidden md:flex items-center gap-2.5 text-xs md:text-sm font-medium text-[#2D2624] bg-white/20 backdrop-blur-md rounded-full px-5 py-2.5 border border-[#2D2624]/15"
+              className="mt-8 flex justify-center md:justify-start w-full"
               style={{ willChange: "transform, opacity" }}
             >
-              <span className="font-semibold uppercase tracking-[0.1em]">Calm. Clear. Maintain.</span>
-              <span className="text-[#2D2624]/30">|</span>
-              <span className="text-[#2D2624]/80">21 Days → 45 Days → Ongoing</span>
+              <div className="flex flex-col md:flex-row items-center justify-center gap-3 md:gap-4 px-6 py-3.5 bg-white/40 backdrop-blur-md border border-white/60 rounded-[20px] md:rounded-full max-w-full text-stone-700 text-sm md:text-base shadow-sm">
+                
+                {/* Phase 1 */}
+                <div className="flex items-center gap-1.5 whitespace-nowrap">
+                  <span className="font-semibold text-stone-900">Calm</span>
+                  <span className="text-stone-400 font-light">/</span>
+                  <span className="text-stone-600">21 Days</span>
+                </div>
+
+                {/* Arrow 1 */}
+                <span className="hidden md:inline text-stone-400 text-xs">→</span>
+
+                {/* Phase 2 */}
+                <div className="flex items-center gap-1.5 whitespace-nowrap">
+                  <span className="font-semibold text-stone-900">Clear</span>
+                  <span className="text-stone-400 font-light">/</span>
+                  <span className="text-stone-600">45 Days</span>
+                </div>
+
+                {/* Arrow 2 */}
+                <span className="hidden md:inline text-stone-400 text-xs">→</span>
+
+                {/* Phase 3 */}
+                <div className="flex items-center gap-1.5 whitespace-nowrap">
+                  <span className="font-semibold text-stone-900">Maintain</span>
+                  <span className="text-stone-400 font-light">/</span>
+                  <span className="text-stone-600">Ongoing</span>
+                </div>
+
+              </div>
             </motion.div>
 
             {/* CTA Button Row */}
