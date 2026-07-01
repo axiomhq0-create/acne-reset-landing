@@ -125,13 +125,13 @@ export default function System() {
             </p>
           </motion.div>
 
-          {/* 3-Column Grid with Staggered Framer Motion Animations */}
+          {/* Staggered Scroll Stack Cards list */}
           <motion.div 
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: false, amount: 0.15 }} // Bi-directional scroll wrapper
-            className="grid grid-cols-1 md:grid-cols-3 gap-8 relative"
+            className="flex flex-col gap-12 relative"
             style={{ willChange: "transform, opacity" }}
           >
             {/* Card 1: CALM */}
@@ -139,7 +139,7 @@ export default function System() {
               variants={cardVariants}
               whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(45,38,36,0.04)" }}
               transition={{ duration: 0.2 }}
-              className="h-full rounded-[10px]"
+              className="w-full rounded-[10px]"
               style={{ 
                 willChange: "transform, opacity",
                 backgroundColor: 'rgba(250, 247, 244, 0.83)', // Exact high-density glass layer
@@ -150,36 +150,49 @@ export default function System() {
               }}
             >
               <SpotlightWrapper 
-                className="rounded-[10px] h-full"
+                className="rounded-[10px] w-full"
                 spotlightColor="rgba(255, 255, 255, 0.25)"
               >
-                <div className="p-8 h-full flex flex-col justify-between">
-                  <div>
-                    <div className="flex justify-between items-start mb-6">
-                      <div className="flex flex-col gap-4">
-                        {/* Branded Sequence Icon: Hollow Circle with Path Draw Animation */}
-                        <svg viewBox="0 0 40 40" className="w-12 h-12 text-bloomDeep" suppressHydrationWarning>
-                          <motion.circle 
-                            cx="20" 
-                            cy="20" 
-                            r="16" 
-                            stroke="currentColor" 
-                            strokeWidth="2" 
-                            fill="none" 
-                            variants={strokeVariants}
-                            suppressHydrationWarning
-                          />
-                        </svg>
-                        <div className="bg-bloomDeep/20 text-[#1A1B12] rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wider w-max">
-                          Phase 01
+                <div className="flex flex-col md:flex-row items-stretch justify-between overflow-hidden rounded-[10px] h-full">
+                  {/* Left Column: Text block and sequence animations */}
+                  <div className="p-8 md:p-12 md:w-1/2 flex flex-col justify-between text-left">
+                    <div>
+                      <div className="flex justify-between items-start mb-6">
+                        <div className="flex flex-col gap-4">
+                          {/* Branded Sequence Icon: Hollow Circle with Path Draw Animation */}
+                          <svg viewBox="0 0 40 40" className="w-12 h-12 text-bloomDeep" suppressHydrationWarning>
+                            <motion.circle 
+                              cx="20" 
+                              cy="20" 
+                              r="16" 
+                              stroke="currentColor" 
+                              strokeWidth="2" 
+                              fill="none" 
+                              variants={strokeVariants}
+                              suppressHydrationWarning
+                            />
+                          </svg>
+                          <div className="bg-bloomDeep/20 text-[#1A1B12] rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wider w-max">
+                            Phase 01
+                          </div>
                         </div>
+                        <span className="font-serif italic text-2xl md:text-3xl text-bloomDeep">Days 1–21</span>
                       </div>
-                      <span className="font-serif italic text-3xl text-bloomDeep">Days 1–21</span>
+                      <h3 className="text-2xl font-serif font-semibold text-[#1A1B12] mb-4">CALM</h3>
+                      <p className="text-[#6B6E68] text-sm md:text-base leading-relaxed">
+                        First, your skin has to stop fighting you. Nothing gets treated here — it gets stabilized, so treatment has something to work with later.
+                      </p>
                     </div>
-                    <h3 className="text-2xl font-serif font-semibold text-[#1A1B12] mb-4">CALM</h3>
-                    <p className="text-[#6B6E68] text-sm md:text-base leading-relaxed">
-                      First, your skin has to stop fighting you. Nothing gets treated here — it gets stabilized, so treatment has something to work with later.
-                    </p>
+                  </div>
+                  {/* Right Column: Image Asset */}
+                  <div className="relative w-full md:w-1/2 min-h-[250px] md:min-h-full overflow-hidden shrink-0">
+                    <Image
+                      src="/assets/phase-1.jpg"
+                      alt="Phase 1 skin stability portrait"
+                      fill
+                      className="object-cover object-center"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
                   </div>
                 </div>
               </SpotlightWrapper>
@@ -190,7 +203,7 @@ export default function System() {
               variants={cardVariants}
               whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(45,38,36,0.04)" }}
               transition={{ duration: 0.2 }}
-              className="h-full rounded-[10px]"
+              className="w-full rounded-[10px]"
               style={{ 
                 willChange: "transform, opacity",
                 backgroundColor: 'rgba(250, 247, 244, 0.83)', // Exact high-density glass layer
@@ -201,44 +214,57 @@ export default function System() {
               }}
             >
               <SpotlightWrapper 
-                className="rounded-[10px] h-full"
+                className="rounded-[10px] w-full"
                 spotlightColor="rgba(255, 255, 255, 0.25)"
               >
-                <div className="p-8 h-full flex flex-col justify-between">
-                  <div>
-                    <div className="flex justify-between items-start mb-6">
-                      <div className="flex flex-col gap-4">
-                        {/* Branded Sequence Icon: Half-Filled Circle with ClipPath Slide Animation */}
-                        <svg viewBox="0 0 40 40" className="w-12 h-12 text-bloomDeep" suppressHydrationWarning>
-                          <circle cx="20" cy="20" r="16" stroke="currentColor" strokeWidth="2" fill="none" suppressHydrationWarning />
-                          <defs>
-                            <clipPath id="half-clip">
-                              <motion.rect x="4" y="4" height="32" variants={rectVariants} />
-                            </clipPath>
-                          </defs>
-                          <circle cx="20" cy="20" r="16" fill="currentColor" clipPath="url(#half-clip)" suppressHydrationWarning />
-                        </svg>
-                        <div className="bg-bloomDeep/20 text-[#1A1B12] rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wider w-max">
-                          Phase 02
+                <div className="flex flex-col md:flex-row items-stretch justify-between overflow-hidden rounded-[10px] h-full">
+                  {/* Left Column: Text block and sequence animations */}
+                  <div className="p-8 md:p-12 md:w-1/2 flex flex-col justify-between text-left">
+                    <div>
+                      <div className="flex justify-between items-start mb-6">
+                        <div className="flex flex-col gap-4">
+                          {/* Branded Sequence Icon: Half-Filled Circle with ClipPath Slide Animation */}
+                          <svg viewBox="0 0 40 40" className="w-12 h-12 text-bloomDeep" suppressHydrationWarning>
+                            <circle cx="20" cy="20" r="16" stroke="currentColor" strokeWidth="2" fill="none" suppressHydrationWarning />
+                            <defs>
+                              <clipPath id="half-clip">
+                                <motion.rect x="4" y="4" height="32" variants={rectVariants} />
+                              </clipPath>
+                            </defs>
+                            <circle cx="20" cy="20" r="16" fill="currentColor" clipPath="url(#half-clip)" suppressHydrationWarning />
+                          </svg>
+                          <div className="bg-bloomDeep/20 text-[#1A1B12] rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wider w-max">
+                            Phase 02
+                          </div>
                         </div>
+                        <span className="font-serif italic text-2xl md:text-3xl text-bloomDeep">Days 22–66</span>
                       </div>
-                      <span className="font-serif italic text-3xl text-bloomDeep">Days 22–66</span>
+                      <h3 className="text-2xl font-serif font-semibold text-[#1A1B12] mb-4">CLEAR</h3>
+                      <p className="text-[#6B6E68] text-sm md:text-base leading-relaxed">
+                        Only once it's stable does treatment actually work. One consistent approach, given enough time to do what it was supposed to do in the first place.
+                      </p>
                     </div>
-                    <h3 className="text-2xl font-serif font-semibold text-[#1A1B12] mb-4">CLEAR</h3>
-                    <p className="text-[#6B6E68] text-sm md:text-base leading-relaxed">
-                      Only once it's stable does treatment actually work. One consistent approach, given enough time to do what it was supposed to do in the first place.
-                    </p>
+                  </div>
+                  {/* Right Column: Image Asset */}
+                  <div className="relative w-full md:w-1/2 min-h-[250px] md:min-h-full overflow-hidden shrink-0">
+                    <Image
+                      src="/assets/phase-2.jpg"
+                      alt="Phase 2 skin clearance portrait"
+                      fill
+                      className="object-cover object-center"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
                   </div>
                 </div>
               </SpotlightWrapper>
             </motion.div>
 
-            {/* Card 3: MAINTAIN */}
+            {/* Card 3: CLEF */}
             <motion.div 
               variants={cardVariants}
               whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(45,38,36,0.04)" }}
               transition={{ duration: 0.2 }}
-              className="h-full rounded-[10px]"
+              className="w-full rounded-[10px]"
               style={{ 
                 willChange: "transform, opacity",
                 backgroundColor: 'rgba(250, 247, 244, 0.83)', // Exact high-density glass layer
@@ -249,43 +275,56 @@ export default function System() {
               }}
             >
               <SpotlightWrapper 
-                className="rounded-[10px] h-full"
+                className="rounded-[10px] w-full"
                 spotlightColor="rgba(255, 255, 255, 0.25)"
               >
-                <div className="p-8 h-full flex flex-col justify-between">
-                  <div>
-                    <div className="flex justify-between items-start mb-6">
-                      <div className="flex flex-col gap-4">
-                        {/* Branded Sequence Icon: Solid Circle with Scale & Micro-Glow Animation */}
-                        <svg viewBox="0 0 40 40" className="w-12 h-12 text-bloomDeep" suppressHydrationWarning>
-                          <motion.circle 
-                            cx="20" 
-                            cy="20" 
-                            r="16" 
-                            fill="currentColor" 
-                            className="blur-[4px]"
-                            variants={glowVariants}
-                            suppressHydrationWarning
-                          />
-                          <motion.circle 
-                            cx="20" 
-                            cy="20" 
-                            r="16" 
-                            fill="currentColor" 
-                            variants={solidCircleVariants}
-                            suppressHydrationWarning
-                          />
-                        </svg>
-                        <div className="bg-bloomDeep/20 text-[#1A1B12] rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wider w-max">
-                          Phase 03
+                <div className="flex flex-col md:flex-row items-stretch justify-between overflow-hidden rounded-[10px] h-full">
+                  {/* Left Column: Text block and sequence animations */}
+                  <div className="p-8 md:p-12 md:w-1/2 flex flex-col justify-between text-left">
+                    <div>
+                      <div className="flex justify-between items-start mb-6">
+                        <div className="flex flex-col gap-4">
+                          {/* Branded Sequence Icon: Solid Circle with Scale & Micro-Glow Animation */}
+                          <svg viewBox="0 0 40 40" className="w-12 h-12 text-bloomDeep" suppressHydrationWarning>
+                            <motion.circle 
+                              cx="20" 
+                              cy="20" 
+                              r="16" 
+                              fill="currentColor" 
+                              className="blur-[4px]"
+                              variants={glowVariants}
+                              suppressHydrationWarning
+                            />
+                            <motion.circle 
+                              cx="20" 
+                              cy="20" 
+                              r="16" 
+                              fill="currentColor" 
+                              variants={solidCircleVariants}
+                              suppressHydrationWarning
+                            />
+                          </svg>
+                          <div className="bg-bloomDeep/20 text-[#1A1B12] rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wider w-max">
+                            Phase 03
+                          </div>
                         </div>
+                        <span className="font-serif italic text-2xl md:text-3xl text-bloomDeep">Day 67 Onward</span>
                       </div>
-                      <span className="font-serif italic text-3xl text-bloomDeep">Day 67 Onward</span>
+                      <h3 className="text-2xl font-serif font-semibold text-[#1A1B12] mb-4">CLEF</h3>
+                      <p className="text-[#6B6E68] text-sm md:text-base leading-relaxed">
+                        Once it's working, the only thing left to lose is consistency. Not a new routine — protection for the one that already proved itself.
+                      </p>
                     </div>
-                    <h3 className="text-2xl font-serif font-semibold text-[#1A1B12] mb-4">MAINTAIN</h3>
-                    <p className="text-[#6B6E68] text-sm md:text-base leading-relaxed">
-                      Once it's working, the only thing left to lose is consistency. Not a new routine — protection for the one that already proved itself.
-                    </p>
+                  </div>
+                  {/* Right Column: Image Asset */}
+                  <div className="relative w-full md:w-1/2 min-h-[250px] md:min-h-full overflow-hidden shrink-0">
+                    <Image
+                      src="/assets/phase-3.jpg"
+                      alt="Phase 3 skin maintenance portrait"
+                      fill
+                      className="object-cover object-center"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
                   </div>
                 </div>
               </SpotlightWrapper>
