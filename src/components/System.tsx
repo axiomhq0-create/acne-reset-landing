@@ -77,7 +77,7 @@ export default function System() {
   return (
     <>
       {/* SYSTEM SECTION (The Framework - with full-bleed image backdrop) */}
-      <section id="system" className="py-32 bg-[#EBC8BE] relative overflow-hidden">
+      <section id="system" className="py-32 bg-[#EBC8BE] relative">
         {/* Soft editorial top transition fade (eliminates hard cut top edge border) */}
         <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#FAF7F2] to-transparent z-10 pointer-events-none" />
 
@@ -131,7 +131,7 @@ export default function System() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: false, amount: 0.15 }} // Bi-directional scroll wrapper
-            className="flex flex-col gap-12 relative"
+            className="relative w-full flex flex-col"
             style={{ willChange: "transform, opacity" }}
           >
             {/* Card 1: CALM */}
@@ -139,7 +139,7 @@ export default function System() {
               variants={cardVariants}
               whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(45,38,36,0.04)" }}
               transition={{ duration: 0.2 }}
-              className="w-full rounded-[10px]"
+              className="sticky top-[10vh] z-10 w-full min-h-[60vh] mb-[10vh] rounded-[10px]"
               style={{ 
                 willChange: "transform, opacity",
                 backgroundColor: 'rgba(250, 247, 244, 0.83)', // Exact high-density glass layer
@@ -150,10 +150,10 @@ export default function System() {
               }}
             >
               <SpotlightWrapper 
-                className="rounded-[10px] w-full"
+                className="rounded-[10px] w-full min-h-[60vh] flex flex-col"
                 spotlightColor="rgba(255, 255, 255, 0.25)"
               >
-                <div className="flex flex-col md:flex-row items-stretch justify-between overflow-hidden rounded-[10px] h-full">
+                <div className="flex flex-col md:flex-row items-stretch justify-between overflow-hidden rounded-[10px] min-h-[60vh] flex-grow">
                   {/* Left Column: Text block and sequence animations */}
                   <div className="p-8 md:p-12 md:w-1/2 flex flex-col justify-between text-left">
                     <div>
@@ -203,7 +203,7 @@ export default function System() {
               variants={cardVariants}
               whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(45,38,36,0.04)" }}
               transition={{ duration: 0.2 }}
-              className="w-full rounded-[10px]"
+              className="sticky top-[12vh] z-20 w-full min-h-[60vh] mb-[10vh] rounded-[10px]"
               style={{ 
                 willChange: "transform, opacity",
                 backgroundColor: 'rgba(250, 247, 244, 0.83)', // Exact high-density glass layer
@@ -214,10 +214,10 @@ export default function System() {
               }}
             >
               <SpotlightWrapper 
-                className="rounded-[10px] w-full"
+                className="rounded-[10px] w-full min-h-[60vh] flex flex-col"
                 spotlightColor="rgba(255, 255, 255, 0.25)"
               >
-                <div className="flex flex-col md:flex-row items-stretch justify-between overflow-hidden rounded-[10px] h-full">
+                <div className="flex flex-col md:flex-row items-stretch justify-between overflow-hidden rounded-[10px] min-h-[60vh] flex-grow">
                   {/* Left Column: Text block and sequence animations */}
                   <div className="p-8 md:p-12 md:w-1/2 flex flex-col justify-between text-left">
                     <div>
@@ -264,7 +264,7 @@ export default function System() {
               variants={cardVariants}
               whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(45,38,36,0.04)" }}
               transition={{ duration: 0.2 }}
-              className="w-full rounded-[10px]"
+              className="sticky top-[14vh] z-30 w-full min-h-[60vh] rounded-[10px]"
               style={{ 
                 willChange: "transform, opacity",
                 backgroundColor: 'rgba(250, 247, 244, 0.83)', // Exact high-density glass layer
@@ -275,10 +275,10 @@ export default function System() {
               }}
             >
               <SpotlightWrapper 
-                className="rounded-[10px] w-full"
+                className="rounded-[10px] w-full min-h-[60vh] flex flex-col"
                 spotlightColor="rgba(255, 255, 255, 0.25)"
               >
-                <div className="flex flex-col md:flex-row items-stretch justify-between overflow-hidden rounded-[10px] h-full">
+                <div className="flex flex-col md:flex-row items-stretch justify-between overflow-hidden rounded-[10px] min-h-[60vh] flex-grow">
                   {/* Left Column: Text block and sequence animations */}
                   <div className="p-8 md:p-12 md:w-1/2 flex flex-col justify-between text-left">
                     <div>

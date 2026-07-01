@@ -41,17 +41,17 @@ const itemVariants = {
 export default function Hero({ scrollToSection }: HeroProps) {
   return (
     <section className="relative min-h-[85vh] md:min-h-screen flex flex-col justify-between py-24 md:py-24 overflow-hidden bg-[#E8C4B8]">
-      {/* 1. IMAGE_PLACEMENT: Place "download (12).jpg" with responsive layout */}
-      <div className="absolute inset-x-0 top-0 h-[50vh] w-full md:left-auto md:right-0 md:top-0 md:h-full md:w-1/2 z-0 pointer-events-none">
+      {/* 1. IMAGE_PLACEMENT: Place "download (12).jpg" - Desktop Only */}
+      <div className="hidden md:block absolute right-0 top-0 h-full w-1/2 z-0 pointer-events-none">
         <Image
           src="/assets/download-12.jpg"
           alt="Acne Reset Radiant Skin portrait"
           fill
-          className="object-cover object-top md:object-center"
+          className="object-cover object-center"
           priority
         />
-        {/* EDGE_MASK: Gradient mask to erase top hard lines on mobile and left hard lines on desktop */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#E8C4B8] md:bg-gradient-to-r md:from-[#E8C4B8] md:to-transparent z-10" />
+        {/* EDGE_MASK: Gradient mask to erase left hard lines on desktop */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#E8C4B8] to-transparent z-10" />
       </div>
 
       {/* 2. PLASMA BLENDING LAYER: mix-blend-color-burn on mobile, soft-light on desktop */}
