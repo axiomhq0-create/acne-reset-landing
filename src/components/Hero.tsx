@@ -100,7 +100,7 @@ export default function Hero({ scrollToSection }: HeroProps) {
               className="mt-8 flex justify-center md:justify-start w-full"
               style={{ willChange: "transform, opacity" }}
             >
-              <div className="flex flex-col md:flex-row items-center justify-center gap-3 md:gap-4 px-6 py-3.5 bg-white/40 backdrop-blur-md border border-white/60 rounded-[20px] md:rounded-full max-w-full text-stone-700 text-sm md:text-base shadow-sm">
+              <div className="flex flex-col md:flex-row items-center justify-center gap-4 px-6 py-4 md:py-3.5 bg-white/40 backdrop-blur-md border border-white/60 rounded-3xl md:rounded-full max-w-full text-stone-700 text-sm md:text-base shadow-sm">
                 
                 {/* Phase 1 */}
                 <div className="flex items-center gap-1.5 whitespace-nowrap">
@@ -109,8 +109,10 @@ export default function Hero({ scrollToSection }: HeroProps) {
                   <span className="text-stone-600">21 Days</span>
                 </div>
 
-                {/* Arrow 1 */}
+                {/* Arrow 1 - Desktop Only */}
                 <span className="hidden md:inline text-stone-400 text-xs">→</span>
+                {/* Separator - Mobile Only */}
+                <span className="md:hidden text-stone-200 text-xs py-0.5 font-light">|</span>
 
                 {/* Phase 2 */}
                 <div className="flex items-center gap-1.5 whitespace-nowrap">
@@ -119,8 +121,10 @@ export default function Hero({ scrollToSection }: HeroProps) {
                   <span className="text-stone-600">45 Days</span>
                 </div>
 
-                {/* Arrow 2 */}
+                {/* Arrow 2 - Desktop Only */}
                 <span className="hidden md:inline text-stone-400 text-xs">→</span>
+                {/* Separator - Mobile Only */}
+                <span className="md:hidden text-stone-200 text-xs py-0.5 font-light">|</span>
 
                 {/* Phase 3 */}
                 <div className="flex items-center gap-1.5 whitespace-nowrap">
