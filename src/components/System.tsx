@@ -2,7 +2,7 @@
 
 import React, { useRef } from "react";
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 
 const easeOutPremium = [0.16, 1, 0.3, 1] as const;
 
@@ -55,20 +55,32 @@ export default function System() {
     offset: ["start start", "end end"]
   });
 
-  // Dynamic transforms mapped to progress for Card 1 (Calm)
-  const scale0 = useTransform(scrollYProgress, [0, 0.4, 0.8, 1], [1, 0.92, 0.86, 0.86]);
-  const y0 = useTransform(scrollYProgress, [0, 1], ["0px", "0px"]);
-  const opacity0 = useTransform(scrollYProgress, [0, 0.4, 0.45], [1, 1, 0.9]);
+  // Spring physics settings to prevent layout snapping
+  const springConfig = { stiffness: 90, damping: 20 };
 
-  // Dynamic transforms mapped to progress for Card 2 (Clear)
-  const scale1 = useTransform(scrollYProgress, [0, 0.3, 0.35, 0.7, 0.75, 1], [1, 1, 1, 0.96, 0.92, 0.92]);
-  const y1 = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], ["40vh", "0vh", "0vh", "0vh"]);
-  const opacity1 = useTransform(scrollYProgress, [0, 0.25, 0.3, 0.7, 0.75], [0, 0.3, 1, 1, 0.95]);
+  // Card 1 (The Calm Phase): Active at 0.0, scales/dims at 0.35
+  const rawScale0 = useTransform(scrollYProgress, [0, 0.35, 0.45], [1, 0.92, 0.92]);
+  const scale0 = useSpring(rawScale0, springConfig);
+  const rawY0 = useTransform(scrollYProgress, [0, 1], [0, 0]);
+  const y0 = useSpring(rawY0, springConfig);
+  const rawOpacity0 = useTransform(scrollYProgress, [0, 0.35, 0.45], [1, 1, 0.9]);
+  const opacity0 = useSpring(rawOpacity0, springConfig);
 
-  // Dynamic transforms mapped to progress for Card 3 (Maintain)
-  const scale2 = useTransform(scrollYProgress, [0, 1], [1, 1]);
-  const y2 = useTransform(scrollYProgress, [0, 0.55, 0.85, 1], ["80vh", "0vh", "0vh", "0vh"]);
-  const opacity2 = useTransform(scrollYProgress, [0, 0.5, 0.55, 1], [0, 0.3, 1, 1]);
+  // Card 2 (The Clear Phase): Starts entry at 0.25, locked/holding from 0.35 to 0.65, exit at 0.65
+  const rawScale1 = useTransform(scrollYProgress, [0, 0.25, 0.35, 0.65, 0.75, 1], [1, 1, 1, 1, 0.92, 0.92]);
+  const scale1 = useSpring(rawScale1, springConfig);
+  const rawY1 = useTransform(scrollYProgress, [0, 0.25, 0.35, 0.65, 0.75, 1], [450, 450, 0, 0, 0, 0]);
+  const y1 = useSpring(rawY1, springConfig);
+  const rawOpacity1 = useTransform(scrollYProgress, [0, 0.25, 0.35, 0.65, 0.75, 1], [0, 0, 1, 1, 0.9, 0.9]);
+  const opacity1 = useSpring(rawOpacity1, springConfig);
+
+  // Card 3 (The Maintain Phase): Starts entry at 0.55, locked/focus at 0.80 to the end
+  const rawScale2 = useTransform(scrollYProgress, [0, 0.55, 0.8, 1], [1, 1, 1, 1]);
+  const scale2 = useSpring(rawScale2, springConfig);
+  const rawY2 = useTransform(scrollYProgress, [0, 0.55, 0.8, 1], [900, 900, 0, 0]);
+  const y2 = useSpring(rawY2, springConfig);
+  const rawOpacity2 = useTransform(scrollYProgress, [0, 0.55, 0.8, 1], [0, 0, 1, 1]);
+  const opacity2 = useSpring(rawOpacity2, springConfig);
 
   return (
     <section id="system" className="relative bg-[#EBC8BE] overflow-visible py-32">
