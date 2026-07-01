@@ -77,3 +77,11 @@ details summary {
     radial-gradient(circle at 25% 25%, rgba(250, 247, 242, 0.8) 0%, rgba(250, 247, 242, 0) 55%),
     radial-gradient(circle at 75% 75%, rgba(235, 200, 190, 0.8) 0%, rgba(235, 200, 190, 0) 55%);
 }
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

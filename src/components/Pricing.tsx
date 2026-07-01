@@ -97,6 +97,7 @@ export default function Pricing() {
           </div>
 
           {/* New Merged Staggered Grid/Carousel Wrapper */}
+          {/* New Merged Staggered Grid/Carousel Wrapper */}
           <motion.div 
             ref={carouselRef}
             onScroll={handleScroll}
@@ -104,26 +105,25 @@ export default function Pricing() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: false, amount: 0.15 }}
-            className="flex flex-row overflow-x-auto snap-x snap-mandatory gap-4 pb-6 w-full max-w-5xl mx-auto md:grid md:grid-cols-2 md:gap-8 md:overflow-visible md:pb-0 px-6 md:px-0 scroll-px-6 md:scroll-px-0"
+            className="flex flex-row overflow-x-auto snap-x snap-mandatory no-scrollbar gap-6 pb-6 w-full max-w-5xl mx-auto md:grid md:grid-cols-2 md:gap-8 md:overflow-visible md:pb-0 px-6 md:px-0 scroll-px-6 md:scroll-px-0"
             style={{ willChange: "transform, opacity" }}
           >
             {/* Card 1: Complete Transformation */}
             <motion.div
               variants={listItemVariants}
-              className="w-[80vw] shrink-0 snap-center md:col-span-2 md:w-full md:shrink relative group h-full rounded-[14px]"
+              whileHover={{ y: -8 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="w-[85vw] shrink-0 snap-center md:col-span-2 md:w-full md:shrink relative group h-full"
               style={{ willChange: "transform, opacity" }}
             >
               <SpotlightWrapper 
-                className="glass-panel rounded-[14px] p-4 sm:p-6 md:p-10 transition-all duration-500 ease-out group-hover:border-[rgba(255,255,255,0.6)] group-hover:-translate-y-1.5 group-hover:shadow-2xl group-hover:shadow-stone-900/5 h-full"
-                style={{
-                  border: '1px solid rgba(255, 255, 255, 0.45)', // Premium silver micro-stroke outline
-                  boxShadow: '0 0 0 1px rgba(212, 212, 216, 0.15), 0 4px 20px rgba(212, 212, 216, 0.08)' // Light catching shadow
-                }}
+                className="bg-white/50 backdrop-blur-lg border border-white/80 rounded-3xl p-6 shadow-sm transition-all duration-500 ease-out group-hover:border-white/100 h-full"
                 spotlightColor="rgba(255, 255, 255, 0.25)"
               >
                 <div className="max-w-2xl mx-auto flex flex-col items-center text-center w-full h-full justify-between gap-6">
                   {/* 1. PRODUCT_IMAGE_DOMINANT_WITH_PANELS - Mockup Asset increased by exactly 20% with md:scale-110 */}
-                  <div className="w-full max-w-[480px] h-auto mb-2 mx-auto block relative aspect-square bg-stone-100/50 rounded-[10px] border border-white/40 shadow-inner p-2 sm:p-4 flex items-center justify-center overflow-hidden md:scale-110 transform transition-transform duration-500">
+                  <div className="w-full max-w-[480px] h-auto mb-2 mx-auto block relative aspect-square bg-stone-100/50 rounded-2xl border border-white/40 shadow-inner p-2 sm:p-4 flex items-center justify-center overflow-hidden md:scale-110 transform transition-transform duration-500">
                     {transformationImages.map((src, index) => (
                       <motion.div
                         key={src}
@@ -214,11 +214,7 @@ export default function Pricing() {
                         href="https://whop.com/checkout/plan_rDsgEaLiNqGrH"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="block w-full bg-[#E8C4B8] text-[#1A1B12] font-semibold py-3.5 text-center transition-all duration-200 hover:bg-[#DCA596] group-hover:bg-[#f5dad0]"
-                        style={{
-                          border: '1px solid rgba(255, 255, 255, 0.45)', // Razor-sharp silver boundary seam
-                          boxShadow: '0 0 0 1px rgba(212, 212, 216, 0.15), 0 4px 20px rgba(212, 212, 216, 0.08)'
-                        }}
+                        className="block w-full bg-transparent text-[#1A1B12] font-semibold py-3.5 text-center transition-all duration-300 rounded-full border border-[#1A1B12]/15 group-hover:bg-[#2D2624] group-hover:text-[#FAF7F4] group-hover:border-transparent"
                       >
                         Start The Transformation
                       </a>
@@ -241,25 +237,18 @@ export default function Pricing() {
             {/* Card 2: CALM YOUR SKIN ($47) */}
             <motion.div 
               variants={listItemVariants}
-              className="w-[80vw] shrink-0 snap-center md:w-full md:shrink h-full rounded-[10px] group relative"
+              whileHover={{ y: -8 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="w-[85vw] shrink-0 snap-center md:w-full md:shrink h-full group relative"
               style={{ willChange: "transform, opacity" }}
             >
               <SpotlightWrapper 
-                className="glass-panel rounded-[10px] overflow-hidden flex flex-col h-full transition-all duration-500 ease-out group-hover:border-[rgba(255,255,255,0.6)] group-hover:-translate-y-1.5 group-hover:shadow-2xl group-hover:shadow-stone-900/5"
-                style={{
-                  border: '1px solid rgba(255, 255, 255, 0.45)', // Premium silver micro-stroke outline
-                  boxShadow: '0 0 0 1px rgba(212, 212, 216, 0.15), 0 4px 20px rgba(212, 212, 216, 0.08)' // Light catching shadow
-                }}
+                className="bg-white/50 backdrop-blur-lg border border-white/80 rounded-3xl p-6 shadow-sm transition-all duration-500 ease-out group-hover:border-white/100 flex flex-col h-full"
                 spotlightColor="rgba(255, 255, 255, 0.25)"
               >
                 <div 
-                  className="w-full bg-stone-100/50 shrink-0 relative flex items-center justify-center p-4 overflow-hidden"
-                  style={{ 
-                    border: '1px solid rgba(255, 255, 255, 0.45)', 
-                    boxShadow: '0 0 0 1px rgba(212, 212, 216, 0.12), 0 4px 20px rgba(212, 212, 216, 0.06)', 
-                    borderRadius: '12px', 
-                    overflow: 'hidden' 
-                  }}
+                  className="w-full bg-stone-100/50 shrink-0 relative flex items-center justify-center p-4 overflow-hidden rounded-2xl border border-white/80"
                 >
                   <Image 
                     src="/assets/calm-card-premium.png" 
@@ -301,11 +290,7 @@ export default function Pricing() {
                       href="https://whop.com/checkout/plan_T4jvV63GgLVVH"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block w-full bg-[#E8C4B8] text-[#1A1B12] font-semibold py-3.5 text-center transition-all duration-200 hover:bg-[#DCA596] group-hover:bg-[#f5dad0]"
-                      style={{
-                        border: '1px solid rgba(255, 255, 255, 0.45)', // Razor-sharp silver boundary seam
-                        boxShadow: '0 0 0 1px rgba(212, 212, 216, 0.15), 0 4px 20px rgba(212, 212, 216, 0.08)'
-                      }}
+                      className="block w-full bg-transparent text-[#1A1B12] font-semibold py-3.5 text-center transition-all duration-300 rounded-full border border-[#1A1B12]/15 group-hover:bg-[#2D2624] group-hover:text-[#FAF7F4] group-hover:border-transparent"
                     >
                       Start With Calm
                     </a>
@@ -317,25 +302,18 @@ export default function Pricing() {
             {/* Card 3: THE ROADMAP ($27) */}
             <motion.div 
               variants={listItemVariants}
-              className="w-[80vw] shrink-0 snap-center md:w-full md:shrink h-full rounded-[10px] group relative"
+              whileHover={{ y: -8 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="w-[85vw] shrink-0 snap-center md:w-full md:shrink h-full group relative"
               style={{ willChange: "transform, opacity" }}
             >
               <SpotlightWrapper 
-                className="glass-panel rounded-[10px] overflow-hidden flex flex-col h-full transition-all duration-500 ease-out group-hover:border-[rgba(255,255,255,0.6)] group-hover:-translate-y-1.5 group-hover:shadow-2xl group-hover:shadow-stone-900/5"
-                style={{
-                  border: '1px solid rgba(255, 255, 255, 0.45)', // Premium silver micro-stroke outline
-                  boxShadow: '0 0 0 1px rgba(212, 212, 216, 0.15), 0 4px 20px rgba(212, 212, 216, 0.08)' // Light catching shadow
-                }}
+                className="bg-white/50 backdrop-blur-lg border border-white/80 rounded-3xl p-6 shadow-sm transition-all duration-500 ease-out group-hover:border-white/100 flex flex-col h-full"
                 spotlightColor="rgba(255, 255, 255, 0.25)"
               >
                 <div 
-                  className="w-full bg-stone-100/50 shrink-0 relative flex items-center justify-center p-4 overflow-hidden"
-                  style={{ 
-                    border: '1px solid rgba(255, 255, 255, 0.45)', 
-                    boxShadow: '0 0 0 1px rgba(212, 212, 216, 0.12), 0 4px 20px rgba(212, 212, 216, 0.06)', 
-                    borderRadius: '12px', 
-                    overflow: 'hidden' 
-                  }}
+                  className="w-full bg-stone-100/50 shrink-0 relative flex items-center justify-center p-4 overflow-hidden rounded-2xl border border-white/80"
                 >
                   <div className="relative w-full aspect-video rounded-lg overflow-hidden">
                     <Image 
@@ -378,11 +356,7 @@ export default function Pricing() {
                       href="https://whop.com/checkout/plan_C7Lm7D71Z9NeR"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block w-full bg-[#E8C4B8] text-[#1A1B12] font-semibold py-3.5 text-center transition-all duration-200 hover:bg-[#DCA596] group-hover:bg-[#f5dad0]"
-                      style={{
-                        border: '1px solid rgba(255, 255, 255, 0.45)', // Razor-sharp silver boundary seam
-                        boxShadow: '0 0 0 1px rgba(212, 212, 216, 0.15), 0 4px 20px rgba(212, 212, 216, 0.08)'
-                      }}
+                      className="block w-full bg-transparent text-[#1A1B12] font-semibold py-3.5 text-center transition-all duration-300 rounded-full border border-[#1A1B12]/15 group-hover:bg-[#2D2624] group-hover:text-[#FAF7F4] group-hover:border-transparent"
                     >
                       Get The Roadmap
                     </a>
