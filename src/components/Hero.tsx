@@ -125,7 +125,7 @@ export default function Hero({ scrollToSection }: HeroProps) {
               >
                 <button 
                   onClick={() => scrollToSection("pricing")}
-                  className="w-full bg-[#2D2624] text-[#FAF7F4] px-8 py-3.5 font-medium text-center transition-all duration-255 ease-in-out hover:scale-[1.02] hover:bg-[#413835] rounded-full"
+                  className="w-full bg-[#2D2624] text-[#FAF7F4] px-10 py-4.5 text-xs font-semibold uppercase tracking-wider text-center transition-all duration-255 ease-in-out hover:scale-[1.03] hover:bg-[#413835] rounded-full shadow-md shadow-stone-900/5"
                   style={{
                     border: '1px solid rgba(255, 255, 255, 0.45)', // Razor-sharp silver boundary seam
                     boxShadow: '0 0 0 1px rgba(212, 212, 216, 0.15), 0 4px 20px rgba(212, 212, 216, 0.08)'

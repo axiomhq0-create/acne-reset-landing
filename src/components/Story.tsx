@@ -32,7 +32,7 @@ const itemVariants = {
 
 export default function Story() {
   return (
-    <section id="philosophy" className="py-24 bg-[#FAF7F2]">
+    <section id="philosophy" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6 text-center">
         {/* Headline Architecture */}
         <motion.div

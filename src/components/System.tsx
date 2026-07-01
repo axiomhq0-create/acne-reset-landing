@@ -56,22 +56,22 @@ export default function System() {
   });
 
   // Spring physics settings to prevent layout snapping
-  const springConfig = { stiffness: 90, damping: 20 };
+  const springConfig = { stiffness: 45, damping: 15, mass: 0.8 };
 
   // Card 1 (The Calm Phase): Active at 0.0, scales/dims at 0.35
-  const rawScale0 = useTransform(scrollYProgress, [0, 0.35, 0.45], [1, 0.92, 0.92]);
+  const rawScale0 = useTransform(scrollYProgress, [0, 0.35, 0.45], [1, 0.95, 0.95]);
   const scale0 = useSpring(rawScale0, springConfig);
   const rawY0 = useTransform(scrollYProgress, [0, 1], [0, 0]);
   const y0 = useSpring(rawY0, springConfig);
-  const rawOpacity0 = useTransform(scrollYProgress, [0, 0.35, 0.45], [1, 1, 0.9]);
+  const rawOpacity0 = useTransform(scrollYProgress, [0, 0.35, 0.45], [1, 1, 0.95]);
   const opacity0 = useSpring(rawOpacity0, springConfig);
 
   // Card 2 (The Clear Phase): Starts entry at 0.25, locked/holding from 0.35 to 0.65, exit at 0.65
-  const rawScale1 = useTransform(scrollYProgress, [0, 0.25, 0.35, 0.65, 0.75, 1], [1, 1, 1, 1, 0.92, 0.92]);
+  const rawScale1 = useTransform(scrollYProgress, [0, 0.25, 0.35, 0.65, 0.75, 1], [1, 1, 1, 1, 0.95, 0.95]);
   const scale1 = useSpring(rawScale1, springConfig);
   const rawY1 = useTransform(scrollYProgress, [0, 0.25, 0.35, 0.65, 0.75, 1], [450, 450, 0, 0, 0, 0]);
   const y1 = useSpring(rawY1, springConfig);
-  const rawOpacity1 = useTransform(scrollYProgress, [0, 0.25, 0.35, 0.65, 0.75, 1], [0, 0, 1, 1, 0.9, 0.9]);
+  const rawOpacity1 = useTransform(scrollYProgress, [0, 0.25, 0.35, 0.65, 0.75, 1], [0, 0, 1, 1, 0.95, 0.95]);
   const opacity1 = useSpring(rawOpacity1, springConfig);
 
   // Card 3 (The Maintain Phase): Starts entry at 0.55, locked/focus at 0.80 to the end
@@ -83,7 +83,8 @@ export default function System() {
   const opacity2 = useSpring(rawOpacity2, springConfig);
 
   return (
-    <section id="system" className="relative bg-[#EBC8BE] overflow-visible py-32">
+    <>
+      <section id="system" className="relative bg-[#EBC8BE] overflow-visible py-32">
       {/* Soft editorial top transition fade (eliminates hard cut top edge border) */}
       <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#FAF7F2] to-transparent z-10 pointer-events-none" />
 
@@ -299,9 +300,11 @@ export default function System() {
           </div>
         </div>
       </div>
+    </section>
 
-      {/* Footer Summary Closing */}
-      <div className="max-w-7xl mx-auto px-6 relative z-20 py-32 flex flex-col items-center">
+    {/* Section 4 (Editorial Quote) ──> Pure White Backing */}
+    <section className="relative bg-white py-32 z-20">
+      <div className="max-w-7xl mx-auto px-6 flex flex-col items-center">
         <motion.div 
           initial={{ opacity: 0, transform: "translate3d(0, 10px, 0)" }}
           whileInView={{ opacity: 1, transform: "translate3d(0, 0, 0)" }}
@@ -318,7 +321,7 @@ export default function System() {
           </p>
           <button 
             onClick={() => {
-              const el = document.getElementById("checkout");
+              const el = document.getElementById("pricing");
               if (el) el.scrollIntoView({ behavior: 'smooth' });
             }}
             className="px-8 py-3.5 rounded-full font-semibold uppercase tracking-wider text-xs border border-[#2D2624] text-[#2D2624] bg-transparent hover:bg-[#2D2624]/5 transition-colors cursor-pointer"
@@ -328,5 +331,6 @@ export default function System() {
         </motion.div>
       </div>
     </section>
+  </>
   );
 }

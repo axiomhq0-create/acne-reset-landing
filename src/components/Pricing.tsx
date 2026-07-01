@@ -110,22 +110,20 @@ export default function Pricing() {
             {/* Card 1: Complete Transformation */}
             <motion.div
               variants={listItemVariants}
-              whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(45,38,36,0.04)" }}
-              transition={{ duration: 0.2 }}
               className="w-[80vw] shrink-0 snap-center md:col-span-2 md:w-full md:shrink relative group h-full rounded-[14px]"
               style={{ willChange: "transform, opacity" }}
             >
               <SpotlightWrapper 
-                className="glass-panel rounded-[14px] p-4 sm:p-6 md:p-10 transition-colors duration-300 group-hover:border-[rgba(255,255,255,0.6)] h-full"
+                className="glass-panel rounded-[14px] p-4 sm:p-6 md:p-10 transition-all duration-500 ease-out group-hover:border-[rgba(255,255,255,0.6)] group-hover:-translate-y-1.5 group-hover:shadow-2xl group-hover:shadow-stone-900/5 h-full"
                 style={{
                   border: '1px solid rgba(255, 255, 255, 0.45)', // Premium silver micro-stroke outline
                   boxShadow: '0 0 0 1px rgba(212, 212, 216, 0.15), 0 4px 20px rgba(212, 212, 216, 0.08)' // Light catching shadow
                 }}
                 spotlightColor="rgba(255, 255, 255, 0.25)"
               >
-                <div className="max-w-xl mx-auto flex flex-col items-center text-center w-full h-full justify-between gap-5">
-                  {/* 1. PRODUCT_IMAGE_DOMINANT_WITH_PANELS [w-full max-w-[400px] h-auto mb-4 mx-auto block] */}
-                  <div className="w-full max-w-[400px] h-auto mb-2 mx-auto block relative aspect-square bg-stone-100/50 rounded-[10px] border border-white/40 shadow-inner p-2 sm:p-4 flex items-center justify-center overflow-hidden">
+                <div className="max-w-2xl mx-auto flex flex-col items-center text-center w-full h-full justify-between gap-6">
+                  {/* 1. PRODUCT_IMAGE_DOMINANT_WITH_PANELS - Mockup Asset increased by exactly 20% with md:scale-110 */}
+                  <div className="w-full max-w-[480px] h-auto mb-2 mx-auto block relative aspect-square bg-stone-100/50 rounded-[10px] border border-white/40 shadow-inner p-2 sm:p-4 flex items-center justify-center overflow-hidden md:scale-110 transform transition-transform duration-500">
                     {transformationImages.map((src, index) => (
                       <motion.div
                         key={src}
@@ -137,9 +135,9 @@ export default function Pricing() {
                         <Image 
                           src={src} 
                           alt="Acne Reset Complete Transformation package mockup visual"
-                          width={400}
-                          height={400}
-                          className="w-full h-auto max-w-[400px] object-contain mx-auto block"
+                          width={480}
+                          height={480}
+                          className="w-full h-auto max-w-[480px] object-contain mx-auto block transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                           priority={index === 0}
                         />
                       </motion.div>
@@ -160,19 +158,19 @@ export default function Pricing() {
                     </div>
                   </div>
 
-                  {/* 2. Compacted Text Card (Title, Price, Description) */}
-                  <div className="w-full text-center">
+                  {/* 2. Compacted Text Card (Title, Price, Description) - Marginally increased sizes with tight leading-snug */}
+                  <div className="w-full text-center mt-4">
                     <span className="text-[10px] uppercase font-bold text-[#A8978F] block mb-1">Best Value</span>
-                    <h3 className="text-xl md:text-2xl font-serif font-semibold text-[#1A1B12] mb-1">
+                    <h3 className="text-2xl md:text-3xl font-serif font-semibold text-[#1A1B12] tracking-tight leading-snug mb-1">
                       The Complete Transformation
                     </h3>
                     
                     <div className="flex items-baseline justify-center gap-2 mb-2">
-                      <span className="text-lg md:text-xl font-serif font-semibold text-[#1A1B12]">$97</span>
+                      <span className="text-xl md:text-2xl font-serif font-semibold text-[#1A1B12]">$97</span>
                       <span className="text-[10px] uppercase tracking-[0.1em] font-bold text-[#A8978F]">/ Complete System</span>
                     </div>
                     
-                    <p className="text-xs md:text-sm text-[#6B6E68] max-w-lg mx-auto leading-relaxed">
+                    <p className="text-sm md:text-base text-[#6B6E68] max-w-lg mx-auto tracking-tight leading-snug">
                       Every tool, tracker, dashboard, and selection guide. The absolute path from red and reactive to calm and clear skin. Includes the full $97 Complete Reset Kit with all templates, tracker sheets, and dashboard layouts.
                     </p>
                   </div>
@@ -216,7 +214,7 @@ export default function Pricing() {
                         href="https://whop.com/checkout/plan_rDsgEaLiNqGrH"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="block w-full bg-[#E8C4B8] text-[#1A1B12] font-semibold py-3.5 text-center transition-all duration-200 hover:bg-[#DCA596]"
+                        className="block w-full bg-[#E8C4B8] text-[#1A1B12] font-semibold py-3.5 text-center transition-all duration-200 hover:bg-[#DCA596] group-hover:bg-[#f5dad0]"
                         style={{
                           border: '1px solid rgba(255, 255, 255, 0.45)', // Razor-sharp silver boundary seam
                           boxShadow: '0 0 0 1px rgba(212, 212, 216, 0.15), 0 4px 20px rgba(212, 212, 216, 0.08)'
@@ -243,13 +241,11 @@ export default function Pricing() {
             {/* Card 2: CALM YOUR SKIN ($47) */}
             <motion.div 
               variants={listItemVariants}
-              whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(45,38,36,0.04)" }}
-              transition={{ duration: 0.2 }}
-              className="w-[80vw] shrink-0 snap-center md:w-full md:shrink h-full rounded-[10px]"
+              className="w-[80vw] shrink-0 snap-center md:w-full md:shrink h-full rounded-[10px] group relative"
               style={{ willChange: "transform, opacity" }}
             >
               <SpotlightWrapper 
-                className="glass-panel rounded-[10px] overflow-hidden flex flex-col h-full"
+                className="glass-panel rounded-[10px] overflow-hidden flex flex-col h-full transition-all duration-500 ease-out group-hover:border-[rgba(255,255,255,0.6)] group-hover:-translate-y-1.5 group-hover:shadow-2xl group-hover:shadow-stone-900/5"
                 style={{
                   border: '1px solid rgba(255, 255, 255, 0.45)', // Premium silver micro-stroke outline
                   boxShadow: '0 0 0 1px rgba(212, 212, 216, 0.15), 0 4px 20px rgba(212, 212, 216, 0.08)' // Light catching shadow
@@ -257,7 +253,7 @@ export default function Pricing() {
                 spotlightColor="rgba(255, 255, 255, 0.25)"
               >
                 <div 
-                  className="w-full bg-stone-100/50 shrink-0 relative flex items-center justify-center p-4"
+                  className="w-full bg-stone-100/50 shrink-0 relative flex items-center justify-center p-4 overflow-hidden"
                   style={{ 
                     border: '1px solid rgba(255, 255, 255, 0.45)', 
                     boxShadow: '0 0 0 1px rgba(212, 212, 216, 0.12), 0 4px 20px rgba(212, 212, 216, 0.06)', 
@@ -270,7 +266,7 @@ export default function Pricing() {
                     alt="The Calm Phase product guide, tracker chart, and tablet mockup"
                     width={800}
                     height={600}
-                    className="w-full h-auto object-contain max-h-[380px] lg:max-h-[420px] mx-auto"
+                    className="w-full h-auto object-contain max-h-[380px] lg:max-h-[420px] mx-auto transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
@@ -305,7 +301,7 @@ export default function Pricing() {
                       href="https://whop.com/checkout/plan_T4jvV63GgLVVH"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block w-full bg-[#E8C4B8] text-[#1A1B12] font-semibold py-3.5 text-center transition-all duration-200 hover:bg-[#DCA596]"
+                      className="block w-full bg-[#E8C4B8] text-[#1A1B12] font-semibold py-3.5 text-center transition-all duration-200 hover:bg-[#DCA596] group-hover:bg-[#f5dad0]"
                       style={{
                         border: '1px solid rgba(255, 255, 255, 0.45)', // Razor-sharp silver boundary seam
                         boxShadow: '0 0 0 1px rgba(212, 212, 216, 0.15), 0 4px 20px rgba(212, 212, 216, 0.08)'
@@ -321,13 +317,11 @@ export default function Pricing() {
             {/* Card 3: THE ROADMAP ($27) */}
             <motion.div 
               variants={listItemVariants}
-              whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(45,38,36,0.04)" }}
-              transition={{ duration: 0.2 }}
-              className="w-[80vw] shrink-0 snap-center md:w-full md:shrink h-full rounded-[10px]"
+              className="w-[80vw] shrink-0 snap-center md:w-full md:shrink h-full rounded-[10px] group relative"
               style={{ willChange: "transform, opacity" }}
             >
               <SpotlightWrapper 
-                className="glass-panel rounded-[10px] overflow-hidden flex flex-col h-full"
+                className="glass-panel rounded-[10px] overflow-hidden flex flex-col h-full transition-all duration-500 ease-out group-hover:border-[rgba(255,255,255,0.6)] group-hover:-translate-y-1.5 group-hover:shadow-2xl group-hover:shadow-stone-900/5"
                 style={{
                   border: '1px solid rgba(255, 255, 255, 0.45)', // Premium silver micro-stroke outline
                   boxShadow: '0 0 0 1px rgba(212, 212, 216, 0.15), 0 4px 20px rgba(212, 212, 216, 0.08)' // Light catching shadow
@@ -335,7 +329,7 @@ export default function Pricing() {
                 spotlightColor="rgba(255, 255, 255, 0.25)"
               >
                 <div 
-                  className="w-full bg-stone-100/50 shrink-0 relative flex items-center justify-center p-4"
+                  className="w-full bg-stone-100/50 shrink-0 relative flex items-center justify-center p-4 overflow-hidden"
                   style={{ 
                     border: '1px solid rgba(255, 255, 255, 0.45)', 
                     boxShadow: '0 0 0 1px rgba(212, 212, 216, 0.12), 0 4px 20px rgba(212, 212, 216, 0.06)', 
@@ -348,7 +342,7 @@ export default function Pricing() {
                       src="/assets/roadmap-card.png" 
                       alt="The Roadmap guide document mockup"
                       fill
-                      className="object-cover object-left-top"
+                      className="object-cover object-left-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                       sizes="(max-width: 768px) 100vw, 50vw"
                     />
                   </div>
@@ -384,7 +378,7 @@ export default function Pricing() {
                       href="https://whop.com/checkout/plan_C7Lm7D71Z9NeR"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block w-full bg-[#E8C4B8] text-[#1A1B12] font-semibold py-3.5 text-center transition-all duration-200 hover:bg-[#DCA596]"
+                      className="block w-full bg-[#E8C4B8] text-[#1A1B12] font-semibold py-3.5 text-center transition-all duration-200 hover:bg-[#DCA596] group-hover:bg-[#f5dad0]"
                       style={{
                         border: '1px solid rgba(255, 255, 255, 0.45)', // Razor-sharp silver boundary seam
                         boxShadow: '0 0 0 1px rgba(212, 212, 216, 0.15), 0 4px 20px rgba(212, 212, 216, 0.08)'
