@@ -146,7 +146,7 @@ export default function Hero({ scrollToSection }: HeroProps) {
                   onClick={() => scrollToSection("pricing")}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="relative overflow-hidden w-full bg-[#E5A9A9] text-neutral-900 font-semibold tracking-wider uppercase text-xs sm:text-sm py-2.5 px-5 md:py-4 md:px-8 rounded-full transition-all duration-300 shadow-md hover:shadow-lg text-center block cursor-pointer"
+                  className="relative overflow-hidden w-full bg-[#E3B5B5] text-neutral-900 font-semibold tracking-wider uppercase text-xs sm:text-sm py-2.5 px-5 md:py-4 md:px-8 rounded-full transition-all duration-300 shadow-md hover:shadow-lg text-center block cursor-pointer"
                 >
                   <span className="relative z-10">Find Your Starting Phase</span>
                   <motion.div 

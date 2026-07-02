@@ -216,7 +216,7 @@ export default function Pricing() {
                         rel="noopener noreferrer"
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
-                        className="relative overflow-hidden w-full bg-[#E5A9A9] text-neutral-900 font-semibold tracking-wider uppercase text-xs sm:text-sm py-4 px-6 rounded-full transition-all duration-300 shadow-md hover:shadow-lg text-center block cursor-pointer"
+                        className="relative overflow-hidden w-full bg-[#E3B5B5] text-neutral-900 font-semibold tracking-wider uppercase text-xs sm:text-sm py-4 px-6 rounded-full transition-all duration-300 shadow-md hover:shadow-lg text-center block cursor-pointer"
                       >
                         <span className="relative z-10">Start The Transformation</span>
                         <motion.div 
@@ -300,7 +300,7 @@ export default function Pricing() {
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="relative overflow-hidden w-full bg-[#E5A9A9] text-neutral-900 font-semibold tracking-wider uppercase text-xs sm:text-sm py-3.5 px-6 rounded-full transition-all duration-300 shadow-md hover:shadow-lg text-center block cursor-pointer"
+                      className="relative overflow-hidden w-full bg-[#E3B5B5] text-neutral-900 font-semibold tracking-wider uppercase text-xs sm:text-sm py-3.5 px-6 rounded-full transition-all duration-300 shadow-md hover:shadow-lg text-center block cursor-pointer"
                     >
                       <span className="relative z-10">Start With Calm</span>
                       <motion.div 
@@ -367,7 +367,7 @@ export default function Pricing() {
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="relative overflow-hidden w-full bg-[#E5A9A9] text-neutral-900 font-semibold tracking-wider uppercase text-xs sm:text-sm py-3.5 px-6 rounded-full transition-all duration-300 shadow-md hover:shadow-lg text-center block cursor-pointer"
+                      className="relative overflow-hidden w-full bg-[#E3B5B5] text-neutral-900 font-semibold tracking-wider uppercase text-xs sm:text-sm py-3.5 px-6 rounded-full transition-all duration-300 shadow-md hover:shadow-lg text-center block cursor-pointer"
                     >
                       <span className="relative z-10">Get The Roadmap</span>
                       <motion.div 
