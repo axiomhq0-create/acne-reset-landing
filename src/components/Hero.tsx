@@ -144,16 +144,16 @@ export default function Hero({ scrollToSection }: HeroProps) {
               >
                 <motion.button 
                   onClick={() => scrollToSection("pricing")}
-                  whileHover={{ scale: 1.02 }}
+                  whileHover={{ scale: 1.02, backgroundColor: "rgba(232, 196, 184, 0.55)" }}
                   whileTap={{ scale: 0.98 }}
-                  className="relative overflow-hidden w-full bg-[#E3B5B5] text-neutral-900 font-semibold tracking-wider uppercase text-xs sm:text-sm py-2.5 px-5 md:py-4 md:px-8 rounded-full transition-all duration-300 shadow-md hover:shadow-lg text-center block cursor-pointer"
+                  className="relative overflow-hidden w-full bg-[#E8C4B8]/40 backdrop-blur-md border border-white/40 shadow-[0_0_1px_1px_rgba(255,255,255,0.2)] text-[#1A1612] font-semibold tracking-wider uppercase text-xs sm:text-sm py-2.5 px-5 md:py-4 md:px-8 rounded-full transition-all duration-300 text-center block cursor-pointer"
                 >
                   <span className="relative z-10">Find Your Starting Phase</span>
                   <motion.div 
-                    className="absolute inset-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 pointer-events-none"
+                    className="absolute inset-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -skew-x-12 pointer-events-none"
                     initial={{ left: "-100%" }}
                     whileHover={{ left: "150%" }}
-                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                    transition={{ duration: 0.9, ease: "easeInOut" }}
                   />
                 </motion.button>
               </SpotlightWrapper>
