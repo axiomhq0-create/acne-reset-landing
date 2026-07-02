@@ -20,11 +20,11 @@ const containerVariants = {
 const itemVariants = {
   hidden: { 
     opacity: 0, 
-    transform: "translate3d(0, 8px, 0)"
+    y: 8
   },
   visible: {
     opacity: 1,
-    transform: "translate3d(0, 0, 0)",
+    y: 0,
     transition: {
       duration: 0.3,
       ease: easeOutPremium,
@@ -96,12 +96,12 @@ export default function Hero({ scrollToSection }: HeroProps) {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: false, amount: 0.15 }}
-            className="flex flex-col items-center md:items-start w-full text-center md:text-left"
+            className="flex flex-col items-center md:items-start w-full space-y-4 md:space-y-6 text-center md:text-left"
             style={{ willChange: "transform, opacity" }}
           >
             <motion.h1 
               variants={itemVariants} 
-              className="text-4xl sm:text-5xl lg:text-7xl font-serif text-[#2D2624] font-semibold leading-[1.15] tracking-tight max-w-2xl mb-6"
+              className="text-4xl sm:text-5xl lg:text-7xl font-serif text-[#2D2624] font-semibold leading-[1.15] tracking-tight max-w-2xl"
               style={{ willChange: "transform, opacity" }}
             >
               You don't have to pretend the mirror doesn't matter.
@@ -109,7 +109,7 @@ export default function Hero({ scrollToSection }: HeroProps) {
 
             <motion.p 
               variants={itemVariants} 
-              className="text-[#2D2624]/95 text-base md:text-lg leading-relaxed mb-8 max-w-xl"
+              className="text-[#2D2624]/95 text-base md:text-lg leading-relaxed max-w-xl"
               style={{ willChange: "transform, opacity" }}
             >
               For years, you've been told to just 'drink more water' or 'give it time.' But you know what it feels like to delete a photo before anyone else can see it. The 3-Phase Acne Reset is not another cleanser. It is the process to finally become yourself again.
@@ -118,28 +118,17 @@ export default function Hero({ scrollToSection }: HeroProps) {
             {/* Timeline capsule wrapper */}
             <motion.div 
               variants={itemVariants} 
-              className="w-full flex justify-center md:justify-start px-2 mb-10"
+              className="w-full flex justify-center md:justify-start px-2"
             >
-              <div className="flex flex-col md:flex-row flex-wrap items-center justify-center gap-3 md:gap-4 px-6 py-4 md:py-3.5 bg-white/50 backdrop-blur-md border border-white/80 rounded-2xl md:rounded-full w-full sm:w-auto text-stone-700 text-sm md:text-base shadow-sm">
-                <div className="flex items-center gap-1.5 whitespace-nowrap">
-                  <span className="font-semibold text-[#2D2624]">Calm</span>
-                  <span className="text-stone-400 font-light">/</span>
-                  <span className="text-stone-600">21 Days</span>
-                </div>
-                <span className="hidden md:inline text-stone-400 text-xs">→</span>
-                <span className="md:hidden text-stone-300 text-xs my-0.5">│</span>
-                <div className="flex items-center gap-1.5 whitespace-nowrap">
-                  <span className="font-semibold text-[#2D2624]">Clear</span>
-                  <span className="text-stone-400 font-light">/</span>
-                  <span className="text-stone-600">45 Days</span>
-                </div>
-                <span className="hidden md:inline text-stone-400 text-xs">→</span>
-                <span className="md:hidden text-stone-300 text-xs my-0.5">│</span>
-                <div className="flex items-center gap-1.5 whitespace-nowrap">
-                  <span className="font-semibold text-[#2D2624]">Maintain</span>
-                  <span className="text-stone-400 font-light">/</span>
-                  <span className="text-stone-600">Ongoing</span>
-                </div>
+              <div className="w-full max-w-md mx-auto md:mx-0 flex flex-row items-center justify-center md:justify-start whitespace-nowrap gap-x-2 text-[11px] sm:text-xs py-3 px-4 bg-white/50 backdrop-blur-md border border-white/80 rounded-full text-stone-700 shadow-sm">
+                <span className="font-semibold text-[#2D2624]">Calm</span>
+                <span className="text-stone-500 font-light">(21 Days)</span>
+                <span className="text-stone-400 font-light">·</span>
+                <span className="font-semibold text-[#2D2624]">Clear</span>
+                <span className="text-stone-500 font-light">(45 Days)</span>
+                <span className="text-stone-400 font-light">·</span>
+                <span className="font-semibold text-[#2D2624]">Maintain</span>
+                <span className="text-stone-500 font-light">(Ongoing)</span>
               </div>
             </motion.div>
 
@@ -153,12 +142,20 @@ export default function Hero({ scrollToSection }: HeroProps) {
                 className="rounded-full w-full sm:w-auto overflow-hidden shadow-sm"
                 spotlightColor="rgba(255, 255, 255, 0.45)"
               >
-                <button 
+                <motion.button 
                   onClick={() => scrollToSection("pricing")}
-                  className="w-full bg-[#2D2624] text-[#FAF6F0] px-10 py-4.5 text-xs font-semibold uppercase tracking-wider text-center transition-all duration-300 hover:bg-stone-800 rounded-full cursor-pointer shadow-md active:scale-[0.98]"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="relative overflow-hidden w-full bg-[#E5A9A9] text-neutral-900 font-semibold tracking-wider uppercase text-xs sm:text-sm py-2.5 px-5 md:py-4 md:px-8 rounded-full transition-all duration-300 shadow-md hover:shadow-lg text-center block cursor-pointer"
                 >
-                  Find Your Starting Phase
-                </button>
+                  <span className="relative z-10">Find Your Starting Phase</span>
+                  <motion.div 
+                    className="absolute inset-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 pointer-events-none"
+                    initial={{ left: "-100%" }}
+                    whileHover={{ left: "150%" }}
+                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                  />
+                </motion.button>
               </SpotlightWrapper>
 
               <SpotlightWrapper 
@@ -167,7 +164,7 @@ export default function Hero({ scrollToSection }: HeroProps) {
               >
                 <button 
                   onClick={() => scrollToSection("system")}
-                  className="w-full text-[#2D2624] px-10 py-4.5 text-xs font-semibold uppercase tracking-wider flex items-center justify-center transition-all duration-200 ease-in-out hover:scale-[1.02] hover:bg-white/30 rounded-full font-serif cursor-pointer"
+                  className="w-full text-[#2D2624] py-2.5 px-5 text-xs font-medium md:py-4 md:px-8 md:text-sm md:font-semibold uppercase tracking-wider flex items-center justify-center transition-all duration-200 ease-in-out hover:scale-[1.02] hover:bg-white/30 rounded-full font-serif cursor-pointer"
                   style={{
                     backgroundColor: "rgba(255, 255, 255, 0.15)",
                     border: '1px solid rgba(255, 255, 255, 0.45)',

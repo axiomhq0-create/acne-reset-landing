@@ -118,12 +118,12 @@ export default function Pricing() {
               style={{ willChange: "transform, opacity" }}
             >
               <SpotlightWrapper 
-                className="bg-white/50 backdrop-blur-lg border border-white/80 rounded-3xl p-6 shadow-sm transition-all duration-500 ease-out group-hover:border-white/100 h-full"
+                className="bg-white/50 backdrop-blur-lg border border-white/80 rounded-3xl p-4 md:p-6 shadow-sm transition-all duration-500 ease-out group-hover:border-white/100 h-full"
                 spotlightColor="rgba(255, 255, 255, 0.25)"
               >
-                <div className="max-w-2xl mx-auto flex flex-col items-center text-center w-full h-full justify-between gap-6">
+                <div className="max-w-2xl mx-auto flex flex-col items-center text-center w-full h-full justify-between gap-3 md:gap-6">
                   {/* 1. PRODUCT_IMAGE_DOMINANT_WITH_PANELS - Mockup Asset increased by exactly 20% with md:scale-110 */}
-                  <div className="w-full max-w-[480px] h-auto mb-2 mx-auto block relative aspect-square bg-stone-100/50 rounded-2xl border border-white/40 shadow-inner p-2 sm:p-4 flex items-center justify-center overflow-hidden md:scale-110 transform transition-transform duration-500">
+                  <div className="w-full max-w-[480px] h-auto mb-1 mx-auto block relative aspect-square bg-stone-100/50 rounded-2xl border border-white/40 shadow-inner p-2 sm:p-4 flex items-center justify-center overflow-hidden md:scale-110 transform transition-transform duration-500">
                     {transformationImages.map((src, index) => (
                       <motion.div
                         key={src}
@@ -159,28 +159,28 @@ export default function Pricing() {
                   </div>
 
                   {/* 2. Compacted Text Card (Title, Price, Description) - Marginally increased sizes with tight leading-snug */}
-                  <div className="w-full text-center mt-4">
-                    <span className="text-[10px] uppercase font-bold text-[#A8978F] block mb-1">Best Value</span>
-                    <h3 className="text-2xl md:text-3xl font-serif font-semibold text-[#1A1B12] tracking-tight leading-snug mb-1">
+                  <div className="w-full text-center mt-2 md:mt-4 space-y-1">
+                    <span className="text-[10px] uppercase font-bold text-[#A8978F] block">Best Value</span>
+                    <h3 className="text-2xl md:text-3xl font-serif font-semibold text-[#1A1B12] tracking-tight leading-snug">
                       The Complete Transformation
                     </h3>
                     
-                    <div className="flex items-baseline justify-center gap-2 mb-2">
+                    <div className="flex items-baseline justify-center gap-2">
                       <span className="text-xl md:text-2xl font-serif font-semibold text-[#1A1B12]">$97</span>
                       <span className="text-[10px] uppercase tracking-[0.1em] font-bold text-[#A8978F]">/ Complete System</span>
                     </div>
                     
-                    <p className="text-sm md:text-base text-[#6B6E68] max-w-lg mx-auto tracking-tight leading-snug">
+                    <p className="text-xs sm:text-sm md:text-base text-[#6B6E68] max-w-lg mx-auto tracking-tight leading-snug">
                       Every tool, tracker, dashboard, and selection guide. The absolute path from red and reactive to calm and clear skin.
                     </p>
                   </div>
 
                   {/* 3. Structured Two-Column Included Features Grid */}
-                  <div className="w-full border-t border-[#1A1B12]/5 pt-3.5 mb-2">
-                    <span className="text-[10px] uppercase tracking-[0.1em] text-[#A8978F] font-bold block mb-3 text-center">
+                  <div className="w-full border-t border-[#1A1B12]/5 pt-3 mb-1.5 md:pt-3.5 md:mb-2">
+                    <span className="text-[10px] uppercase tracking-[0.1em] text-[#A8978F] font-bold block mb-1.5 md:mb-3 text-center">
                       Included Features
                     </span>
-                    <ul className="grid grid-cols-2 gap-x-4 gap-y-2 text-left max-w-lg mx-auto">
+                    <ul className="grid grid-cols-2 gap-x-2 gap-y-1.5 md:gap-x-4 md:gap-y-2 text-left max-w-lg mx-auto">
                       {[
                         "3-Phase Acne Reset Ebook",
                         "21-Day Calm Tracker",
@@ -190,8 +190,8 @@ export default function Pricing() {
                         "90-Day Transformation Dashboard",
                         "Maintenance Blueprint"
                       ].map((bullet, idx) => (
-                        <li key={idx} className="flex items-start gap-2 text-[11px] md:text-xs text-[#1A1B12] leading-tight">
-                          <svg viewBox="0 0 16 16" className="w-3.5 h-3.5 text-[#C4956A] mt-0.5 shrink-0" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <li key={idx} className="flex items-start gap-1.5 text-[10px] sm:text-[11px] md:text-xs text-[#1A1B12] leading-tight">
+                          <svg viewBox="0 0 16 16" className="w-3 h-3 text-[#C4956A] mt-0.5 shrink-0" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="8" cy="8" r="7.5" stroke="currentColor" strokeWidth="1" fill="none" />
                             <path d="M5 8.5 L7 10.5 L11.5 5.5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
                           </svg>
@@ -202,22 +202,30 @@ export default function Pricing() {
                   </div>
 
                   {/* 4. Action Button */}
-                  <div className="w-full mt-auto">
-                    <p className="text-[#6B6E68] text-[10px] mb-3 italic text-center w-full">
+                  <div className="w-full mt-auto space-y-2">
+                    <p className="text-[#6B6E68] text-[9px] sm:text-[10px] italic text-center w-full">
                       One payment. The full path. Nothing to rebuy. Nothing to figure out twice.
                     </p>
                     <SpotlightWrapper 
                       className="rounded-full w-full overflow-hidden shrink-0 shadow-sm"
                       spotlightColor="rgba(255, 255, 255, 0.45)"
                     >
-                      <a 
+                      <motion.a 
                         href="https://whop.com/checkout/plan_rDsgEaLiNqGrH"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="block w-full bg-transparent text-[#1A1B12] font-semibold py-3.5 text-center transition-all duration-300 rounded-full border border-[#1A1B12]/15 group-hover:bg-[#2D2624] group-hover:text-[#FAF7F4] group-hover:border-transparent"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="relative overflow-hidden w-full bg-[#E5A9A9] text-neutral-900 font-semibold tracking-wider uppercase text-xs sm:text-sm py-4 px-6 rounded-full transition-all duration-300 shadow-md hover:shadow-lg text-center block cursor-pointer"
                       >
-                        Start The Transformation
-                      </a>
+                        <span className="relative z-10">Start The Transformation</span>
+                        <motion.div 
+                          className="absolute inset-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 pointer-events-none"
+                          initial={{ left: "-100%" }}
+                          whileHover={{ left: "150%" }}
+                          transition={{ duration: 0.8, ease: "easeInOut" }}
+                        />
+                      </motion.a>
                     </SpotlightWrapper>
                   </div>
                 </div>
@@ -286,14 +294,22 @@ export default function Pricing() {
                     className="rounded-full w-full overflow-hidden shrink-0 shadow-sm"
                     spotlightColor="rgba(255, 255, 255, 0.45)"
                   >
-                    <a 
+                    <motion.a 
                       href="https://whop.com/checkout/plan_T4jvV63GgLVVH"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block w-full bg-transparent text-[#1A1B12] font-semibold py-3.5 text-center transition-all duration-300 rounded-full border border-[#1A1B12]/15 group-hover:bg-[#2D2624] group-hover:text-[#FAF7F4] group-hover:border-transparent"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="relative overflow-hidden w-full bg-[#E5A9A9] text-neutral-900 font-semibold tracking-wider uppercase text-xs sm:text-sm py-3.5 px-6 rounded-full transition-all duration-300 shadow-md hover:shadow-lg text-center block cursor-pointer"
                     >
-                      Start With Calm
-                    </a>
+                      <span className="relative z-10">Start With Calm</span>
+                      <motion.div 
+                        className="absolute inset-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 pointer-events-none"
+                        initial={{ left: "-100%" }}
+                        whileHover={{ left: "150%" }}
+                        transition={{ duration: 0.8, ease: "easeInOut" }}
+                      />
+                    </motion.a>
                   </SpotlightWrapper>
                 </div>
               </SpotlightWrapper>
@@ -345,14 +361,22 @@ export default function Pricing() {
                     className="rounded-full w-full overflow-hidden shrink-0 shadow-sm"
                     spotlightColor="rgba(255, 255, 255, 0.45)"
                   >
-                    <a 
+                    <motion.a 
                       href="https://whop.com/checkout/plan_C7Lm7D71Z9NeR"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block w-full bg-transparent text-[#1A1B12] font-semibold py-3.5 text-center transition-all duration-300 rounded-full border border-[#1A1B12]/15 group-hover:bg-[#2D2624] group-hover:text-[#FAF7F4] group-hover:border-transparent"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="relative overflow-hidden w-full bg-[#E5A9A9] text-neutral-900 font-semibold tracking-wider uppercase text-xs sm:text-sm py-3.5 px-6 rounded-full transition-all duration-300 shadow-md hover:shadow-lg text-center block cursor-pointer"
                     >
-                      Get The Roadmap
-                    </a>
+                      <span className="relative z-10">Get The Roadmap</span>
+                      <motion.div 
+                        className="absolute inset-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 pointer-events-none"
+                        initial={{ left: "-100%" }}
+                        whileHover={{ left: "150%" }}
+                        transition={{ duration: 0.8, ease: "easeInOut" }}
+                      />
+                    </motion.a>
                   </SpotlightWrapper>
                 </div>
               </SpotlightWrapper>

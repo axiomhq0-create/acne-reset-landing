@@ -12,8 +12,7 @@
 }
 
 .carousel-item {
-  width: 88vw !important; /* Dynamically balance width to mobile viewport bounds */
-  max-width: 380px !important;
+  max-width: 420px;
   height: auto !important; /* Let height adapt to the text container */
   min-height: 340px !important; /* Set proper breathing room for text blocks */
   padding: 32px 24px !important;

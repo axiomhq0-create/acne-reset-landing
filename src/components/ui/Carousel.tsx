@@ -28,6 +28,7 @@ export default function Carousel({
   round = false,
 }: CarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [cardWidth, setCardWidth] = useState(baseWidth);
 
   const handleNext = () => {
     if (currentIndex < items.length - 1) {
@@ -46,6 +47,23 @@ export default function Carousel({
   };
 
   useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 640) {
+        if (window.innerWidth < 480) {
+          setCardWidth(Math.min(window.innerWidth * 0.8, 280));
+        } else {
+          setCardWidth(320);
+        }
+      } else {
+        setCardWidth(baseWidth);
+      }
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [baseWidth]);
+
+  useEffect(() => {
     if (!autoplay) return;
     const interval = setInterval(handleNext, 4500);
     return () => clearInterval(interval);
@@ -54,7 +72,7 @@ export default function Carousel({
   if (!items || items.length === 0) return null;
 
   return (
-    <div className="carousel-container w-full max-w-5xl flex flex-col items-center justify-center relative select-none">
+    <div className="carousel-container w-full px-5 md:px-8 overflow-hidden mx-auto flex flex-col items-center justify-center relative select-none">
       {/* Left Arrow Button */}
       <button
         onClick={handlePrev}
@@ -84,7 +102,7 @@ export default function Carousel({
                   animate={{
                     opacity: offset === 0 ? 1 : 0.45,
                     scale: offset === 0 ? 1 : 0.88,
-                    x: offset * (baseWidth + 24),
+                    x: offset * (cardWidth + 16),
                     zIndex: offset === 0 ? 10 : 5,
                   }}
                   exit={{
@@ -98,11 +116,12 @@ export default function Carousel({
                     damping: 28,
                   }}
                   style={{
+                    width: cardWidth,
                     borderRadius: round ? "50%" : "24px",
                     willChange: "transform",
                     transform: "translateZ(0)",
                   }}
-                  className={`carousel-item absolute select-none ${
+                  className={`carousel-item absolute select-none w-[280px] sm:w-[320px] max-w-[80vw] mx-auto flex-shrink-0 md:w-auto md:max-w-none ${
                     round ? "aspect-square justify-center items-center text-center" : ""
                   }`}
                 >
