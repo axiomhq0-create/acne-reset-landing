@@ -29,7 +29,7 @@ export default function Home() {
       <Header scrollToSection={scrollToSection} />
 
       {/* Hero Section */}
-      <Hero />
+      <Hero scrollToSection={scrollToSection} />
 
       {/* Story Section */}
       <Story />
