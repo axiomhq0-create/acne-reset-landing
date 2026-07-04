@@ -109,20 +109,10 @@ export default function Hero({ scrollToSection }: HeroProps) {
 
             <motion.p 
               variants={itemVariants} 
-              className="hidden md:block text-[#2D2624]/95 text-base md:text-lg leading-relaxed max-w-xl whitespace-pre-line text-left"
+              className="text-[#2D2624]/95 text-sm md:text-lg leading-relaxed max-w-xl text-center md:text-left"
               style={{ willChange: "transform, opacity" }}
             >
-              For years, you've been told to "just drink more water." But you know what it's like to delete a photo before anyone sees it, to check your skin in every reflection, to spend $100s on products that never stick.
-              {"\n\n"}
-              The 3-Phase Acne Reset Protocol is not another cleanser. It's the 90-day process 2,100+ women have used to calm their skin, clear the cycle, and finally stop hiding.
-            </motion.p>
-
-            <motion.p 
-              variants={itemVariants} 
-              className="block md:hidden text-[#2D2624]/95 text-sm leading-relaxed max-w-xl text-center"
-              style={{ willChange: "transform, opacity" }}
-            >
-              You've deleted photos. You've skipped events. You've restarted routines. The Protocol is the 90-day process to end the cycle — not another product. All 3 phases + trackers. $97 once.
+              You've spent hundreds on products that never seemed to stick. The 3-Phase Acne Reset Protocol is a 90-day process to calm reactive skin, clear the cycle, and maintain your results — with trackers, product guides, and daily guidance included.
             </motion.p>
 
             {/* Timeline capsule wrapper */}
@@ -159,10 +149,7 @@ export default function Hero({ scrollToSection }: HeroProps) {
                     whileTap={{ scale: 0.98 }}
                     className="relative overflow-hidden w-full bg-[#E8C4B8]/40 backdrop-blur-md border border-white/40 shadow-[0_0_1px_1px_rgba(255,255,255,0.2)] text-[#1A1612] font-semibold tracking-wider uppercase text-xs sm:text-sm py-2.5 px-5 md:py-4 md:px-8 rounded-full transition-all duration-300 text-center block cursor-pointer"
                   >
-                    <span className="relative z-10">
-                      <span className="hidden sm:inline">Get The Complete Protocol — $97</span>
-                      <span className="inline sm:hidden">Get Instant Access — $97</span>
-                    </span>
+                    <span className="relative z-10">Get The Complete Protocol — $97</span>
                     <motion.div 
                       className="absolute inset-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -skew-x-12 pointer-events-none"
                       initial={{ left: "-100%" }}
@@ -172,7 +159,7 @@ export default function Hero({ scrollToSection }: HeroProps) {
                   </motion.button>
                 </SpotlightWrapper>
                 <span className="text-[10px] text-neutral-500 mt-2 block tracking-normal normal-case w-full text-center sm:text-left px-2">
-                  One-time payment • Instant access • 14-day "feel calmer" guarantee
+                  Instant access • One-time payment • 14-day guarantee
                 </span>
               </div>
 
@@ -199,9 +186,9 @@ export default function Hero({ scrollToSection }: HeroProps) {
         {/* Slim, elegant Trust Strip section */}
         <div className="relative z-30 border-t border-[#2D2624]/10 pt-8 pb-4 w-full mt-auto">
           <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-center md:justify-start items-center gap-6 md:gap-12 text-center md:text-left text-[13px] uppercase tracking-[0.2em] font-semibold text-[#2D2624]/70">
-            <span>90-Day Protocol</span>
-            <span>Works With Products You Own</span>
             <span>2,100+ Women</span>
+            <span>Works With Products You Own</span>
+            <span>No Subscription</span>
           </div>
           {/* Core Bridge Line */}
           <div className="text-center md:text-left mt-4">

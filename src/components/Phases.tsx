@@ -47,7 +47,7 @@ const scrollAnimateProps = {
   transition: { duration: 0.45, ease: easeOutPremium },
 };
 
-export default function System() {
+export default function Phases() {
   const containerRef = useRef<HTMLDivElement>(null);
   
   const { scrollYProgress } = useScroll({
@@ -158,7 +158,8 @@ export default function System() {
                         </div>
                         <span className="font-serif italic text-2xl md:text-3xl text-[#2D2624]">Days 1–21</span>
                       </div>
-                      <h3 className="text-2xl font-serif font-semibold text-[#2D2624] mb-4">The Calm Phase</h3>
+                      <h3 className="text-2xl font-serif font-semibold text-[#2D2624] mb-1">The Calm Phase</h3>
+                      <span className="text-[11px] uppercase tracking-wider text-neutral-500 font-semibold block mb-4">2,100+ women start here</span>
                       <p className="text-[#2D2624]/85 text-sm md:text-base leading-relaxed">
                         First, your skin has to stop fighting you. Nothing gets treated here, it gets stabilized, so treatment has something to work with later.
                       </p>
@@ -213,7 +214,8 @@ export default function System() {
                         </div>
                         <span className="font-serif italic text-2xl md:text-3xl text-[#2D2624]">Days 22–66</span>
                       </div>
-                      <h3 className="text-2xl font-serif font-semibold text-[#2D2624] mb-4">The Clear Phase</h3>
+                      <h3 className="text-2xl font-serif font-semibold text-[#2D2624] mb-1">The Clear Phase</h3>
+                      <span className="text-[11px] uppercase tracking-wider text-neutral-500 font-semibold block mb-4">Where the cycle breaks</span>
                       <p className="text-[#2D2624]/85 text-sm md:text-base leading-relaxed">
                         Only once it's stable does treatment actually work. One consistent approach, given enough time to do what it was supposed to do in the first place.
                       </p>
@@ -278,7 +280,8 @@ export default function System() {
                         </div>
                         <span className="font-serif italic text-2xl md:text-3xl text-[#2D2624]">Day 67 Onward</span>
                       </div>
-                      <h3 className="text-2xl font-serif font-semibold text-[#2D2624] mb-4">The Maintain Phase</h3>
+                      <h3 className="text-2xl font-serif font-semibold text-[#2D2624] mb-1">The Maintain Phase</h3>
+                      <span className="text-[11px] uppercase tracking-wider text-neutral-500 font-semibold block mb-4">Where confidence locks in</span>
                       <p className="text-[#2D2624]/85 text-sm md:text-base leading-relaxed">
                         Once it's working, the only thing left to lose is consistency. Not a new routine, but protection for the one that already proved itself.
                       </p>

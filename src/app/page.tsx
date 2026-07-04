@@ -4,8 +4,11 @@ import React from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Qualifications from "@/components/Qualifications";
+import WhatsInside from "@/components/WhatsInside";
+import SocialProof from "@/components/SocialProof";
+import Phases from "@/components/Phases";
 import Story from "@/components/Story";
-import System from "@/components/System";
+import Objections from "@/components/Objections";
 import Pricing from "@/components/Pricing";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
@@ -35,11 +38,20 @@ export default function Home() {
       {/* Pre-Qualifier Grid Section */}
       <Qualifications />
 
+      {/* What's Inside Section */}
+      <WhatsInside />
+
+      {/* Social Proof Section */}
+      <SocialProof />
+
+      {/* Phases Showcase Section */}
+      <Phases />
+
       {/* Story Section */}
       <Story />
 
-      {/* System Section */}
-      <System />
+      {/* Objections Matrix Section */}
+      <Objections />
 
       {/* Offerings Section */}
       <Pricing />
