@@ -109,10 +109,20 @@ export default function Hero({ scrollToSection }: HeroProps) {
 
             <motion.p 
               variants={itemVariants} 
-              className="text-[#2D2624]/95 text-base md:text-lg leading-relaxed max-w-xl"
+              className="hidden md:block text-[#2D2624]/95 text-base md:text-lg leading-relaxed max-w-xl whitespace-pre-line text-left"
               style={{ willChange: "transform, opacity" }}
             >
-              For years, you've been told to just 'drink more water' or 'give it time.' But you know what it feels like to delete a photo before anyone else can see it. The 3-Phase Acne Reset is not another cleanser. It is the process to finally become yourself again.
+              For years, you've been told to "just drink more water." But you know what it's like to delete a photo before anyone sees it, to check your skin in every reflection, to spend $100s on products that never stick.
+              {"\n\n"}
+              The 3-Phase Acne Reset Protocol is not another cleanser. It's the 90-day process 2,100+ women have used to calm their skin, clear the cycle, and finally stop hiding. Calm (21 days), Clear (45 days), Maintain (ongoing) — with trackers, product guides, and daily check-ins built in.
+            </motion.p>
+
+            <motion.p 
+              variants={itemVariants} 
+              className="block md:hidden text-[#2D2624]/95 text-sm leading-relaxed max-w-xl text-center"
+              style={{ willChange: "transform, opacity" }}
+            >
+              You've deleted photos. You've skipped events. You've restarted routines. The Protocol is the 90-day process to end the cycle — not another product. All 3 phases + trackers. $97 once.
             </motion.p>
 
             {/* Timeline capsule wrapper */}
@@ -123,10 +133,10 @@ export default function Hero({ scrollToSection }: HeroProps) {
               <div className="w-full max-w-md mx-auto md:mx-0 flex flex-row items-center justify-center md:justify-start whitespace-nowrap gap-x-2 text-[11px] sm:text-xs py-3 px-4 bg-white/50 backdrop-blur-md border border-white/80 rounded-full text-stone-700 shadow-sm">
                 <span className="font-semibold text-[#2D2624]">Calm</span>
                 <span className="text-stone-500 font-light">(21 Days)</span>
-                <span className="text-stone-400 font-light">·</span>
+                <span className="text-stone-400 font-light">•</span>
                 <span className="font-semibold text-[#2D2624]">Clear</span>
                 <span className="text-stone-500 font-light">(45 Days)</span>
-                <span className="text-stone-400 font-light">·</span>
+                <span className="text-stone-400 font-light">•</span>
                 <span className="font-semibold text-[#2D2624]">Maintain</span>
                 <span className="text-stone-500 font-light">(Ongoing)</span>
               </div>
@@ -135,28 +145,36 @@ export default function Hero({ scrollToSection }: HeroProps) {
             {/* CTA Button Row */}
             <motion.div 
               variants={itemVariants} 
-              className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center md:justify-start"
+              className="flex flex-col sm:flex-row items-center sm:items-start gap-4 w-full sm:w-auto justify-center md:justify-start"
               style={{ willChange: "transform, opacity" }}
             >
-              <SpotlightWrapper 
-                className="rounded-full w-full sm:w-auto overflow-hidden shadow-sm"
-                spotlightColor="rgba(255, 255, 255, 0.45)"
-              >
-                <motion.button 
-                  onClick={() => scrollToSection("pricing")}
-                  whileHover={{ scale: 1.02, backgroundColor: "rgba(232, 196, 184, 0.55)" }}
-                  whileTap={{ scale: 0.98 }}
-                  className="relative overflow-hidden w-full bg-[#E8C4B8]/40 backdrop-blur-md border border-white/40 shadow-[0_0_1px_1px_rgba(255,255,255,0.2)] text-[#1A1612] font-semibold tracking-wider uppercase text-xs sm:text-sm py-2.5 px-5 md:py-4 md:px-8 rounded-full transition-all duration-300 text-center block cursor-pointer"
+              <div className="flex flex-col items-center sm:items-start w-full sm:w-auto">
+                <SpotlightWrapper 
+                  className="rounded-full w-full sm:w-auto overflow-hidden shadow-sm"
+                  spotlightColor="rgba(255, 255, 255, 0.45)"
                 >
-                  <span className="relative z-10">Find Your Starting Phase</span>
-                  <motion.div 
-                    className="absolute inset-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -skew-x-12 pointer-events-none"
-                    initial={{ left: "-100%" }}
-                    whileHover={{ left: "150%" }}
-                    transition={{ duration: 0.9, ease: "easeInOut" }}
-                  />
-                </motion.button>
-              </SpotlightWrapper>
+                  <motion.button 
+                    onClick={() => scrollToSection("pricing")}
+                    whileHover={{ scale: 1.02, backgroundColor: "rgba(232, 196, 184, 0.55)" }}
+                    whileTap={{ scale: 0.98 }}
+                    className="relative overflow-hidden w-full bg-[#E8C4B8]/40 backdrop-blur-md border border-white/40 shadow-[0_0_1px_1px_rgba(255,255,255,0.2)] text-[#1A1612] font-semibold tracking-wider uppercase text-xs sm:text-sm py-2.5 px-5 md:py-4 md:px-8 rounded-full transition-all duration-300 text-center block cursor-pointer"
+                  >
+                    <span className="relative z-10">
+                      <span className="hidden sm:inline">Get The Complete Protocol — $97</span>
+                      <span className="inline sm:hidden">Get Instant Access — $97</span>
+                    </span>
+                    <motion.div 
+                      className="absolute inset-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -skew-x-12 pointer-events-none"
+                      initial={{ left: "-100%" }}
+                      whileHover={{ left: "150%" }}
+                      transition={{ duration: 0.9, ease: "easeInOut" }}
+                    />
+                  </motion.button>
+                </SpotlightWrapper>
+                <span className="text-[10px] text-neutral-500 mt-2 block tracking-normal normal-case w-full text-center sm:text-left px-2">
+                  One-time payment • Instant access • 14-day "feel calmer" guarantee
+                </span>
+              </div>
 
               <SpotlightWrapper 
                 className="rounded-full w-full sm:w-auto overflow-hidden shadow-sm"
@@ -171,7 +189,7 @@ export default function Hero({ scrollToSection }: HeroProps) {
                     boxShadow: '0 0 0 1px rgba(212, 212, 216, 0.15), 0 4px 20px rgba(212, 212, 216, 0.08)'
                   }}
                 >
-                  The Framework
+                  See What's Inside →
                 </button>
               </SpotlightWrapper>
             </motion.div>
@@ -181,9 +199,9 @@ export default function Hero({ scrollToSection }: HeroProps) {
         {/* Slim, elegant Trust Strip section */}
         <div className="relative z-30 border-t border-[#2D2624]/10 pt-8 pb-4 w-full mt-auto">
           <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-center md:justify-start items-center gap-6 md:gap-12 text-center md:text-left text-[13px] uppercase tracking-[0.2em] font-semibold text-[#2D2624]/70">
-            <span>90-Day Framework</span>
-            <span>Works With Any Products</span>
-            <span>Built Around Process, Not Products</span>
+            <span>90-Day Protocol</span>
+            <span>Works With Products You Own</span>
+            <span>2,100+ Women</span>
           </div>
           {/* Core Bridge Line */}
           <div className="text-center md:text-left mt-4">

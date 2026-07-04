@@ -3,6 +3,7 @@
 import React from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import Qualifications from "@/components/Qualifications";
 import Story from "@/components/Story";
 import System from "@/components/System";
 import Pricing from "@/components/Pricing";
@@ -30,6 +31,9 @@ export default function Home() {
 
       {/* Hero Section */}
       <Hero scrollToSection={scrollToSection} />
+
+      {/* Pre-Qualifier Grid Section */}
+      <Qualifications />
 
       {/* Story Section */}
       <Story />
