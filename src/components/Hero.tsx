@@ -114,7 +114,7 @@ export default function Hero({ scrollToSection }: HeroProps) {
             >
               For years, you've been told to "just drink more water." But you know what it's like to delete a photo before anyone sees it, to check your skin in every reflection, to spend $100s on products that never stick.
               {"\n\n"}
-              The 3-Phase Acne Reset Protocol is not another cleanser. It's the 90-day process 2,100+ women have used to calm their skin, clear the cycle, and finally stop hiding. Calm (21 days), Clear (45 days), Maintain (ongoing) — with trackers, product guides, and daily check-ins built in.
+              The 3-Phase Acne Reset Protocol is not another cleanser. It's the 90-day process 2,100+ women have used to calm their skin, clear the cycle, and finally stop hiding.
             </motion.p>
 
             <motion.p 
