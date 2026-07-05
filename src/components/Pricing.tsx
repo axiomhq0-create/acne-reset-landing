@@ -83,6 +83,63 @@ export default function Pricing() {
 
         </div>
 
+        {/* Decoy Effect / Secondary Downsell Stack */}
+        <div className="max-w-2xl mx-auto pt-12 border-t border-[#2D2624]/10 space-y-6">
+          <h3 className="text-sm uppercase tracking-[0.2em] font-semibold text-neutral-500">
+            Need a smaller starting point?
+          </h3>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+            
+            {/* Downsell Option 1: Calm Phase Only */}
+            <div className="bg-[#EDEBDE] border border-[#2D2624]/10 rounded-2xl p-6 space-y-4 hover:border-[#810100]/15 transition-colors duration-300">
+              <div className="flex justify-between items-baseline">
+                <h4 className="text-base font-serif font-semibold text-[#1B1716]">Calm Phase Only</h4>
+                <span className="text-lg font-serif font-semibold text-[#1B1716]">$37</span>
+              </div>
+              <p className="text-xs text-neutral-500 leading-relaxed">
+                Basic, text-only access to the Phase 1 stabilizer tracker. Designed for people with highly reactive skin who only want to calm the initial flare-ups.
+              </p>
+              <motion.a 
+                href="https://whop.com/checkout/plan_T4jvV63GgLVVH"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.01 }}
+                whileTap={{ scale: 0.99 }}
+                className="w-full border border-[#2D2624]/20 hover:border-[#810100] text-center text-xs font-semibold uppercase tracking-wider py-2.5 rounded-full block text-neutral-600 hover:text-[#810100] transition-colors cursor-pointer"
+              >
+                Get Calm Phase Only
+              </motion.a>
+            </div>
+
+            {/* Downsell Option 2: The Maintenance Roadmap */}
+            <div className="bg-[#EDEBDE] border border-[#2D2624]/10 rounded-2xl p-6 space-y-4 hover:border-[#810100]/15 transition-colors duration-300">
+              <div className="flex justify-between items-baseline">
+                <h4 className="text-base font-serif font-semibold text-[#1B1716]">The Maintenance Roadmap</h4>
+                <span className="text-lg font-serif font-semibold text-[#1B1716]">$47</span>
+              </div>
+              <p className="text-xs text-neutral-500 leading-relaxed">
+                The standalone blueprint outlining the protocol's sequencing theory. Contains no interactive trackers or tools, just the core roadmap theory.
+              </p>
+              <motion.a 
+                href="https://whop.com/checkout/plan_C7Lm7D71Z9NeR"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.01 }}
+                whileTap={{ scale: 0.99 }}
+                className="w-full border border-[#2D2624]/20 hover:border-[#810100] text-center text-xs font-semibold uppercase tracking-wider py-2.5 rounded-full block text-neutral-600 hover:text-[#810100] transition-colors cursor-pointer"
+              >
+                Get The Roadmap
+              </motion.a>
+            </div>
+
+          </div>
+
+          <p className="text-[10px] text-neutral-400 italic">
+            * Note: Calm Phase Only and The Maintenance Roadmap do not include the 90-day reset protocol interactive dashboard, product selector, or lifetime updates. For the complete sequence, select the Complete Protocol above.
+          </p>
+        </div>
+
       </div>
     </section>
   );
