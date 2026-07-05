@@ -1,209 +1,95 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
-import Image from "next/image";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import React, { useState, useEffect, useRef } from "react";
+import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 
 export default function ScrollStack() {
   const containerRef = useRef<HTMLDivElement>(null);
-  
+  const [activeStep, setActiveStep] = useState(0);
+
+  // Hook into the native scroll velocity safely
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"]
   });
 
-  const springConfig = { stiffness: 45, damping: 15, mass: 0.8 };
+  // Debounce scroll milestones to prevent frame-dropping text recalculations
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    if (latest < 0.33) {
+      if (activeStep !== 0) setActiveStep(0);
+    } else if (latest >= 0.33 && latest < 0.66) {
+      if (activeStep !== 1) setActiveStep(1);
+    } else {
+      if (activeStep !== 2) setActiveStep(2);
+    }
+  });
 
-  // Map scroll progress to background image opacity fades (Human Evolution Engine)
-  const bgOpacity0 = useSpring(useTransform(scrollYProgress, [0, 0.33, 0.43], [1, 1, 0]), springConfig);
-  const bgOpacity1 = useSpring(useTransform(scrollYProgress, [0.33, 0.43, 0.66, 0.76], [0, 1, 1, 0]), springConfig);
-  const bgOpacity2 = useSpring(useTransform(scrollYProgress, [0.66, 0.76, 1], [0, 0, 1]), springConfig);
+  const phases = [
+    { tagline: "PHASE 01 — DAYS 1-21", title: "CALM — Reduce inflammation.", desc: "Stop the flare-ups first by stabilizing the lipid barrier. Active treatment on inflamed skin only causes more reactive spots." },
+    { tagline: "PHASE 02 — DAYS 22-66", title: "CLEAR — Treat stable skin.", desc: "Introduce targeted active ingredients once the skin is stabilized, healthy, and ready to absorb clear-agent routines." },
+    { tagline: "PHASE 03 — ONGOING", title: "MAINTAIN — Keep results.", desc: "Lock in clear skin permanently with a simplified daily maintenance protocol to prevent returning blemishes." }
+  ];
 
-  // Cards lift, stack, and compress linearly
-  const scale0 = useSpring(useTransform(scrollYProgress, [0, 0.33, 0.43], [1, 0.95, 0.95]), springConfig);
-  const opacity0 = useSpring(useTransform(scrollYProgress, [0, 0.33, 0.43], [1, 1, 0]), springConfig);
-
-  const y1 = useSpring(useTransform(scrollYProgress, [0, 0.23, 0.33, 0.66], [400, 400, 0, 0]), springConfig);
-  const scale1 = useSpring(useTransform(scrollYProgress, [0, 0.23, 0.33, 0.66, 0.76], [0.95, 0.95, 1, 1, 0.95]), springConfig);
-  const opacity1 = useSpring(useTransform(scrollYProgress, [0, 0.23, 0.33, 0.66, 0.76], [0, 0, 1, 1, 0]), springConfig);
-
-  const y2 = useSpring(useTransform(scrollYProgress, [0, 0.56, 0.66], [800, 800, 0]), springConfig);
-  const scale2 = useSpring(useTransform(scrollYProgress, [0, 0.56, 0.66], [0.95, 0.95, 1]), springConfig);
-  const opacity2 = useSpring(useTransform(scrollYProgress, [0, 0.56, 0.66], [0, 0, 1]), springConfig);
-
-  // Active card index tracked from scroll progress
-  const [activeCard, setActiveCard] = useState(0);
-
-  useEffect(() => {
-    const unsubscribe = scrollYProgress.onChange((latest) => {
-      if (latest < 0.33) {
-        setActiveCard(0);
-      } else if (latest < 0.66) {
-        setActiveCard(1);
-      } else {
-        setActiveCard(2);
-      }
-    });
-    return () => unsubscribe();
-  }, [scrollYProgress]);
+  const bgPortraits = [
+    "/Reduce_the_intensity_of_the_202606261417.jpeg",
+    "/The_background_is_light_and_202606261423.jpeg",
+    "/Remove_the_black_dress_and_202606261411.jpeg"
+  ];
 
   return (
-    <section ref={containerRef} className="relative w-full h-[300vh] bg-[#F3D5CE] z-20"> 
-      {/* Sticky Inner Frame that pins the image and cards while scrolling */}
-      <div className="sticky top-0 w-full h-screen flex flex-col items-center justify-center overflow-hidden">
+    // h-[200vh] provides optimal scroll pacing without feeling dragged out or endless
+    <div ref={containerRef} className="relative w-full h-[200vh] bg-[#EDEBDE] z-20">
+      <div className="sticky top-0 w-full h-screen overflow-hidden flex items-center justify-center">
         
-        {/* The background portrait behind the cards (Evolution Engine) */}
-        <div className="absolute inset-0 z-0">
-          <motion.div style={{ opacity: bgOpacity0 }} className="absolute inset-0 w-full h-full">
-            <Image 
-              src="/Reduce_the_intensity_of_the_202606261417.jpeg"
-              alt="Protagonist Calm State (Raw skin texture, expression tense/vulnerable)"
-              fill
-              className="object-cover brightness-[0.7] contrast-[1.02]"
-              sizes="100vw"
+        {/* OPTIMIZED BACKGROUND HARDWARE TRANSITION LAYER */}
+        <div className="absolute inset-0 z-0 bg-[#EDEBDE] will-change-transform">
+          {/* Render your three human phase evolution portraits stacked absolutely */}
+          {[0, 1, 2].map((idx) => (
+            <div
+              key={idx}
+              className="absolute inset-0 transition-opacity duration-700 ease-in-out bg-cover bg-center"
+              style={{
+                opacity: activeStep === idx ? 1 : 0,
+                // Force hardware rendering via GPU
+                transform: 'translateZ(0)',
+                backgroundImage: `url('${bgPortraits[idx]}')`,
+              }}
             />
-          </motion.div>
-          <motion.div style={{ opacity: bgOpacity1 }} className="absolute inset-0 w-full h-full">
-            <Image 
-              src="/The_background_is_light_and_202606261423.jpeg"
-              alt="Protagonist Clear State (Skin noticeably settling, posture softening)"
-              fill
-              className="object-cover brightness-[0.7] contrast-[1.02]"
-              sizes="100vw"
-            />
-          </motion.div>
-          <motion.div style={{ opacity: bgOpacity2 }} className="absolute inset-0 w-full h-full">
-            <Image 
-              src="/Remove_the_black_dress_and_202606261411.jpeg"
-              alt="Protagonist Maintain State (Radical, radiant confidence, warm light bloom)"
-              fill
-              className="object-cover brightness-[0.7] contrast-[1.02]"
-              sizes="100vw"
-            />
-          </motion.div>
+          ))}
+          <div className="absolute inset-0 bg-neutral-900/10 pointer-events-none" />
         </div>
 
-        {/* Dark Overlay for Text readability */}
-        <div className="absolute inset-0 bg-black/20 pointer-events-none" />
-
-        {/* The Text Layout Container */}
-        <div className="relative z-10 max-w-2xl w-full px-6 text-center">
-          <h2 className="font-serif text-xs uppercase tracking-widest text-white mb-2 font-semibold drop-shadow-sm">The Protocol</h2>
-          
-          {/* Loop structure generating the 3 cards safely inside the viewport zone */}
-          <div className="relative w-full max-w-2xl h-[400px] mt-8 flex items-center justify-center mx-auto">
-             
-            {/* Card 1 */}
-            <motion.div
-              style={{
-                scale: scale0,
-                opacity: opacity0,
-                zIndex: 10,
-                transform: "translateZ(0)",
-                willChange: "transform, opacity",
-              }}
-              className={`absolute w-full max-w-2xl min-h-[260px] mx-auto p-8 md:p-12 flex flex-col justify-center text-left rounded-3xl border transition-all duration-300 ${
-                activeCard === 0 
-                  ? "bg-white/40 backdrop-blur-[14px] border-white/60 shadow-xl" 
-                  : "bg-transparent backdrop-blur-none border-transparent shadow-none"
-              }`}
-            >
-              <motion.div 
-                animate={{ 
-                  opacity: activeCard === 0 ? 1 : 0,
-                  y: activeCard === 0 ? 0 : -20
-                }}
-                transition={{ duration: 0.4, ease: "easeInOut" }}
-                className="w-full h-full block text-left"
-              >
-                <span className="text-xs font-mono uppercase tracking-widest text-[#810100] font-semibold">
-                  PHASE 01 — DAYS 1-21
-                </span>
-                <h3 className="font-serif text-3xl md:text-4xl text-[#1B1716] tracking-tight mt-3 mb-4">
-                  CALM — Reduce inflammation.
-                </h3>
-                <p className="text-sm md:text-base text-neutral-800 leading-relaxed max-w-xl">
-                  Stop the flare-ups first by stabilizing the lipid barrier. Active treatment on inflamed skin only causes more reactive spots.
-                </p>
-              </motion.div>
-            </motion.div>
-
-            {/* Card 2 */}
-            <motion.div
-              style={{
-                y: y1,
-                scale: scale1,
-                opacity: opacity1,
-                zIndex: 11,
-                transform: "translateZ(0)",
-                willChange: "transform, opacity",
-              }}
-              className={`absolute w-full max-w-2xl min-h-[260px] mx-auto p-8 md:p-12 flex flex-col justify-center text-left rounded-3xl border transition-all duration-300 ${
-                activeCard === 1 
-                  ? "bg-white/40 backdrop-blur-[14px] border-white/60 shadow-xl" 
-                  : "bg-transparent backdrop-blur-none border-transparent shadow-none"
-              }`}
-            >
-              <motion.div 
-                animate={{ 
-                  opacity: activeCard === 1 ? 1 : 0,
-                  y: activeCard === 1 ? 0 : (activeCard > 1 ? -20 : 20)
-                }}
-                transition={{ duration: 0.4, ease: "easeInOut" }}
-                className="w-full h-full block text-left"
-              >
-                <span className="text-xs font-mono uppercase tracking-widest text-[#810100] font-semibold">
-                  PHASE 02 — DAYS 22-66
-                </span>
-                <h3 className="font-serif text-3xl md:text-4xl text-[#1B1716] tracking-tight mt-3 mb-4">
-                  CLEAR — Treat stable skin.
-                </h3>
-                <p className="text-sm md:text-base text-neutral-800 leading-relaxed max-w-xl">
-                  Introduce targeted active ingredients once the skin is stabilized, healthy, and ready to absorb clear-agent routines.
-                </p>
-              </motion.div>
-            </motion.div>
-
-            {/* Card 3 */}
-            <motion.div
-              style={{
-                y: y2,
-                scale: scale2,
-                opacity: opacity2,
-                zIndex: 12,
-                transform: "translateZ(0)",
-                willChange: "transform, opacity",
-              }}
-              className={`absolute w-full max-w-2xl min-h-[260px] mx-auto p-8 md:p-12 flex flex-col justify-center text-left rounded-3xl border transition-all duration-300 ${
-                activeCard === 2 
-                  ? "bg-white/40 backdrop-blur-[14px] border-white/60 shadow-xl" 
-                  : "bg-transparent backdrop-blur-none border-transparent shadow-none"
-              }`}
-            >
-              <motion.div 
-                animate={{ 
-                  opacity: activeCard === 2 ? 1 : 0,
-                  y: activeCard === 2 ? 0 : 20
-                }}
-                transition={{ duration: 0.4, ease: "easeInOut" }}
-                className="w-full h-full block text-left"
-              >
-                <span className="text-xs font-mono uppercase tracking-widest text-[#810100] font-semibold">
-                  PHASE 03 — ONGOING
-                </span>
-                <h3 className="font-serif text-3xl md:text-4xl text-[#1B1716] tracking-tight mt-3 mb-4">
-                  MAINTAIN — Keep results.
-                </h3>
-                <p className="text-sm md:text-base text-neutral-800 leading-relaxed max-w-xl">
-                  Lock in clear skin permanently with a simplified daily maintenance protocol to prevent returning blemishes.
-                </p>
-              </motion.div>
-            </motion.div>
-
+        {/* CONTRAST EDITORIAL TEXT CARD CONTAINER */}
+        <div className="relative z-10 w-full max-w-2xl px-6 mx-auto">
+          <div className="relative w-full min-h-[280px] flex items-center justify-center">
+            {phases.map((phase, index) => {
+              const isActive = index === activeStep;
+              return (
+                <div
+                  key={index}
+                  className={`absolute inset-0 p-8 md:p-12 flex flex-col justify-center rounded-3xl border transition-all duration-500 ease-out will-change-transform ${
+                    isActive
+                      ? "opacity-100 translate-y-0 bg-white/40 backdrop-blur-[14px] border-white/60 shadow-xl"
+                      : "opacity-0 translate-y-4 bg-transparent backdrop-blur-none border-transparent pointer-events-none"
+                  }`}
+                  style={{ transform: 'translateZ(0)' }}
+                >
+                  <span className="text-xs font-mono uppercase tracking-widest text-[#810100] font-semibold">
+                    {phase.tagline}
+                  </span>
+                  <h3 className="font-serif text-2xl md:text-4xl text-[#1B1716] tracking-tight mt-3 mb-4">
+                    {phase.title}
+                  </h3>
+                  <p className="text-sm md:text-base text-neutral-700 leading-relaxed max-w-xl">
+                    {phase.desc}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
 
       </div>
-    </section>
+    </div>
   );
 }
