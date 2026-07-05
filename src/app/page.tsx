@@ -26,7 +26,7 @@ export default function Home() {
   };
 
   return (
-    <div className="bg-[#EDEBDE] text-[#1B1716] min-h-screen font-sans antialiased selection:bg-[#810100] selection:text-white">
+    <div className="overflow-x-hidden w-full relative space-y-0 bg-[#EDEBDE] text-[#1B1716] min-h-screen font-sans antialiased selection:bg-[#810100] selection:text-white">
       {/* Navigation Header */}
       <Header scrollToSection={scrollToSection} />
 
@@ -35,6 +35,13 @@ export default function Home() {
 
       {/* STAGE 2: THE EMOTIONAL PAYOFF */}
       <TransformationFlow />
+
+      {/* The Transition Banner */}
+      <div className="w-full bg-[#1B1716] text-[#EDEBDE] py-12 px-6 text-center select-none pointer-events-none relative z-20">
+        <p className="font-serif tracking-[0.2em] uppercase text-xs md:text-sm max-w-xl mx-auto opacity-80 leading-relaxed">
+          The transition from routine to sequence begins below.
+        </p>
+      </div>
 
       {/* STAGE 3: THE TRANSFORMATION SEQUENCE */}
       <ScrollStack />
