@@ -3,13 +3,13 @@
 import React from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import ProductShowcase from "@/components/ProductShowcase";
+import ProductGallery from "@/components/ProductGallery";
 import ScrollStack from "@/components/ScrollStack";
 import Unboxing from "@/components/Unboxing";
-import Results from "@/components/Results";
+import EditorialProof from "@/components/EditorialProof";
 import EmotionalPayoff from "@/components/EmotionalPayoff";
 import FAQ from "@/components/FAQ";
-import Pricing from "@/components/Pricing";
+import FinalPurchase from "@/components/FinalPurchase";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -31,32 +31,32 @@ export default function Home() {
       {/* Navigation Header */}
       <Header scrollToSection={scrollToSection} />
 
-      {/* STAGE 1: HERO KEYNOTE */}
-      <Hero scrollToSection={scrollToSection} />
+      {/* SECTION 1: THE HERO */}
+      <Hero />
 
-      {/* STAGE 2: MASSIVE PRODUCT SHOWCASE */}
-      <ProductShowcase />
+      {/* SECTION 2: THE PRODUCT */}
+      <ProductGallery />
 
-      {/* STAGE 3: THE SCROLL STACK */}
+      {/* SECTION 3: THE PROTOCOL */}
       <ScrollStack />
 
-      {/* STAGE 4: EVERYTHING INCLUDED AS AN UNBOXING */}
+      {/* SECTION 4: THE UNBOXING */}
       <Unboxing />
 
-      {/* STAGE 5: EDITORIAL PROOF & IDENTITY SHIFTS */}
-      <Results />
+      {/* SECTION 5: EDITORIAL PROOF */}
+      <EditorialProof />
 
-      {/* STAGE 6: THE EMOTIONAL PAYOFF */}
+      {/* SECTION 6: EMOTIONAL PAYOFF */}
       <EmotionalPayoff />
 
-      {/* STAGE 7: ACCORDION FAQ */}
+      {/* SECTION 7: THE ACCORDION FAQ */}
       <FAQ />
 
-      {/* STAGE 8: THE MASSIVE CLOSING CTA */}
-      <Pricing />
+      {/* SECTION 8: FINAL PURCHASE TIER */}
+      <FinalPurchase />
 
-      {/* Footer Navigation & Legal Block */}
-      <Footer scrollToSection={scrollToSection} />
+      {/* FOOTER */}
+      <Footer />
     </div>
   );
 }

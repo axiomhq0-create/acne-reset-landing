@@ -3,7 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-export default function Results() {
+export default function EditorialProof() {
   const dms = [
     {
       user: "Jessica T.",
@@ -23,11 +23,11 @@ export default function Results() {
 
   return (
     <section className="py-24 md:py-32 bg-[#EDEBDE] text-[#1B1716] border-b border-[#2D2624]/10 relative z-20">
-      <div className="max-w-4xl mx-auto px-6 space-y-16">
+      <div className="max-w-4xl mx-auto px-6 space-y-20">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto">
-          <span className="text-xs uppercase tracking-[0.2em] font-semibold text-neutral-500 mb-3 block">
+          <span className="text-[10px] uppercase tracking-[0.25em] font-semibold text-neutral-500 mb-3 block">
             The Evidence
           </span>
           <h2 className="text-3xl md:text-5xl font-serif font-semibold tracking-tight text-[#1B1716]">
@@ -36,27 +36,27 @@ export default function Results() {
         </div>
 
         {/* High-fashion editorial text columns separated by horizontal rules */}
-        <div className="border-t border-b border-[#2D2624]/20 py-8 space-y-8">
+        <div className="border-t border-b border-[#2D2624]/20 py-4 text-left">
           
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between py-4 text-left gap-2">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between py-6 gap-2">
             <p className="font-serif italic text-2xl md:text-3xl text-[#1B1716]">
               "I stopped checking mirrors."
             </p>
             <span className="text-xs uppercase tracking-wider text-neutral-500 font-semibold">— Sarah</span>
           </div>
           
-          <div className="border-t border-[#2D2624]/10" />
+          <div className="border-t border-[#2D2624]/20" />
 
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between py-4 text-left gap-2">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between py-6 gap-2">
             <p className="font-serif italic text-2xl md:text-3xl text-[#1B1716]">
               "I finally stopped restarting."
             </p>
             <span className="text-xs uppercase tracking-wider text-neutral-500 font-semibold">— Chloe</span>
           </div>
 
-          <div className="border-t border-[#2D2624]/10" />
+          <div className="border-t border-[#2D2624]/20" />
 
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between py-4 text-left gap-2">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between py-6 gap-2">
             <p className="font-serif italic text-2xl md:text-3xl text-[#1B1716]">
               "It wasn't another routine."
             </p>
@@ -65,50 +65,64 @@ export default function Results() {
 
         </div>
 
-        {/* Sub-grid with DMs & IG Comments stream */}
+        {/* Underlay: Fading upwards DMs & IG Comments - no layout boxes */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start pt-8">
           
           {/* Direct Messages */}
-          <div className="space-y-6 text-left">
-            <h3 className="text-sm uppercase tracking-wider font-semibold text-neutral-400">
+          <div className="space-y-8 text-left">
+            <h3 className="text-[10px] uppercase tracking-[0.25em] font-semibold text-neutral-500">
               Direct Messages
             </h3>
-            <div className="space-y-4">
+            <div className="space-y-6">
               {dms.map((dm, idx) => (
-                <div key={idx} className="bg-white/45 backdrop-blur-sm border border-white/60 p-5 rounded-2xl rounded-tl-none text-left shadow-sm space-y-2">
-                  <div className="flex items-center justify-between border-b border-[#2D2624]/5 pb-1">
+                <motion.div 
+                  key={idx} 
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  className="space-y-2 border-l border-[#810100]/20 pl-4"
+                >
+                  <div className="flex items-center gap-2">
                     <span className="text-xs font-bold text-[#1B1716]">{dm.user}</span>
-                    <span className="text-[9px] text-neutral-400">✓ Verified Buyer</span>
+                    <span className="text-[9px] text-[#810100] font-semibold uppercase tracking-wider">✓ Verified Buyer</span>
                   </div>
-                  <p className="text-xs sm:text-sm text-neutral-700 leading-relaxed font-serif italic">
+                  <p className="text-sm text-neutral-600 leading-relaxed font-serif italic">
                     "{dm.message}"
                   </p>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
 
           {/* Instagram Comments */}
-          <div className="space-y-6 text-left">
-            <h3 className="text-sm uppercase tracking-wider font-semibold text-neutral-400">
+          <div className="space-y-8 text-left">
+            <h3 className="text-[10px] uppercase tracking-[0.25em] font-semibold text-neutral-500">
               Community Comments
             </h3>
-            <div className="space-y-4">
+            <div className="space-y-6">
               {comments.map((comment, idx) => (
-                <div key={idx} className="flex gap-3 border-b border-[#2D2624]/10 pb-4">
+                <motion.div 
+                  key={idx} 
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  className="flex gap-4 items-start"
+                >
                   <div className="w-8 h-8 rounded-full bg-[#E5E2D2] flex items-center justify-center font-bold text-[10px] text-neutral-600 shrink-0 border border-[#2D2624]/5">
                     {comment.handle[1].toUpperCase()}
                   </div>
                   <div className="space-y-1">
                     <div className="flex items-baseline gap-2">
                       <span className="text-xs font-bold text-[#1B1716]">{comment.handle}</span>
-                      <span className="text-[9px] text-[#810100] font-semibold">Active Member</span>
+                      <span className="text-[9px] text-neutral-400">Community Member</span>
                     </div>
-                    <p className="text-xs text-neutral-600 leading-normal">
+                    <p className="text-sm text-neutral-600 leading-normal font-serif">
                       {comment.comment}
                     </p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
