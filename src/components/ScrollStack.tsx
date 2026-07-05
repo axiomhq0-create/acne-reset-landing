@@ -19,6 +19,11 @@ export default function ScrollStack() {
   const bgOpacity1 = useSpring(useTransform(scrollYProgress, [0.35, 0.45, 0.70, 0.80], [0, 1, 1, 0]), springConfig);
   const bgOpacity2 = useSpring(useTransform(scrollYProgress, [0.70, 0.80, 1], [0, 0, 1]), springConfig);
 
+  // Dynamic text opacity transforms to hide inactive cards text completely
+  const textOpacity0 = useTransform(scrollYProgress, [0, 0.35, 0.45], [1, 1, 0]);
+  const textOpacity1 = useTransform(scrollYProgress, [0, 0.35, 0.45, 0.70, 0.80], [0, 0, 1, 1, 0]);
+  const textOpacity2 = useTransform(scrollYProgress, [0, 0.70, 0.80, 1], [0, 0, 1, 1]);
+
   // Cards lift, stack, and compress linearly
   const scale0 = useSpring(useTransform(scrollYProgress, [0, 0.35, 0.45], [1, 0.95, 0.95]), springConfig);
   const opacity0 = useSpring(useTransform(scrollYProgress, [0, 0.35, 0.45], [1, 1, 0.3]), springConfig);
@@ -109,11 +114,13 @@ export default function ScrollStack() {
                   border: "1px solid rgba(255, 255, 255, 0.6)",
                 }}
               >
-                <span className="text-[10px] uppercase font-bold text-[#810100] tracking-widest block">Phase 01 — Days 1-21</span>
-                <h3 className="text-2xl md:text-3xl font-serif font-semibold text-[#1B1716]">CALM — Reduce inflammation.</h3>
-                <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed max-w-md">
-                  Stop the flare-ups first by stabilizing the lipid barrier. Active treatment on inflamed skin only causes more reactive spots.
-                </p>
+                <motion.div style={{ opacity: textOpacity0 }} className="pointer-events-none select-none space-y-4">
+                  <span className="text-[10px] uppercase font-bold text-[#810100] tracking-widest block">Phase 01 — Days 1-21</span>
+                  <h3 className="text-2xl md:text-3xl font-serif font-semibold text-[#1B1716]">CALM — Reduce inflammation.</h3>
+                  <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed max-w-md">
+                    Stop the flare-ups first by stabilizing the lipid barrier. Active treatment on inflamed skin only causes more reactive spots.
+                  </p>
+                </motion.div>
               </div>
             </motion.div>
 
@@ -138,11 +145,13 @@ export default function ScrollStack() {
                   border: "1px solid rgba(255, 255, 255, 0.6)",
                 }}
               >
-                <span className="text-[10px] uppercase font-bold text-[#810100] tracking-widest block">Phase 02 — Days 22-66</span>
-                <h3 className="text-2xl md:text-3xl font-serif font-semibold text-[#1B1716]">CLEAR — Treat stable skin.</h3>
-                <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed max-w-md">
-                  Introduce targeted active ingredients once the skin is stabilized, healthy, and ready to absorb clear-agent routines.
-                </p>
+                <motion.div style={{ opacity: textOpacity1 }} className="pointer-events-none select-none space-y-4">
+                  <span className="text-[10px] uppercase font-bold text-[#810100] tracking-widest block">Phase 02 — Days 22-66</span>
+                  <h3 className="text-2xl md:text-3xl font-serif font-semibold text-[#1B1716]">CLEAR — Treat stable skin.</h3>
+                  <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed max-w-md">
+                    Introduce targeted active ingredients once the skin is stabilized, healthy, and ready to absorb clear-agent routines.
+                  </p>
+                </motion.div>
               </div>
             </motion.div>
 
@@ -167,11 +176,13 @@ export default function ScrollStack() {
                   border: "1px solid rgba(255, 255, 255, 0.6)",
                 }}
               >
-                <span className="text-[10px] uppercase font-bold text-[#810100] tracking-widest block">Phase 03 — Ongoing</span>
-                <h3 className="text-2xl md:text-3xl font-serif font-semibold text-[#1B1716]">MAINTAIN — Keep results.</h3>
-                <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed max-w-md">
-                  Lock in clear skin permanently with a simplified daily maintenance protocol to prevent returning blemishes.
-                </p>
+                <motion.div style={{ opacity: textOpacity2 }} className="pointer-events-none select-none space-y-4">
+                  <span className="text-[10px] uppercase font-bold text-[#810100] tracking-widest block">Phase 03 — Ongoing</span>
+                  <h3 className="text-2xl md:text-3xl font-serif font-semibold text-[#1B1716]">MAINTAIN — Keep results.</h3>
+                  <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed max-w-md">
+                    Lock in clear skin permanently with a simplified daily maintenance protocol to prevent returning blemishes.
+                  </p>
+                </motion.div>
               </div>
             </motion.div>
 

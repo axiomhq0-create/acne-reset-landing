@@ -41,16 +41,6 @@ export default function Hero() {
       {/* Layer 3: Interactive Text Layer Bounding Box */}
       <div className="relative z-10 max-w-[1280px] mx-auto w-full flex flex-col items-start text-left space-y-8">
         
-        {/* Capsule Pill Bar */}
-        <motion.div 
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="inline-flex items-center bg-[#F3D5CE]/65 border border-[#F3D5CE] px-4 py-2 rounded-full text-xs font-semibold tracking-wider text-[#810100] uppercase backdrop-blur-sm"
-        >
-          Calm / 21 Days  &rarr;  Clear / 45 Days  &rarr;  Maintain / Ongoing
-        </motion.div>
-
         {/* Headline */}
         <motion.h1 
           initial={{ opacity: 0, y: 15 }}
