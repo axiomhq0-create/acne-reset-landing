@@ -14,18 +14,18 @@ export default function ScrollStack() {
 
   const springConfig = { stiffness: 45, damping: 15, mass: 0.8 };
 
-  // Map scroll progress to background image opacity fades
+  // Map scroll progress to background image opacity fades (Human Evolution Engine)
   const bgOpacity0 = useSpring(useTransform(scrollYProgress, [0, 0.33, 0.43], [1, 1, 0]), springConfig);
   const bgOpacity1 = useSpring(useTransform(scrollYProgress, [0.33, 0.43, 0.66, 0.76], [0, 1, 1, 0]), springConfig);
   const bgOpacity2 = useSpring(useTransform(scrollYProgress, [0.66, 0.76, 1], [0, 0, 1]), springConfig);
 
   // Cards lift, stack, and compress linearly
   const scale0 = useSpring(useTransform(scrollYProgress, [0, 0.33, 0.43], [1, 0.95, 0.95]), springConfig);
-  const opacity0 = useSpring(useTransform(scrollYProgress, [0, 0.33, 0.43], [1, 1, 0.3]), springConfig);
+  const opacity0 = useSpring(useTransform(scrollYProgress, [0, 0.33, 0.43], [1, 1, 0]), springConfig);
 
   const y1 = useSpring(useTransform(scrollYProgress, [0, 0.23, 0.33, 0.66], [400, 400, 0, 0]), springConfig);
   const scale1 = useSpring(useTransform(scrollYProgress, [0, 0.23, 0.33, 0.66, 0.76], [0.95, 0.95, 1, 1, 0.95]), springConfig);
-  const opacity1 = useSpring(useTransform(scrollYProgress, [0, 0.23, 0.33, 0.66, 0.76], [0, 0, 1, 1, 0.3]), springConfig);
+  const opacity1 = useSpring(useTransform(scrollYProgress, [0, 0.23, 0.33, 0.66, 0.76], [0, 0, 1, 1, 0]), springConfig);
 
   const y2 = useSpring(useTransform(scrollYProgress, [0, 0.56, 0.66], [800, 800, 0]), springConfig);
   const scale2 = useSpring(useTransform(scrollYProgress, [0, 0.56, 0.66], [0.95, 0.95, 1]), springConfig);
@@ -48,16 +48,16 @@ export default function ScrollStack() {
   }, [scrollYProgress]);
 
   return (
-    <section ref={containerRef} className="relative w-full h-[300vh] bg-[#EDEBDE]"> 
+    <section ref={containerRef} className="relative w-full h-[300vh] bg-[#F3D5CE] z-20"> 
       {/* Sticky Inner Frame that pins the image and cards while scrolling */}
       <div className="sticky top-0 w-full h-screen flex flex-col items-center justify-center overflow-hidden">
         
-        {/* The background portrait behind the cards */}
+        {/* The background portrait behind the cards (Evolution Engine) */}
         <div className="absolute inset-0 z-0">
           <motion.div style={{ opacity: bgOpacity0 }} className="absolute inset-0 w-full h-full">
             <Image 
               src="/Reduce_the_intensity_of_the_202606261417.jpeg"
-              alt="Protagonist Calm State"
+              alt="Protagonist Calm State (Raw skin texture, expression tense/vulnerable)"
               fill
               className="object-cover brightness-[0.7] contrast-[1.02]"
               sizes="100vw"
@@ -66,7 +66,7 @@ export default function ScrollStack() {
           <motion.div style={{ opacity: bgOpacity1 }} className="absolute inset-0 w-full h-full">
             <Image 
               src="/The_background_is_light_and_202606261423.jpeg"
-              alt="Protagonist Clear State"
+              alt="Protagonist Clear State (Skin noticeably settling, posture softening)"
               fill
               className="object-cover brightness-[0.7] contrast-[1.02]"
               sizes="100vw"
@@ -75,7 +75,7 @@ export default function ScrollStack() {
           <motion.div style={{ opacity: bgOpacity2 }} className="absolute inset-0 w-full h-full">
             <Image 
               src="/Remove_the_black_dress_and_202606261411.jpeg"
-              alt="Protagonist Maintain State"
+              alt="Protagonist Maintain State (Radical, radiant confidence, warm light bloom)"
               fill
               className="object-cover brightness-[0.7] contrast-[1.02]"
               sizes="100vw"
@@ -84,11 +84,11 @@ export default function ScrollStack() {
         </div>
 
         {/* Dark Overlay for Text readability */}
-        <div className="absolute inset-0 bg-black/15 pointer-events-none" />
+        <div className="absolute inset-0 bg-black/20 pointer-events-none" />
 
         {/* The Text Layout Container */}
         <div className="relative z-10 max-w-2xl w-full px-6 text-center">
-          <h2 className="font-serif text-xs uppercase tracking-widest text-[#810100] mb-2 font-semibold">The Protocol</h2>
+          <h2 className="font-serif text-xs uppercase tracking-widest text-white mb-2 font-semibold drop-shadow-sm">The Protocol</h2>
           
           {/* Loop structure generating the 3 cards safely inside the viewport zone */}
           <div className="relative w-full max-w-2xl h-[400px] mt-8 flex items-center justify-center mx-auto">
@@ -111,7 +111,7 @@ export default function ScrollStack() {
               <motion.div 
                 animate={{ 
                   opacity: activeCard === 0 ? 1 : 0,
-                  y: activeCard === 0 ? 0 : (activeCard > 0 ? -20 : 20)
+                  y: activeCard === 0 ? 0 : -20
                 }}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
                 className="w-full h-full block text-left"
@@ -122,7 +122,7 @@ export default function ScrollStack() {
                 <h3 className="font-serif text-3xl md:text-4xl text-[#1B1716] tracking-tight mt-3 mb-4">
                   CALM — Reduce inflammation.
                 </h3>
-                <p className="text-sm md:text-base text-neutral-700 leading-relaxed max-w-xl">
+                <p className="text-sm md:text-base text-neutral-800 leading-relaxed max-w-xl">
                   Stop the flare-ups first by stabilizing the lipid barrier. Active treatment on inflamed skin only causes more reactive spots.
                 </p>
               </motion.div>
@@ -158,7 +158,7 @@ export default function ScrollStack() {
                 <h3 className="font-serif text-3xl md:text-4xl text-[#1B1716] tracking-tight mt-3 mb-4">
                   CLEAR — Treat stable skin.
                 </h3>
-                <p className="text-sm md:text-base text-neutral-700 leading-relaxed max-w-xl">
+                <p className="text-sm md:text-base text-neutral-800 leading-relaxed max-w-xl">
                   Introduce targeted active ingredients once the skin is stabilized, healthy, and ready to absorb clear-agent routines.
                 </p>
               </motion.div>
@@ -183,7 +183,7 @@ export default function ScrollStack() {
               <motion.div 
                 animate={{ 
                   opacity: activeCard === 2 ? 1 : 0,
-                  y: activeCard === 2 ? 0 : (activeCard > 2 ? -20 : 20)
+                  y: activeCard === 2 ? 0 : 20
                 }}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
                 className="w-full h-full block text-left"
@@ -194,7 +194,7 @@ export default function ScrollStack() {
                 <h3 className="font-serif text-3xl md:text-4xl text-[#1B1716] tracking-tight mt-3 mb-4">
                   MAINTAIN — Keep results.
                 </h3>
-                <p className="text-sm md:text-base text-neutral-700 leading-relaxed max-w-xl">
+                <p className="text-sm md:text-base text-neutral-800 leading-relaxed max-w-xl">
                   Lock in clear skin permanently with a simplified daily maintenance protocol to prevent returning blemishes.
                 </p>
               </motion.div>

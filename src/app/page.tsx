@@ -3,13 +3,13 @@
 import React from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import SlowdownInterlude from "@/components/SlowdownInterlude";
 import ScrollStack from "@/components/ScrollStack";
 import ProductReveal from "@/components/ProductReveal";
-import Proof from "@/components/Proof";
-import FAQ from "@/components/FAQ";
-import FinalPurchase from "@/components/FinalPurchase";
+import SocialProof from "@/components/SocialProof";
+import EmotionalResolution from "@/components/EmotionalResolution";
+import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
-import Image from "next/image";
 
 export default function Home() {
   const scrollToSection = (id: string) => {
@@ -27,47 +27,31 @@ export default function Home() {
 
   return (
     <main className="w-full relative min-h-screen bg-[#EDEBDE] block text-[#1B1716] font-sans antialiased selection:bg-[#810100] selection:text-white">
-      {/* 1. Global Navigation Frame */}
+      {/* Global Navigation Frame */}
       <Header scrollToSection={scrollToSection} />
 
-      {/* 2. Hero Section - Cotton Canvas, Left Copy, Right Float Portrait Image */}
+      {/* 🏛️ CHAPTER 1: THE HERO */}
       <Hero />
 
-      {/* 3. Emotional Interlude - Full Width Dark Cinematic Portrait with Centered Text */}
-      <div className="relative w-full min-h-[60vh] flex items-center justify-center bg-zinc-900 overflow-hidden">
-        {/* Background Image Layer */}
-        <div className="absolute inset-0 opacity-60">
-          <Image 
-            src="/The_background_is_light_and_202606261423.jpeg" 
-            fill 
-            className="object-cover" 
-            alt="Emotional Mirror State" 
-          />
-          <div className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-black/50 to-transparent" />
-          <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/50 to-transparent" />
-        </div>
-        {/* Centered Payoff Text */}
-        <h2 className="relative z-10 font-serif text-3xl md:text-5xl text-white text-center tracking-tight max-w-2xl px-6 leading-tight drop-shadow-md">
-          Imagine waking up and not thinking about your skin first.
-        </h2>
-      </div>
+      {/* 🎬 CHAPTER 2: THE SLOWDOWN INTERLUDE */}
+      <SlowdownInterlude />
 
-      {/* 4. The Protocol Scroll Stack Section - Sticky Card Cascade Layer */}
+      {/* ⏳ CHAPTER 3: THE PROTOCOL STACK */}
       <ScrollStack />
 
-      {/* 5. Product Reveal / Unboxing Section - Large Centered Mockup Display */}
+      {/* 📱 CHAPTER 4: THE PRODUCT REVEAL */}
       <ProductReveal />
 
-      {/* 6. Identity Shifts / Editorial Proof Section - Rule-Separated Quotes & Grid Metrics */}
-      <Proof />
+      {/* 💬 CHAPTER 5: SOCIAL PROOF */}
+      <SocialProof />
 
-      {/* 7. Frequently Asked Questions Section - Minimal Opaque Accordions */}
-      <FAQ />
+      {/* 🕊️ CHAPTER 6: THE EMOTIONAL RESOLUTION */}
+      <EmotionalResolution />
 
-      {/* 8. Final Purchase Climax - Centered Payoff Callout with Mockup Capsule Box */}
-      <FinalPurchase />
+      {/* 💳 CHAPTER 7: FINAL CTA CLIMAX */}
+      <FinalCTA />
 
-      {/* 9. Global Editorial Footer - Noir Black Underlay Canvas */}
+      {/* Global Editorial Footer */}
       <Footer />
     </main>
   );
