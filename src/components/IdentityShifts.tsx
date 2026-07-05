@@ -3,7 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-export default function Proof() {
+export default function IdentityShifts() {
   const metrics = [
     {
       value: "92%",

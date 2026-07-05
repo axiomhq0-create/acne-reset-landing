@@ -6,7 +6,7 @@ import Hero from "@/components/Hero";
 import CinematicInterlude from "@/components/CinematicInterlude";
 import ScrollStack from "@/components/ScrollStack";
 import ProductReveal from "@/components/ProductReveal";
-import Proof from "@/components/Proof";
+import IdentityShifts from "@/components/IdentityShifts";
 import FAQ from "@/components/FAQ";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
@@ -36,7 +36,7 @@ export default function Home() {
         <CinematicInterlude />
         <ScrollStack />
         <ProductReveal />
-        <Proof />
+        <IdentityShifts />
         <FAQ />
         <FinalCTA />
       </div>

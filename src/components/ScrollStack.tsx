@@ -44,12 +44,12 @@ export default function ScrollStack() {
 
   return (
     // Expanded track container height eliminates the blank pink dead space
-    <section ref={containerRef} className="relative w-full h-[300vh] bg-[#F3D5CE] z-20">
+    <section ref={containerRef} className="relative w-full h-[300vh] bg-[#EDEBDE] z-20">
       {/* Pinned frame stays locked in the viewport window */}
       <div className="sticky top-0 w-full h-screen overflow-hidden flex items-center justify-center">
         
         {/* TRANSITIONING LANDSCAPE UNDERLAY */}
-        <div className="absolute inset-0 z-0 bg-[#F3D5CE]">
+        <div className="absolute inset-0 z-0 bg-[#EDEBDE]">
           {[0, 1, 2].map((idx) => (
             <div
               key={idx}
