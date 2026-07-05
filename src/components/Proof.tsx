@@ -3,7 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-export default function EditorialProof() {
+export default function Proof() {
   const dms = [
     {
       user: "Jessica T.",
@@ -35,7 +35,7 @@ export default function EditorialProof() {
           </h2>
         </div>
 
-        {/* High-fashion editorial text columns separated by horizontal rules */}
+        {/* Clean, vertical editorial typography split by rules */}
         <div className="border-t border-b border-[#2D2624]/20 py-4 text-left">
           
           <div className="flex flex-col sm:flex-row sm:items-center justify-between py-6 gap-2">
@@ -54,18 +54,9 @@ export default function EditorialProof() {
             <span className="text-xs uppercase tracking-wider text-neutral-500 font-semibold">— Chloe</span>
           </div>
 
-          <div className="border-t border-[#2D2624]/20" />
-
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between py-6 gap-2">
-            <p className="font-serif italic text-2xl md:text-3xl text-[#1B1716]">
-              "It wasn't another routine."
-            </p>
-            <span className="text-xs uppercase tracking-wider text-neutral-500 font-semibold">— Emily</span>
-          </div>
-
         </div>
 
-        {/* Underlay: Fading upwards DMs & IG Comments - no layout boxes */}
+        {/* Underlay Canvas: Fading upwards DMs & IG Comments - no layout boxes */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start pt-8">
           
           {/* Direct Messages */}

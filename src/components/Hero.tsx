@@ -5,8 +5,6 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import SpotlightWrapper from "./SpotlightWrapper";
 
-const easeOutPremium = [0.16, 1, 0.3, 1] as const;
-
 export default function Hero() {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -24,7 +22,7 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen w-full flex flex-col justify-between pt-32 pb-16 px-6 md:px-12 bg-[#EDEBDE] text-[#1B1716] overflow-hidden z-20">
       
-      {/* Sunlight studio subtle mesh layer */}
+      {/* Sunlight studio subtle overlay */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-30 mix-blend-color-burn">
         <div className="sunlight-mesh absolute inset-[-10%] w-[120%] h-[120%]" />
       </div>
@@ -45,7 +43,7 @@ export default function Hero() {
             {/* Price Anchor */}
             <div className="flex items-baseline justify-center lg:justify-start gap-2">
               <span className="text-4xl sm:text-5xl font-serif font-semibold text-[#1B1716]">$97</span>
-              <span className="text-xs uppercase tracking-[0.2em] font-semibold text-neutral-400">/ Complete System</span>
+              <span className="text-xs uppercase tracking-[0.2em] font-semibold text-neutral-500">/ Complete System</span>
             </div>
 
             {/* Primary Button */}
@@ -85,24 +83,22 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right Column Display: Sunlight studio shoot with 2px floating loop */}
+        {/* Right Column Display: Full-bleed portrait of a woman in morning sunlight */}
         <div className="w-full flex items-center justify-center lg:justify-end overflow-visible">
           <motion.div 
-            animate={{ y: [0, -4, 0] }}
-            transition={{
-              duration: 5,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-            className="relative w-full max-w-[560px] aspect-square bg-[#FAF8F5]/30 rounded-3xl p-4 shadow-sm border border-white/40 flex items-center justify-center overflow-hidden"
+            initial={{ opacity: 0, scale: 0.98 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="relative w-full max-w-[500px] aspect-[4/5] rounded-[32px] overflow-hidden shadow-2xl border border-white/25"
           >
             <Image 
-              src="/assets/transformation-1.png"
-              alt="Acne Reset Protocol Digital unboxing package (tablet, physical guidebooks, trackers, ceramic bowl, soft fabric shadows)"
+              src="/ChatGPT Image Jul 1, 2026, 01_08_27 PM.png"
+              alt="Protagonist woman in soft natural morning sunlight looking directly into camera with real skin texture and vulnerability"
               fill
-              className="object-contain p-4"
+              className="object-cover"
               priority
-              sizes="(max-width: 1024px) 100vw, 560px"
+              sizes="(max-width: 1024px) 100vw, 500px"
             />
           </motion.div>
         </div>

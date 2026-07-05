@@ -3,11 +3,10 @@
 import React from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import ProductGallery from "@/components/ProductGallery";
+import TransformationFlow from "@/components/TransformationFlow";
 import ScrollStack from "@/components/ScrollStack";
-import Unboxing from "@/components/Unboxing";
-import EditorialProof from "@/components/EditorialProof";
-import EmotionalPayoff from "@/components/EmotionalPayoff";
+import ProductReveal from "@/components/ProductReveal";
+import Proof from "@/components/Proof";
 import FAQ from "@/components/FAQ";
 import FinalPurchase from "@/components/FinalPurchase";
 import Footer from "@/components/Footer";
@@ -31,28 +30,25 @@ export default function Home() {
       {/* Navigation Header */}
       <Header scrollToSection={scrollToSection} />
 
-      {/* SECTION 1: THE HERO */}
+      {/* STAGE 1: THE HUMAN HERO */}
       <Hero />
 
-      {/* SECTION 2: THE PRODUCT */}
-      <ProductGallery />
+      {/* STAGE 2: THE EMOTIONAL PAYOFF */}
+      <TransformationFlow />
 
-      {/* SECTION 3: THE PROTOCOL */}
+      {/* STAGE 3: THE TRANSFORMATION SEQUENCE */}
       <ScrollStack />
 
-      {/* SECTION 4: THE UNBOXING */}
-      <Unboxing />
+      {/* STAGE 4: THE SUBORDINATE PRODUCT REVEAL */}
+      <ProductReveal />
 
-      {/* SECTION 5: EDITORIAL PROOF */}
-      <EditorialProof />
+      {/* STAGE 5: IDENTITY PROOF MATRIX */}
+      <Proof />
 
-      {/* SECTION 6: EMOTIONAL PAYOFF */}
-      <EmotionalPayoff />
-
-      {/* SECTION 7: THE ACCORDION FAQ */}
+      {/* FAQ ACCORDION */}
       <FAQ />
 
-      {/* SECTION 8: FINAL PURCHASE TIER */}
+      {/* STAGE 6: THE CONFIDENCE CHECKOUT */}
       <FinalPurchase />
 
       {/* FOOTER */}

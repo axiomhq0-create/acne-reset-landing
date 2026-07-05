@@ -10,13 +10,10 @@ export default function FinalPurchase() {
     <section id="pricing" className="py-24 md:py-32 bg-[#EDEBDE] text-[#1B1716] border-b border-[#2D2624]/10 relative z-20">
       <div className="max-w-4xl mx-auto px-6 text-center space-y-12">
         
-        {/* Header */}
-        <div className="max-w-3xl mx-auto space-y-4">
-          <span className="text-xs uppercase tracking-[0.2em] font-semibold text-neutral-500 block">
-            The Complete Offering
-          </span>
-          <h2 className="text-3xl md:text-5xl font-serif font-semibold tracking-tight leading-[1.1] text-[#1B1716]">
-            Start Your Reset Today
+        {/* Bold Serif Resolution Header */}
+        <div className="max-w-2xl mx-auto space-y-4">
+          <h2 className="text-3xl md:text-5xl font-serif font-semibold tracking-tight leading-[1.2] text-[#1B1716]">
+            No restarting. No guessing. <br className="hidden md:inline" /> No building another Sunday routine. <br /> Just the next step.
           </h2>
         </div>
 
@@ -36,7 +33,7 @@ export default function FinalPurchase() {
           <div className="space-y-6 w-full max-w-md">
             
             {/* Price node */}
-            <div className="text-5xl md:text-6xl font-serif font-bold text-[#1B1716] tracking-tight">
+            <div className="text-6xl md:text-7xl font-serif font-bold text-[#1B1716] tracking-tight">
               $97
             </div>
 

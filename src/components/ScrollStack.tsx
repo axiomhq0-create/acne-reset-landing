@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef } from "react";
+import Image from "next/image";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 
 export default function ScrollStack() {
@@ -12,6 +13,11 @@ export default function ScrollStack() {
   });
 
   const springConfig = { stiffness: 45, damping: 15, mass: 0.8 };
+
+  // Map scroll progress to background image opacity fades
+  const bgOpacity0 = useSpring(useTransform(scrollYProgress, [0, 0.35, 0.45], [1, 1, 0]), springConfig);
+  const bgOpacity1 = useSpring(useTransform(scrollYProgress, [0.35, 0.45, 0.70, 0.80], [0, 1, 1, 0]), springConfig);
+  const bgOpacity2 = useSpring(useTransform(scrollYProgress, [0.70, 0.80, 1], [0, 0, 1]), springConfig);
 
   // Cards lift, stack, and compress linearly
   const scale0 = useSpring(useTransform(scrollYProgress, [0, 0.35, 0.45], [1, 0.95, 0.95]), springConfig);
@@ -25,14 +31,11 @@ export default function ScrollStack() {
   const scale2 = useSpring(useTransform(scrollYProgress, [0, 0.55, 0.8], [0.95, 0.95, 1]), springConfig);
   const opacity2 = useSpring(useTransform(scrollYProgress, [0, 0.55, 0.8], [0, 0, 1]), springConfig);
 
-  // Side progress line animation height
-  const progressLineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
-
   return (
-    <section className="relative bg-[#F3D5CE] py-32 z-20">
+    <section className="relative bg-[#EDEBDE] overflow-visible py-32 z-20">
       
       {/* Header */}
-      <div className="max-w-4xl mx-auto px-6 text-center pb-12">
+      <div className="max-w-4xl mx-auto px-6 text-center pb-12 relative z-30">
         <span className="text-[10px] uppercase tracking-[0.25em] font-semibold text-[#810100] block mb-3">
           The Clean Skincare Sequence
         </span>
@@ -42,120 +45,140 @@ export default function ScrollStack() {
       </div>
 
       {/* Sticky Window Container */}
-      <div ref={containerRef} className="relative h-[150vh] w-full overflow-visible">
-        <div className="sticky top-0 h-[85vh] w-full flex items-center justify-center overflow-visible">
+      <div ref={containerRef} className="relative h-[200vh] w-full overflow-visible">
+        
+        {/* Sticky Background Image Box */}
+        <div className="sticky top-0 h-screen w-full overflow-hidden z-10 flex items-center justify-center">
           
-          {/* Main layout container with cards and side progress */}
-          <div className="relative w-full max-w-[90vw] md:max-w-2xl mx-auto flex flex-row items-center gap-8 h-[55vh] overflow-visible">
+          {/* Background image 1: CALM */}
+          <motion.div style={{ opacity: bgOpacity0 }} className="absolute inset-0 w-full h-full">
+            <Image 
+              src="/Reduce_the_intensity_of_the_202606261417.jpeg"
+              alt="Protagonist Calm State (Post-inflammation lowering, softening posture)"
+              fill
+              className="object-cover brightness-[0.7] contrast-[1.02]"
+              sizes="100vw"
+            />
+          </motion.div>
+
+          {/* Background image 2: CLEAR */}
+          <motion.div style={{ opacity: bgOpacity1 }} className="absolute inset-0 w-full h-full">
+            <Image 
+              src="/The_background_is_light_and_202606261423.jpeg"
+              alt="Protagonist Clear State (Skin stabilizing, expression turning upward)"
+              fill
+              className="object-cover brightness-[0.7] contrast-[1.02]"
+              sizes="100vw"
+            />
+          </motion.div>
+
+          {/* Background image 3: MAINTAIN */}
+          <motion.div style={{ opacity: bgOpacity2 }} className="absolute inset-0 w-full h-full">
+            <Image 
+              src="/Remove_the_black_dress_and_202606261411.jpeg"
+              alt="Protagonist Maintain State (Radical confidence, looking past mirror)"
+              fill
+              className="object-cover brightness-[0.7] contrast-[1.02]"
+              sizes="100vw"
+            />
+          </motion.div>
+
+          {/* Dark Overlay for Text readability */}
+          <div className="absolute inset-0 bg-black/15 pointer-events-none" />
+
+          {/* Centered Glassmorphic Cards Stack */}
+          <div className="relative w-full max-w-[90vw] md:max-w-xl mx-auto flex items-center justify-center px-4 h-[60vh] overflow-visible z-20">
             
-            {/* Left Side Progress Element */}
-            <div className="hidden md:flex flex-col items-center h-[300px] relative shrink-0 z-30">
-              <div className="w-[1px] h-full bg-[#1B1716]/10 relative rounded-full overflow-hidden">
-                <motion.div 
-                  style={{ height: progressLineHeight }}
-                  className="w-full bg-[#810100] rounded-full"
-                />
+            {/* Card 1 */}
+            <motion.div
+              style={{
+                scale: scale0,
+                opacity: opacity0,
+                zIndex: 1,
+                transform: "translateZ(0)",
+                willChange: "transform, opacity",
+              }}
+              className="absolute w-full origin-top"
+            >
+              <div 
+                className="w-full p-8 md:p-10 rounded-[24px] text-left space-y-4 shadow-xl"
+                style={{
+                  backgroundColor: "rgba(255, 255, 255, 0.45)",
+                  backdropFilter: "blur(14px)",
+                  WebkitBackdropFilter: "blur(14px)",
+                  border: "1px solid rgba(255, 255, 255, 0.6)",
+                }}
+              >
+                <span className="text-[10px] uppercase font-bold text-[#810100] tracking-widest block">Phase 01 — Days 1-21</span>
+                <h3 className="text-2xl md:text-3xl font-serif font-semibold text-[#1B1716]">CALM — Reduce inflammation.</h3>
+                <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed max-w-md">
+                  Stop the flare-ups first by stabilizing the lipid barrier. Active treatment on inflamed skin only causes more reactive spots.
+                </p>
               </div>
-              <div className="absolute inset-y-0 flex flex-col justify-between items-center py-2 text-[9px] font-mono text-[#810100] font-bold uppercase">
-                <span>01</span>
-                <span>02</span>
-                <span>03</span>
+            </motion.div>
+
+            {/* Card 2 */}
+            <motion.div
+              style={{
+                y: y1,
+                scale: scale1,
+                opacity: opacity1,
+                zIndex: 2,
+                transform: "translateZ(0)",
+                willChange: "transform, opacity",
+              }}
+              className="absolute w-full origin-top"
+            >
+              <div 
+                className="w-full p-8 md:p-10 rounded-[24px] text-left space-y-4 shadow-xl"
+                style={{
+                  backgroundColor: "rgba(255, 255, 255, 0.45)",
+                  backdropFilter: "blur(14px)",
+                  WebkitBackdropFilter: "blur(14px)",
+                  border: "1px solid rgba(255, 255, 255, 0.6)",
+                }}
+              >
+                <span className="text-[10px] uppercase font-bold text-[#810100] tracking-widest block">Phase 02 — Days 22-66</span>
+                <h3 className="text-2xl md:text-3xl font-serif font-semibold text-[#1B1716]">CLEAR — Treat stable skin.</h3>
+                <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed max-w-md">
+                  Introduce targeted active ingredients once the skin is stabilized, healthy, and ready to absorb clear-agent routines.
+                </p>
               </div>
-            </div>
+            </motion.div>
 
-            {/* Cards viewport */}
-            <div className="relative flex-1 h-full flex items-center justify-center overflow-visible">
-              
-              {/* Card 1 */}
-              <motion.div
+            {/* Card 3 */}
+            <motion.div
+              style={{
+                y: y2,
+                scale: scale2,
+                opacity: opacity2,
+                zIndex: 3,
+                transform: "translateZ(0)",
+                willChange: "transform, opacity",
+              }}
+              className="absolute w-full origin-top"
+            >
+              <div 
+                className="w-full p-8 md:p-10 rounded-[24px] text-left space-y-4 shadow-xl"
                 style={{
-                  scale: scale0,
-                  opacity: opacity0,
-                  zIndex: 1,
-                  transform: "translateZ(0)",
-                  willChange: "transform, opacity",
+                  backgroundColor: "rgba(255, 255, 255, 0.45)",
+                  backdropFilter: "blur(14px)",
+                  WebkitBackdropFilter: "blur(14px)",
+                  border: "1px solid rgba(255, 255, 255, 0.6)",
                 }}
-                className="absolute w-full origin-top"
               >
-                <div 
-                  className="w-full p-8 md:p-12 rounded-[24px] text-left space-y-4 shadow-sm"
-                  style={{
-                    backgroundColor: "rgba(255, 255, 255, 0.45)",
-                    backdropFilter: "blur(14px)",
-                    WebkitBackdropFilter: "blur(14px)",
-                    border: "1px solid rgba(255, 255, 255, 0.6)",
-                  }}
-                >
-                  <span className="text-[10px] uppercase font-bold text-[#810100] tracking-widest block">Phase 01 — Days 1-21</span>
-                  <h3 className="text-2xl md:text-3xl font-serif font-semibold text-[#1B1716]">CALM — Reduce inflammation.</h3>
-                  <p className="text-sm text-neutral-600 leading-relaxed max-w-md">
-                    Stop the flare-ups first by stabilizing the lipid barrier. Active treatment on inflamed skin only causes more reactive spots.
-                  </p>
-                </div>
-              </motion.div>
-
-              {/* Card 2 */}
-              <motion.div
-                style={{
-                  y: y1,
-                  scale: scale1,
-                  opacity: opacity1,
-                  zIndex: 2,
-                  transform: "translateZ(0)",
-                  willChange: "transform, opacity",
-                }}
-                className="absolute w-full origin-top"
-              >
-                <div 
-                  className="w-full p-8 md:p-12 rounded-[24px] text-left space-y-4 shadow-sm"
-                  style={{
-                    backgroundColor: "rgba(255, 255, 255, 0.45)",
-                    backdropFilter: "blur(14px)",
-                    WebkitBackdropFilter: "blur(14px)",
-                    border: "1px solid rgba(255, 255, 255, 0.6)",
-                  }}
-                >
-                  <span className="text-[10px] uppercase font-bold text-[#810100] tracking-widest block">Phase 02 — Days 22-66</span>
-                  <h3 className="text-2xl md:text-3xl font-serif font-semibold text-[#1B1716]">CLEAR — Treat stable skin.</h3>
-                  <p className="text-sm text-neutral-600 leading-relaxed max-w-md">
-                    Introduce targeted active ingredients once the skin is stabilized, healthy, and ready to absorb clear-agent routines.
-                  </p>
-                </div>
-              </motion.div>
-
-              {/* Card 3 */}
-              <motion.div
-                style={{
-                  y: y2,
-                  scale: scale2,
-                  opacity: opacity2,
-                  zIndex: 3,
-                  transform: "translateZ(0)",
-                  willChange: "transform, opacity",
-                }}
-                className="absolute w-full origin-top"
-              >
-                <div 
-                  className="w-full p-8 md:p-12 rounded-[24px] text-left space-y-4 shadow-sm"
-                  style={{
-                    backgroundColor: "rgba(255, 255, 255, 0.45)",
-                    backdropFilter: "blur(14px)",
-                    WebkitBackdropFilter: "blur(14px)",
-                    border: "1px solid rgba(255, 255, 255, 0.6)",
-                  }}
-                >
-                  <span className="text-[10px] uppercase font-bold text-[#810100] tracking-widest block">Phase 03 — Ongoing</span>
-                  <h3 className="text-2xl md:text-3xl font-serif font-semibold text-[#1B1716]">MAINTAIN — Keep results.</h3>
-                  <p className="text-sm text-neutral-600 leading-relaxed max-w-md">
-                    Lock in clear skin permanently with a simplified daily maintenance protocol to prevent returning blemishes.
-                  </p>
-                </div>
-              </motion.div>
-
-            </div>
+                <span className="text-[10px] uppercase font-bold text-[#810100] tracking-widest block">Phase 03 — Ongoing</span>
+                <h3 className="text-2xl md:text-3xl font-serif font-semibold text-[#1B1716]">MAINTAIN — Keep results.</h3>
+                <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed max-w-md">
+                  Lock in clear skin permanently with a simplified daily maintenance protocol to prevent returning blemishes.
+                </p>
+              </div>
+            </motion.div>
 
           </div>
+
         </div>
+
       </div>
     </section>
   );
