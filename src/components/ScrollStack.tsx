@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 
@@ -19,11 +19,6 @@ export default function ScrollStack() {
   const bgOpacity1 = useSpring(useTransform(scrollYProgress, [0.35, 0.45, 0.70, 0.80], [0, 1, 1, 0]), springConfig);
   const bgOpacity2 = useSpring(useTransform(scrollYProgress, [0.70, 0.80, 1], [0, 0, 1]), springConfig);
 
-  // Dynamic text opacity transforms to hide inactive cards text completely
-  const textOpacity0 = useTransform(scrollYProgress, [0, 0.35, 0.45], [1, 1, 0]);
-  const textOpacity1 = useTransform(scrollYProgress, [0, 0.35, 0.45, 0.70, 0.80], [0, 0, 1, 1, 0]);
-  const textOpacity2 = useTransform(scrollYProgress, [0, 0.70, 0.80, 1], [0, 0, 1, 1]);
-
   // Cards lift, stack, and compress linearly
   const scale0 = useSpring(useTransform(scrollYProgress, [0, 0.35, 0.45], [1, 0.95, 0.95]), springConfig);
   const opacity0 = useSpring(useTransform(scrollYProgress, [0, 0.35, 0.45], [1, 1, 0.3]), springConfig);
@@ -36,8 +31,24 @@ export default function ScrollStack() {
   const scale2 = useSpring(useTransform(scrollYProgress, [0, 0.55, 0.8], [0.95, 0.95, 1]), springConfig);
   const opacity2 = useSpring(useTransform(scrollYProgress, [0, 0.55, 0.8], [0, 0, 1]), springConfig);
 
+  // Active card index tracked from scroll progress
+  const [activeCard, setActiveCard] = useState(0);
+
+  useEffect(() => {
+    const unsubscribe = scrollYProgress.onChange((latest) => {
+      if (latest < 0.35) {
+        setActiveCard(0);
+      } else if (latest < 0.70) {
+        setActiveCard(1);
+      } else {
+        setActiveCard(2);
+      }
+    });
+    return () => unsubscribe();
+  }, [scrollYProgress]);
+
   return (
-    <section className="relative w-full block min-h-screen clear-both bg-[#EDEBDE] overflow-visible py-32 z-20">
+    <section className="relative bg-[#EDEBDE] overflow-visible py-32 z-20">
       
       {/* Header */}
       <div className="max-w-4xl mx-auto px-6 text-center pb-12 relative z-30">
@@ -114,10 +125,17 @@ export default function ScrollStack() {
                   border: "1px solid rgba(255, 255, 255, 0.6)",
                 }}
               >
-                <motion.div className="relative z-10 w-full opacity-100 block text-[#1B1716] space-y-4 select-none">
+                <motion.div 
+                  animate={{ 
+                    opacity: activeCard === 0 ? 1 : 0,
+                    y: activeCard === 0 ? 0 : -10
+                  }}
+                  transition={{ duration: 0.3 }}
+                  className="pointer-events-none select-none space-y-4 text-[#1B1716]"
+                >
                   <span className="text-[10px] uppercase font-bold text-[#810100] tracking-widest block">Phase 01 — Days 1-21</span>
-                  <h3 className="text-2xl md:text-3xl font-serif font-semibold text-[#1B1716]">CALM — Reduce inflammation.</h3>
-                  <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed max-w-md">
+                  <h3 className="text-2xl md:text-3xl font-serif font-semibold">CALM — Reduce inflammation.</h3>
+                  <p className="text-xs sm:text-sm text-neutral-800 leading-relaxed max-w-md">
                     Stop the flare-ups first by stabilizing the lipid barrier. Active treatment on inflamed skin only causes more reactive spots.
                   </p>
                 </motion.div>
@@ -145,10 +163,17 @@ export default function ScrollStack() {
                   border: "1px solid rgba(255, 255, 255, 0.6)",
                 }}
               >
-                <motion.div className="relative z-10 w-full opacity-100 block text-[#1B1716] space-y-4 select-none">
+                <motion.div 
+                  animate={{ 
+                    opacity: activeCard === 1 ? 1 : 0,
+                    y: activeCard === 1 ? 0 : -10
+                  }}
+                  transition={{ duration: 0.3 }}
+                  className="pointer-events-none select-none space-y-4 text-[#1B1716]"
+                >
                   <span className="text-[10px] uppercase font-bold text-[#810100] tracking-widest block">Phase 02 — Days 22-66</span>
-                  <h3 className="text-2xl md:text-3xl font-serif font-semibold text-[#1B1716]">CLEAR — Treat stable skin.</h3>
-                  <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed max-w-md">
+                  <h3 className="text-2xl md:text-3xl font-serif font-semibold">CLEAR — Treat stable skin.</h3>
+                  <p className="text-xs sm:text-sm text-neutral-800 leading-relaxed max-w-md">
                     Introduce targeted active ingredients once the skin is stabilized, healthy, and ready to absorb clear-agent routines.
                   </p>
                 </motion.div>
@@ -176,10 +201,17 @@ export default function ScrollStack() {
                   border: "1px solid rgba(255, 255, 255, 0.6)",
                 }}
               >
-                <motion.div className="relative z-10 w-full opacity-100 block text-[#1B1716] space-y-4 select-none">
+                <motion.div 
+                  animate={{ 
+                    opacity: activeCard === 2 ? 1 : 0,
+                    y: activeCard === 2 ? 0 : -10
+                  }}
+                  transition={{ duration: 0.3 }}
+                  className="pointer-events-none select-none space-y-4 text-[#1B1716]"
+                >
                   <span className="text-[10px] uppercase font-bold text-[#810100] tracking-widest block">Phase 03 — Ongoing</span>
-                  <h3 className="text-2xl md:text-3xl font-serif font-semibold text-[#1B1716]">MAINTAIN — Keep results.</h3>
-                  <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed max-w-md">
+                  <h3 className="text-2xl md:text-3xl font-serif font-semibold">MAINTAIN — Keep results.</h3>
+                  <p className="text-xs sm:text-sm text-neutral-800 leading-relaxed max-w-md">
                     Lock in clear skin permanently with a simplified daily maintenance protocol to prevent returning blemishes.
                   </p>
                 </motion.div>
