@@ -6,7 +6,7 @@ import Hero from "@/components/Hero";
 import CinematicInterlude from "@/components/CinematicInterlude";
 import ScrollStack from "@/components/ScrollStack";
 import ProductReveal from "@/components/ProductReveal";
-import SocialProof from "@/components/SocialProof";
+import Proof from "@/components/Proof";
 import FAQ from "@/components/FAQ";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
@@ -26,22 +26,21 @@ export default function Home() {
   };
 
   return (
-    <main className="w-full relative min-h-screen bg-[#EDEBDE] block overflow-x-hidden text-[#1B1716] antialiased scroll-smooth selection:bg-[#810100] selection:text-white">
+    <main className="w-full relative min-h-screen bg-[#EDEBDE] block overflow-x-hidden text-[#1B1716] antialiased">
       {/* Global Navigation Frame */}
       <Header scrollToSection={scrollToSection} />
 
-      {/* Scene Array Stacking Natively for Perfect Fluid Pacing */}
+      {/* Seamless, sequential layout with zero hard section wrappers */}
       <div className="w-full block relative space-y-0">
         <Hero />
         <CinematicInterlude />
         <ScrollStack />
         <ProductReveal />
-        <SocialProof />
+        <Proof />
         <FAQ />
         <FinalCTA />
       </div>
 
-      {/* Global Editorial Footer */}
       <Footer />
     </main>
   );
