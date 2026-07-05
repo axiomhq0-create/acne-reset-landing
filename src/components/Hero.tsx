@@ -20,7 +20,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative w-full min-h-screen flex items-center px-6 md:px-12 py-24 overflow-hidden bg-[#EDEBDE]">
+    <section className="relative w-full min-h-screen flex items-center px-6 md:px-12 py-24 overflow-hidden bg-[#EDEBDE] block opacity-100 visible z-20">
       
       {/* Layer 0 & 1 & 2: The Absolute Background Portrait & Cinematic Overlay Stack */}
       <div className="absolute inset-0 z-0">
@@ -39,7 +39,7 @@ export default function Hero() {
       </div>
 
       {/* Layer 3: Interactive Text Layer Bounding Box */}
-      <div className="relative z-10 max-w-[1280px] mx-auto w-full flex flex-col items-start text-left space-y-8">
+      <div className="relative z-10 block opacity-100 visible max-w-[1280px] mx-auto w-full flex flex-col items-start text-left space-y-8">
         
         {/* Headline */}
         <motion.h1 

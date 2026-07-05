@@ -26,7 +26,7 @@ export default function Home() {
   };
 
   return (
-    <div className="overflow-x-hidden w-full relative space-y-0 bg-[#EDEBDE] text-[#1B1716] min-h-screen font-sans antialiased selection:bg-[#810100] selection:text-white">
+    <main className="w-full relative min-h-screen bg-[#EDEBDE] block overflow-x-hidden overflow-y-auto text-[#1B1716] font-sans antialiased selection:bg-[#810100] selection:text-white">
       {/* Navigation Header */}
       <Header scrollToSection={scrollToSection} />
 
@@ -60,6 +60,6 @@ export default function Home() {
 
       {/* FOOTER */}
       <Footer />
-    </div>
+    </main>
   );
 }

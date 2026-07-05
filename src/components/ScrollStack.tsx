@@ -37,7 +37,7 @@ export default function ScrollStack() {
   const opacity2 = useSpring(useTransform(scrollYProgress, [0, 0.55, 0.8], [0, 0, 1]), springConfig);
 
   return (
-    <section className="relative bg-[#EDEBDE] overflow-visible py-32 z-20">
+    <section className="relative w-full block min-h-screen clear-both bg-[#EDEBDE] overflow-visible py-32 z-20">
       
       {/* Header */}
       <div className="max-w-4xl mx-auto px-6 text-center pb-12 relative z-30">
@@ -114,7 +114,7 @@ export default function ScrollStack() {
                   border: "1px solid rgba(255, 255, 255, 0.6)",
                 }}
               >
-                <motion.div style={{ opacity: textOpacity0 }} className="pointer-events-none select-none space-y-4">
+                <motion.div className="relative z-10 w-full opacity-100 block text-[#1B1716] space-y-4 select-none">
                   <span className="text-[10px] uppercase font-bold text-[#810100] tracking-widest block">Phase 01 — Days 1-21</span>
                   <h3 className="text-2xl md:text-3xl font-serif font-semibold text-[#1B1716]">CALM — Reduce inflammation.</h3>
                   <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed max-w-md">
@@ -145,7 +145,7 @@ export default function ScrollStack() {
                   border: "1px solid rgba(255, 255, 255, 0.6)",
                 }}
               >
-                <motion.div style={{ opacity: textOpacity1 }} className="pointer-events-none select-none space-y-4">
+                <motion.div className="relative z-10 w-full opacity-100 block text-[#1B1716] space-y-4 select-none">
                   <span className="text-[10px] uppercase font-bold text-[#810100] tracking-widest block">Phase 02 — Days 22-66</span>
                   <h3 className="text-2xl md:text-3xl font-serif font-semibold text-[#1B1716]">CLEAR — Treat stable skin.</h3>
                   <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed max-w-md">
@@ -176,7 +176,7 @@ export default function ScrollStack() {
                   border: "1px solid rgba(255, 255, 255, 0.6)",
                 }}
               >
-                <motion.div style={{ opacity: textOpacity2 }} className="pointer-events-none select-none space-y-4">
+                <motion.div className="relative z-10 w-full opacity-100 block text-[#1B1716] space-y-4 select-none">
                   <span className="text-[10px] uppercase font-bold text-[#810100] tracking-widest block">Phase 03 — Ongoing</span>
                   <h3 className="text-2xl md:text-3xl font-serif font-semibold text-[#1B1716]">MAINTAIN — Keep results.</h3>
                   <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed max-w-md">
