@@ -1,35 +1,85 @@
 "use client";
 
-import React from "react";
-import AnimatedList from "./ui/AnimatedList";
+import React, { useState } from "react";
+import { Plus, Minus } from "lucide-react";
 
 const faqItems = [
-  "<div><p class='faq-question'>Is this a replacement for seeing a dermatologist?</p><p class='faq-answer'>No, and it doesn't try to be. If your skin needs medical treatment, this works alongside that care instead of replacing it. The system is built entirely around skincare education and structure, not diagnosis.</p></div>",
-  "<div><p class='faq-question'>How long until I see results?</p><p class='faq-answer'>Calm is 21 days. Clear is 45 days. Maintain is ongoing. We're not going to give you a number we can't stand behind. What we can tell you is that the phases are designed so your skin is never working against the step it's in.</p></div>",
-  "<div><p class='faq-question'>I don't know my skin type or which actives to use?</p><p class='faq-answer'>That's what the Product Selection Guide and Calm Phase Product Guide are built for. You don't need to know anything before you start, as the guides walk you through exactly what to use and why.</p></div>",
-  "<div><p class='faq-question'>Can I start with Calm or The Roadmap and upgrade later?</p><p class='faq-answer'>Yes. Both are built as entry points into the same system. When you're ready to continue, the path is already there.</p></div>",
-  "<div><p class='faq-question'>I've already tried everything.</p><p class='faq-answer'>Then you already know the problem isn't the ingredients. The 3-Phase Reset was not built around finding a single miracle product. It was designed to give your skin a clear structure that makes whatever you choose to use actually work. The missing piece was never the product. It was the order.</p></div>",
-  "<div><p class='faq-question'>Is this a subscription?</p><p class='faq-answer'>No. Every product is a one-time purchase. No recurring charges. No surprises.</p></div>",
-  "<div><p class='faq-question'>How do I get support?</p><p class='faq-answer'>Through our official social channels. We respond within 24 to 48 hours.</p></div>"
+  {
+    q: "Is this medical advice?",
+    a: "No. The Acne Reset Protocol is an educational system providing step-by-step skincare sequencing structure. If you have medical concerns or require prescription treatment, consult a board-certified dermatologist."
+  },
+  {
+    q: "Do I need specific products?",
+    a: "No. The system is designed to work with products you already own. We guide you on active ingredient categories, but you do not need to buy any specific brand or custom skincare line."
+  },
+  {
+    q: "When do I get access?",
+    a: "Immediately. As soon as your checkout is completed, you will receive an email link with instant access to the digital guides, trackers, and dashboard."
+  },
+  {
+    q: "Is this lifetime?",
+    a: "Yes. You pay once ($97) and receive lifetime access, including any future updates or additions to the protocol at no extra cost."
+  },
+  {
+    q: "Can beginners use it?",
+    a: "Yes, absolutely. The guides are written in plain, non-clinical terms, guiding you step-by-step from day 1 to day 90 with clear check-ins and instructions."
+  }
 ];
 
 export default function FAQ() {
-  return (
-    <section id="faq" className="bg-[#FAF6F0] py-24 w-full flex flex-col items-center justify-center overflow-visible">
-      <div className="text-center mb-12 max-w-2xl px-4">
-        <h2 className="text-3xl md:text-5xl font-serif text-[#1c1917] font-semibold tracking-tight">
-          Frequently Asked Questions
-        </h2>
-      </div>
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-      {/* Animated Scroll List Frame */}
-      <div className="w-full max-w-4xl px-4 relative">
-        <AnimatedList 
-          items={faqItems}
-          displayScrollbar={false}
-          showGradients={true}
-          itemClassName="border border-stone-200/40"
-        />
+  const toggle = (idx: number) => {
+    setOpenIndex(openIndex === idx ? null : idx);
+  };
+
+  return (
+    <section id="faq" className="py-24 bg-[#EDEBDE] text-[#1B1716] border-b border-[#2D2624]/10 relative z-20">
+      <div className="max-w-3xl mx-auto px-6">
+        
+        {/* Header */}
+        <div className="text-center mb-16">
+          <span className="text-xs uppercase tracking-[0.2em] font-semibold text-neutral-500 mb-3 block">
+            Common Questions
+          </span>
+          <h2 className="text-3xl md:text-5xl font-serif font-semibold tracking-tight leading-[1.1] text-[#1B1716]">
+            Frequently Asked Questions
+          </h2>
+        </div>
+
+        {/* Accordion List */}
+        <div className="space-y-4">
+          {faqItems.map((item, idx) => {
+            const isOpen = openIndex === idx;
+            return (
+              <div 
+                key={idx} 
+                className="border-b border-[#2D2624]/10 pb-4 transition-colors duration-200"
+              >
+                <button
+                  onClick={() => toggle(idx)}
+                  className="w-full flex items-center justify-between py-4 text-left font-serif font-semibold text-base md:text-lg text-[#1B1716] hover:text-[#810100] transition-colors cursor-pointer"
+                >
+                  <span>{item.q}</span>
+                  <span className="ml-4 shrink-0 text-[#810100]">
+                    {isOpen ? <Minus size={18} /> : <Plus size={18} />}
+                  </span>
+                </button>
+
+                <div
+                  className={`overflow-hidden transition-all duration-300 ${
+                    isOpen ? "max-h-[300px] opacity-100 mt-2" : "max-h-0 opacity-0"
+                  }`}
+                >
+                  <p className="text-sm md:text-base text-neutral-600 leading-relaxed pb-4">
+                    {item.a}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
       </div>
     </section>
   );

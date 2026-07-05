@@ -3,11 +3,13 @@
 import React from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import Mechanism from "@/components/Mechanism";
-import Phases from "@/components/Phases";
-import WhatsInside from "@/components/WhatsInside";
-import Pricing from "@/components/Pricing";
+import EverythingIncluded from "@/components/EverythingIncluded";
+import ScrollStack from "@/components/ScrollStack";
+import Proof from "@/components/Proof";
+import WhyItSticks from "@/components/WhyItSticks";
+import Guarantee from "@/components/Guarantee";
 import FAQ from "@/components/FAQ";
+import Pricing from "@/components/Pricing";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -25,29 +27,35 @@ export default function Home() {
   };
 
   return (
-    <div className="bg-linen text-ink min-h-screen font-sans antialiased selection:bg-bloomDeep selection:text-[#1A1B12]">
+    <div className="bg-linen text-ink min-h-screen font-sans antialiased selection:bg-[#810100] selection:text-white">
       {/* Navigation Header */}
       <Header scrollToSection={scrollToSection} />
 
-      {/* Hero Section */}
+      {/* 1. HERO KEYNOTE */}
       <Hero scrollToSection={scrollToSection} />
 
-      {/* Mechanism Section */}
-      <Mechanism />
+      {/* 2. EVERYTHING INCLUDED "UNBOXING" */}
+      <EverythingIncluded />
 
-      {/* Phases Showcase Section */}
-      <Phases />
+      {/* 3. HOW THE PROTOCOL WORKS (The Clean Sequence) */}
+      <ScrollStack />
 
-      {/* What's Inside Section */}
-      <WhatsInside />
+      {/* 4. RESULTS & SOCIAL PROOF DOMINANCE */}
+      <Proof />
 
-      {/* Offerings Section */}
-      <Pricing />
+      {/* 5. WHY PEOPLE FINALLY STICK WITH IT */}
+      <WhyItSticks />
 
-      {/* FAQ Section */}
+      {/* 6. THE 14-DAY FEEL CALMER GUARANTEE */}
+      <Guarantee />
+
+      {/* 7. ACCORDION FAQ */}
       <FAQ />
 
-      {/* Final CTA & Footer */}
+      {/* 8. FINAL CLOSING CTA */}
+      <Pricing />
+
+      {/* Footer Navigation & Legal Block */}
       <Footer scrollToSection={scrollToSection} />
     </div>
   );

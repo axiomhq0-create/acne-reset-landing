@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import SpotlightWrapper from './SpotlightWrapper';
+import React from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import SpotlightWrapper from "./SpotlightWrapper";
 
 const easeOutPremium = [0.16, 1, 0.3, 1] as const;
 
@@ -12,23 +12,17 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.05,
+      staggerChildren: 0.08,
     },
   },
 };
 
 const itemVariants = {
-  hidden: { 
-    opacity: 0, 
-    y: 8
-  },
+  hidden: { opacity: 0, y: 15 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      duration: 0.3,
-      ease: easeOutPremium,
-    },
+    transition: { duration: 0.5, ease: easeOutPremium },
   },
 };
 
@@ -37,165 +31,114 @@ interface HeroProps {
 }
 
 export default function Hero({ scrollToSection }: HeroProps) {
-  const [isMobile, setIsMobile] = React.useState(false);
-
-  React.useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
   return (
-    <section className="relative min-h-screen min-h-[100vh] w-full flex flex-col justify-between pt-36 pb-16 px-4 md:px-8 overflow-hidden bg-[#FAF6F0]">
+    <section className="relative min-h-screen w-full flex flex-col justify-between pt-32 pb-16 px-6 md:px-12 bg-[#EDEBDE] text-[#1B1716] overflow-hidden">
       
-      {/* LAYER 1: BASE IMAGE ASSET (z-0) */}
-      <Image
-        src="/ChatGPT Image Jul 1, 2026, 01_08_27 PM.png"
-        alt="Acne Reset Editorial Model Portrait"
-        fill
-        className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none z-0"
-        priority
-      />
-
-      {/* LAYER 2: PLASMA GLASS VIGNETTE OVERLAY (z-10) */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.2 }}
-        className="absolute inset-0 z-10 backdrop-blur-[16px] pointer-events-none"
-        style={{
-          background: isMobile
-            ? 'radial-gradient(circle at 50% 40%, transparent 15%, rgba(250,246,240,0.4) 45%, rgba(245,235,225,0.95) 85%)'
-            : 'radial-gradient(circle at center, transparent 15%, rgba(250,246,240,0.4) 45%, rgba(245,235,225,0.95) 85%)',
-          maskImage: isMobile
-            ? 'radial-gradient(circle at 50% 40%, transparent 20%, black 75%)'
-            : 'radial-gradient(circle at center, transparent 20%, black 75%)',
-          WebkitMaskImage: isMobile
-            ? 'radial-gradient(circle at 50% 40%, transparent 20%, black 75%)'
-            : 'radial-gradient(circle at center, transparent 20%, black 75%)'
-        }}
-      />
-
-      {/* Ambient pink plasma blend layer for skin tones overlay */}
-      <div 
-        className="absolute inset-0 z-10 overflow-hidden pointer-events-none opacity-80 md:opacity-75 mix-blend-color-burn md:mix-blend-soft-light"
-      >
+      {/* Subtle overlay styling elements */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-40 mix-blend-color-burn">
         <div className="sunlight-mesh absolute inset-[-10%] w-[120%] h-[120%]" />
       </div>
 
-      {/* LAYER 3: THE FIXED FOREGROUND LAYOUT (z-20) */}
-      <div 
-        style={{ position: "relative", zIndex: 20 }}
-        className="flex-grow flex flex-col justify-between items-center md:items-start h-full w-full max-w-7xl mx-auto"
-      >
-        {/* Upper text/CTA content */}
-        <div className="flex flex-col items-center md:items-start w-full max-w-2xl mt-auto mb-auto">
+      <div className="relative z-10 w-full max-w-7xl mx-auto my-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center py-8">
+        
+        {/* Left Column Copy Stack */}
+        <div className="lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left space-y-6 md:space-y-8">
           <motion.div 
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, amount: 0.15 }}
-            className="flex flex-col items-center md:items-start w-full space-y-4 md:space-y-6 text-center md:text-left"
-            style={{ willChange: "transform, opacity" }}
+            viewport={{ once: true }}
+            className="space-y-6 w-full"
           >
             <motion.h1 
               variants={itemVariants} 
-              className="text-4xl sm:text-5xl lg:text-7xl font-serif text-[#2D2624] font-semibold leading-[1.15] tracking-tight max-w-2xl"
-              style={{ willChange: "transform, opacity" }}
+              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif font-semibold leading-[1.1] tracking-tight max-w-2xl text-[#1B1716]"
             >
               You don't have to pretend the mirror doesn't matter.
             </motion.h1>
 
             <motion.p 
               variants={itemVariants} 
-              className="text-[#2D2624]/95 text-sm md:text-lg leading-relaxed max-w-xl text-center md:text-left"
-              style={{ willChange: "transform, opacity" }}
+              className="text-neutral-600 text-base sm:text-lg lg:text-xl leading-relaxed max-w-xl"
             >
-              You've spent hundreds on products that never seemed to stick. The 3-Phase Acne Reset Protocol is a 90-day process to calm reactive skin, clear the cycle, and maintain your results — with trackers, product guides, and daily guidance included.
+              The Complete 3-Phase Acne Reset Protocol. Everything you need for the full 90-day process.
             </motion.p>
 
-            {/* Timeline capsule wrapper */}
+            {/* Price Node */}
             <motion.div 
-              variants={itemVariants} 
-              className="w-full flex justify-center md:justify-start px-2"
+              variants={itemVariants}
+              className="flex items-baseline justify-center lg:justify-start gap-2"
             >
-              <div className="w-full max-w-md mx-auto md:mx-0 flex flex-row items-center justify-center md:justify-start whitespace-nowrap gap-x-2 text-[11px] sm:text-xs py-3 px-4 bg-white/50 backdrop-blur-md border border-white/80 rounded-full text-stone-700 shadow-sm">
-                <span className="font-semibold text-[#2D2624]">Calm</span>
-                <span className="text-stone-500 font-light">(21 Days)</span>
-                <span className="text-stone-400 font-light">•</span>
-                <span className="font-semibold text-[#2D2624]">Clear</span>
-                <span className="text-stone-500 font-light">(45 Days)</span>
-                <span className="text-stone-400 font-light">•</span>
-                <span className="font-semibold text-[#2D2624]">Maintain</span>
-                <span className="text-stone-500 font-light">(Ongoing)</span>
-              </div>
+              <span className="text-4xl sm:text-5xl font-serif font-semibold text-[#1B1716]">$97</span>
+              <span className="text-xs uppercase tracking-[0.2em] font-semibold text-neutral-500">/ One-time Access</span>
             </motion.div>
 
-            {/* CTA Button Row */}
+            {/* CTA Button Block */}
             <motion.div 
               variants={itemVariants} 
-              className="flex flex-col sm:flex-row items-center sm:items-start gap-4 w-full sm:w-auto justify-center md:justify-start"
-              style={{ willChange: "transform, opacity" }}
+              className="flex flex-col items-center lg:items-start w-full"
             >
-              <div className="flex flex-col items-center sm:items-start w-full sm:w-auto">
+              <div className="w-full sm:w-auto min-w-[280px]">
                 <SpotlightWrapper 
-                  className="rounded-full w-full sm:w-auto overflow-hidden shadow-sm"
+                  className="rounded-full w-full overflow-hidden shadow-sm"
                   spotlightColor="rgba(255, 255, 255, 0.45)"
                 >
-                  <motion.button 
-                    onClick={() => scrollToSection("pricing")}
+                  <motion.a 
+                    href="#pricing"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollToSection("pricing");
+                    }}
                     whileHover={{ scale: 1.02, backgroundColor: "#630102" }}
                     whileTap={{ scale: 0.98 }}
-                    className="relative overflow-hidden w-full bg-[#810100] border border-white/20 shadow-[0_0_1px_1px_rgba(255,255,255,0.15)] text-white font-semibold tracking-wider uppercase text-xs sm:text-sm py-2.5 px-5 md:py-4 md:px-8 rounded-full transition-all duration-300 text-center block cursor-pointer"
+                    className="relative overflow-hidden w-full bg-[#810100] border border-white/20 shadow-[0_0_1px_1px_rgba(255,255,255,0.15)] text-white font-semibold tracking-wider uppercase text-xs sm:text-sm py-4 px-8 rounded-full transition-all duration-300 text-center block cursor-pointer"
                   >
-                    <span className="relative z-10">Get The Complete Protocol — $97</span>
+                    <span className="relative z-10">[ Get Instant Access ]</span>
                     <motion.div 
                       className="absolute inset-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/25 to-transparent -skew-x-12 pointer-events-none"
                       initial={{ left: "-100%" }}
                       whileHover={{ left: "150%" }}
                       transition={{ duration: 0.8, ease: "easeInOut" }}
                     />
-                  </motion.button>
+                  </motion.a>
                 </SpotlightWrapper>
-                <span className="text-[10px] text-neutral-500 mt-2 block tracking-normal normal-case w-full text-center sm:text-left px-2">
-                  Instant access • One-time payment • 14-day guarantee
+                <span className="text-[10px] text-neutral-500 mt-2.5 block tracking-normal normal-case w-full text-center lg:text-left px-2">
+                  One payment. Instant access. 14-day feel calmer guarantee.
                 </span>
               </div>
-
-              <SpotlightWrapper 
-                className="rounded-full w-full sm:w-auto overflow-hidden shadow-sm"
-                spotlightColor="rgba(255, 255, 255, 0.20)"
-              >
-                <button 
-                  onClick={() => scrollToSection("system")}
-                  className="w-full text-[#2D2624] py-2.5 px-5 text-xs font-medium md:py-4 md:px-8 md:text-sm md:font-semibold uppercase tracking-wider flex items-center justify-center transition-all duration-200 ease-in-out hover:scale-[1.02] hover:bg-white/30 rounded-full font-serif cursor-pointer"
-                  style={{
-                    backgroundColor: "rgba(255, 255, 255, 0.15)",
-                    border: '1px solid rgba(255, 255, 255, 0.45)',
-                    boxShadow: '0 0 0 1px rgba(212, 212, 216, 0.15), 0 4px 20px rgba(212, 212, 216, 0.08)'
-                  }}
-                >
-                  See What's Inside →
-                </button>
-              </SpotlightWrapper>
             </motion.div>
+
           </motion.div>
         </div>
 
-        {/* Slim, elegant Trust Strip section */}
-        <div className="relative z-30 border-t border-[#2D2624]/10 pt-8 pb-4 w-full mt-auto">
-          <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-center md:justify-start items-center gap-6 md:gap-12 text-center md:text-left text-[13px] uppercase tracking-[0.2em] font-semibold text-[#2D2624]/70">
-            <span>2,100+ Women</span>
-            <span>Works With Products You Own</span>
-            <span>No Subscription</span>
-          </div>
-          {/* Core Bridge Line */}
-          <div className="text-center md:text-left mt-4">
-            <p className="font-serif italic text-xs md:text-sm text-[#2D2624]/80 tracking-wide">
-              A process before products. A system before routines.
-            </p>
-          </div>
+        {/* Right Column Display */}
+        <div className="lg:col-span-6 w-full flex items-center justify-center overflow-visible">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: easeOutPremium }}
+            className="relative w-full max-w-[500px] aspect-square lg:max-w-none lg:h-[500px]"
+          >
+            <Image 
+              src="/assets/transformation-1.png"
+              alt="Acne Reset Protocol Digital unboxing package (includes iPad layout guide, Calm Tracker, Clear Tracker, Maintenance Blueprint, and Dashboard)"
+              fill
+              className="object-contain"
+              priority
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+          </motion.div>
+        </div>
+
+      </div>
+
+      {/* Trust Strip footer section */}
+      <div className="relative z-10 border-t border-[#1B1716]/10 pt-8 pb-2 w-full mt-auto">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-center lg:justify-start items-center gap-4 md:gap-12 text-center lg:text-left text-[11px] sm:text-xs uppercase tracking-[0.2em] font-semibold text-[#1B1716]/70">
+          <span>2,100+ Women</span>
+          <span>Works With Products You Own</span>
+          <span>No Subscription</span>
         </div>
       </div>
 

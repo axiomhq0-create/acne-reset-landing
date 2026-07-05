@@ -19,55 +19,6 @@ const scrollAnimateProps = {
 export default function Footer({ scrollToSection }: FooterProps) {
   return (
     <>
-      {/* Commitment & Final CTA Block - Signature Blush (bg-[#EBC8BE]) */}
-      <section className="bg-[#EBC8BE] border-t border-[#1A1B12]/5 pt-28 pb-24">
-        {/* COMMITMENT BANNER */}
-        <div className="max-w-3xl mx-auto px-6 text-center mb-24">
-          <span className="text-xs uppercase tracking-[0.2em] font-semibold text-[#6B6E68] mb-3 block">Our Commitment</span>
-          <p className="text-[#1A1B12] font-serif text-xl md:text-2xl leading-relaxed italic">
-            "This system was built to work. If you follow it and feel stuck, reach out through our official social channels and tell us what's happening. We'd rather help you move forward than leave you guessing."
-          </p>
-        </div>
-
-        {/* FINAL CTA */}
-        <div className="max-w-4xl mx-auto px-6 text-center flex flex-col items-center">
-          <motion.div 
-            {...scrollAnimateProps}
-            className="flex flex-col items-center"
-          >
-            <span className="text-xs uppercase tracking-[0.2em] font-semibold text-[#6B6E68] mb-6">
-              Begin Today
-            </span>
-            
-            <h2 className="text-4xl md:text-6xl font-serif text-[#1A1B12] font-semibold tracking-tight leading-[1.1] max-w-2xl mb-8">
-              The mirror used to mean something good. <span className="italic block font-normal text-3xl md:text-4xl text-[#6B6E68] mt-4">It still can.</span>
-            </h2>
-
-            <div className="max-w-xl text-[#6B6E68] mb-10 text-base md:text-lg leading-relaxed text-center">
-              <p>
-                The person who stopped checking, who learned not to care or look or hope, that is not you. That's just who you became while you were waiting for something that worked. This is what works. Start where you are.
-              </p>
-            </div>
-
-            <SpotlightWrapper 
-              className="rounded-full overflow-hidden shadow-sm"
-              spotlightColor="rgba(255, 255, 255, 0.45)"
-            >
-              <button 
-                onClick={() => scrollToSection("pricing")}
-                className="w-full bg-[#E8C4B8] text-[#1A1B12] px-12 py-4 font-semibold text-lg transition-all duration-200 hover:scale-[1.02] hover:bg-[#DCA596] rounded-full font-serif cursor-pointer"
-                style={{
-                  border: '1px solid rgba(255, 255, 255, 0.45)', // Razor-sharp silver boundary seam
-                  boxShadow: '0 0 0 1px rgba(212, 212, 216, 0.15), 0 4px 20px rgba(212, 212, 216, 0.08)'
-                }}
-              >
-                Start Your Acne Reset
-              </button>
-            </SpotlightWrapper>
-          </motion.div>
-        </div>
-      </section>
-
       {/* Footer Navigation & Legal Block - Muted Taupe (bg-[#E3DCD5]) */}
       <section className="bg-[#E3DCD5] border-t border-[#1A1B12]/10 py-12">
         <footer className="max-w-7xl mx-auto px-6">
