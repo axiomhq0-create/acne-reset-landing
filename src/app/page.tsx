@@ -3,12 +3,9 @@
 import React from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import Qualifications from "@/components/Qualifications";
-import WhatsInside from "@/components/WhatsInside";
-import SocialProof from "@/components/SocialProof";
+import Mechanism from "@/components/Mechanism";
 import Phases from "@/components/Phases";
-import Story from "@/components/Story";
-import Objections from "@/components/Objections";
+import WhatsInside from "@/components/WhatsInside";
 import Pricing from "@/components/Pricing";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
@@ -35,23 +32,14 @@ export default function Home() {
       {/* Hero Section */}
       <Hero scrollToSection={scrollToSection} />
 
-      {/* Pre-Qualifier Grid Section */}
-      <Qualifications />
-
-      {/* What's Inside Section */}
-      <WhatsInside />
-
-      {/* Social Proof Section */}
-      <SocialProof />
+      {/* Mechanism Section */}
+      <Mechanism />
 
       {/* Phases Showcase Section */}
       <Phases />
 
-      {/* Story Section */}
-      <Story />
-
-      {/* Objections Matrix Section */}
-      <Objections />
+      {/* What's Inside Section */}
+      <WhatsInside />
 
       {/* Offerings Section */}
       <Pricing />

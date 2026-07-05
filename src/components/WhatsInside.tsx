@@ -27,14 +27,14 @@ export default function WhatsInside() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
           
           {/* Visual Asset Side */}
-          <div className="relative aspect-square w-full max-w-[400px] mx-auto bg-[#EDEBDE] rounded-3xl border border-[#2D2624]/10 shadow-inner p-4 flex items-center justify-center overflow-hidden">
+          <div className="relative aspect-square w-full max-w-[460px] mx-auto bg-[#EDEBDE] rounded-3xl border border-[#2D2624]/10 shadow-inner p-4 flex items-center justify-center overflow-hidden">
             <div className="relative w-full h-full">
               <Image 
                 src="/assets/transformation-1.png"
                 alt="Acne Reset Protocol Digital Mockups flat-lay"
                 fill
                 className="object-contain"
-                sizes="(max-width: 768px) 100vw, 50vw"
+                sizes="(max-width: 768px) 100vw, 60vw"
               />
             </div>
             
@@ -112,6 +112,15 @@ export default function WhatsInside() {
                   />
                 </motion.a>
               </SpotlightWrapper>
+
+              {/* Certainty Checkmarks */}
+              <div className="flex flex-wrap items-center justify-start gap-x-3 gap-y-1 mt-4 text-[10px] sm:text-xs text-neutral-500 font-medium">
+                <span className="flex items-center gap-1">✔ Instant Access</span>
+                <span className="flex items-center gap-1">✔ One-time payment</span>
+                <span className="flex items-center gap-1">✔ Works with products you own</span>
+                <span className="flex items-center gap-1">✔ Lifetime updates</span>
+                <span className="flex items-center gap-1">✔ 2,100+ customers</span>
+              </div>
             </div>
           </div>
 

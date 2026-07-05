@@ -227,6 +227,15 @@ export default function Pricing() {
                         />
                       </motion.a>
                     </SpotlightWrapper>
+
+                    {/* Certainty Checkmarks */}
+                    <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 mt-4 text-[10px] sm:text-xs text-neutral-500 font-medium w-full">
+                      <span className="flex items-center gap-1">✔ Instant Access</span>
+                      <span className="flex items-center gap-1">✔ One-time payment</span>
+                      <span className="flex items-center gap-1">✔ Works with products you own</span>
+                      <span className="flex items-center gap-1">✔ Lifetime updates</span>
+                      <span className="flex items-center gap-1">✔ 2,100+ customers</span>
+                    </div>
                   </div>
                 </div>
               </SpotlightWrapper>
