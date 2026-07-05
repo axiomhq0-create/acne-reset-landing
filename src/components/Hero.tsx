@@ -1,7 +1,9 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
+import SpotlightWrapper from "./SpotlightWrapper";
 
 export default function Hero() {
   const scrollToSection = (id: string) => {
@@ -33,7 +35,7 @@ export default function Hero() {
         
         {/* LEFT COLUMN: TYPOGRAPHY ANCHOR */}
         <div className="lg:col-span-7 flex flex-col items-start text-left space-y-8 pr-4">
-          <h1 className="text-6xl md:text-8xl font-serif text-[#1B1716] tracking-tight leading-[1.05] max-w-2xl font-normal select-none">
+          <h1 className="text-5xl md:text-7xl font-serif text-[#1B1716] tracking-tight leading-[1.05] max-w-2xl font-normal select-none">
             You don't have to pretend the mirror doesn't matter.
           </h1>
           
@@ -41,17 +43,32 @@ export default function Hero() {
             This page won't tell you to love yourself first and skincare second. It's here to help with both, in the right order.
           </p>
 
-          <div className="pt-4 w-full sm:w-auto">
+          {/* Button actions with primary capsule Cherry Red and secondary minimal wireframe outline */}
+          <div className="flex flex-col sm:flex-row items-center gap-4 pt-4 w-full sm:w-auto">
+            <div className="w-full sm:w-auto">
+              <SpotlightWrapper 
+                className="rounded-full w-full overflow-hidden shadow-sm"
+                spotlightColor="rgba(255, 255, 255, 0.45)"
+              >
+                <button 
+                  onClick={() => scrollToSection("pricing")}
+                  className="w-full sm:w-auto bg-[#810100] hover:bg-[#630102] text-[#EDEBDE] font-medium tracking-wide text-base px-10 py-5 rounded-full shadow-xl transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-2xl active:translate-y-0 cursor-pointer"
+                >
+                  Get the Protocol
+                </button>
+              </SpotlightWrapper>
+            </div>
+
             <button 
-              onClick={() => scrollToSection("pricing")}
-              className="w-full sm:w-auto bg-[#810100] hover:bg-[#630102] text-[#EDEBDE] font-medium tracking-wide text-base px-10 py-5 rounded-full shadow-xl transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-2xl active:translate-y-0 cursor-pointer"
+              onClick={() => scrollToSection("protocol")}
+              className="w-full sm:w-auto border border-[#1B1716]/30 hover:border-[#1B1716] text-[#1B1716] bg-transparent rounded-full py-5 px-10 text-center font-medium tracking-wide text-base transition-colors cursor-pointer"
             >
-              Find Your Starting Phase
+              The Framework
             </button>
           </div>
         </div>
 
-        {/* RIGHT COLUMN: FULL BLEED HUMAN PORTRAIT IMAGE */}
+        {/* RIGHT COLUMN: FULL BLEED HUMAN PORTRAIT IMAGE WITH BREATHING SPACE */}
         <div className="lg:col-span-5 w-full h-[65vh] lg:h-[80vh] relative group overflow-hidden rounded-3xl">
           <motion.img 
             initial={{ opacity: 0, scale: 1.05, filter: 'blur(10px)' }}
