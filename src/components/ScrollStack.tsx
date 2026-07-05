@@ -1,19 +1,17 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
-import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+import React, { useState, useRef } from 'react';
+import { useScroll, useMotionValueEvent } from 'framer-motion';
 
 export default function ScrollStack() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeStep, setActiveStep] = useState(0);
 
-  // Hook into the native scroll velocity safely
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"]
   });
 
-  // Debounce scroll milestones to prevent frame-dropping text recalculations
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     if (latest < 0.33) {
       if (activeStep !== 0) setActiveStep(0);
@@ -37,39 +35,36 @@ export default function ScrollStack() {
   ];
 
   return (
-    // h-[200vh] provides optimal scroll pacing without feeling dragged out or endless
-    <div ref={containerRef} className="relative w-full h-[200vh] bg-[#EDEBDE] z-20">
+    <div ref={containerRef} className="relative w-full h-[250vh] bg-[#F3D5CE] z-20">
       <div className="sticky top-0 w-full h-screen overflow-hidden flex items-center justify-center">
         
-        {/* OPTIMIZED BACKGROUND HARDWARE TRANSITION LAYER */}
-        <div className="absolute inset-0 z-0 bg-[#EDEBDE] will-change-transform">
-          {/* Render your three human phase evolution portraits stacked absolutely */}
+        {/* HARDWARE ACCELERATED HUMAN EVOLUTION PORTRAIT UNDERLAY */}
+        <div className="absolute inset-0 z-0 will-change-transform bg-[#F3D5CE]">
           {[0, 1, 2].map((idx) => (
             <div
               key={idx}
-              className="absolute inset-0 transition-opacity duration-700 ease-in-out bg-cover bg-center"
+              className="absolute inset-0 transition-opacity duration-[1000ms] ease-in-out bg-cover bg-center bg-no-repeat"
               style={{
-                opacity: activeStep === idx ? 1 : 0,
-                // Force hardware rendering via GPU
+                opacity: activeStep === idx ? 0.75 : 0,
                 transform: 'translateZ(0)',
-                backgroundImage: `url('${bgPortraits[idx]}')`,
+                backgroundImage: `url('${bgPortraits[idx]}')`
               }}
             />
           ))}
-          <div className="absolute inset-0 bg-neutral-900/10 pointer-events-none" />
+          <div className="absolute inset-0 bg-[#1B1716]/10 pointer-events-none" />
         </div>
 
-        {/* CONTRAST EDITORIAL TEXT CARD CONTAINER */}
+        {/* SINGLE LAYER BALANCED VIEWPORT BLOCK CONTAINER */}
         <div className="relative z-10 w-full max-w-2xl px-6 mx-auto">
-          <div className="relative w-full min-h-[280px] flex items-center justify-center">
+          <div className="relative w-full min-h-[300px] flex items-center justify-center">
             {phases.map((phase, index) => {
               const isActive = index === activeStep;
               return (
                 <div
                   key={index}
-                  className={`absolute inset-0 p-8 md:p-12 flex flex-col justify-center rounded-3xl border transition-all duration-500 ease-out will-change-transform ${
+                  className={`absolute inset-0 p-8 md:p-12 flex flex-col justify-center rounded-3xl border transition-all duration-[600ms] ease-out will-change-transform ${
                     isActive
-                      ? "opacity-100 translate-y-0 bg-white/40 backdrop-blur-[14px] border-white/60 shadow-xl"
+                      ? "opacity-100 translate-y-0 bg-white/35 backdrop-blur-[14px] border-white/50 shadow-xl"
                       : "opacity-0 translate-y-4 bg-transparent backdrop-blur-none border-transparent pointer-events-none"
                   }`}
                   style={{ transform: 'translateZ(0)' }}
@@ -77,10 +72,10 @@ export default function ScrollStack() {
                   <span className="text-xs font-mono uppercase tracking-widest text-[#810100] font-semibold">
                     {phase.tagline}
                   </span>
-                  <h3 className="font-serif text-2xl md:text-4xl text-[#1B1716] tracking-tight mt-3 mb-4">
+                  <h3 className="font-serif text-3xl md:text-4xl text-[#1B1716] tracking-tight mt-3 mb-4">
                     {phase.title}
                   </h3>
-                  <p className="text-sm md:text-base text-neutral-700 leading-relaxed max-w-xl">
+                  <p className="text-sm md:text-base text-neutral-800 leading-relaxed font-light">
                     {phase.desc}
                   </p>
                 </div>

@@ -3,11 +3,11 @@
 import React from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import SlowdownInterlude from "@/components/SlowdownInterlude";
+import CinematicInterlude from "@/components/CinematicInterlude";
 import ScrollStack from "@/components/ScrollStack";
 import ProductReveal from "@/components/ProductReveal";
 import SocialProof from "@/components/SocialProof";
-import EmotionalResolution from "@/components/EmotionalResolution";
+import FAQ from "@/components/FAQ";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 
@@ -26,30 +26,20 @@ export default function Home() {
   };
 
   return (
-    <main className="w-full relative min-h-screen bg-[#EDEBDE] block text-[#1B1716] font-sans antialiased selection:bg-[#810100] selection:text-white">
+    <main className="w-full relative min-h-screen bg-[#EDEBDE] block overflow-x-hidden text-[#1B1716] antialiased scroll-smooth selection:bg-[#810100] selection:text-white">
       {/* Global Navigation Frame */}
       <Header scrollToSection={scrollToSection} />
 
-      {/* 🏛️ CHAPTER 1: THE HERO */}
-      <Hero />
-
-      {/* 🎬 CHAPTER 2: THE SLOWDOWN INTERLUDE */}
-      <SlowdownInterlude />
-
-      {/* ⏳ CHAPTER 3: THE PROTOCOL STACK */}
-      <ScrollStack />
-
-      {/* 📱 CHAPTER 4: THE PRODUCT REVEAL */}
-      <ProductReveal />
-
-      {/* 💬 CHAPTER 5: SOCIAL PROOF */}
-      <SocialProof />
-
-      {/* 🕊️ CHAPTER 6: THE EMOTIONAL RESOLUTION */}
-      <EmotionalResolution />
-
-      {/* 💳 CHAPTER 7: FINAL CTA CLIMAX */}
-      <FinalCTA />
+      {/* Scene Array Stacking Natively for Perfect Fluid Pacing */}
+      <div className="w-full block relative space-y-0">
+        <Hero />
+        <CinematicInterlude />
+        <ScrollStack />
+        <ProductReveal />
+        <SocialProof />
+        <FAQ />
+        <FinalCTA />
+      </div>
 
       {/* Global Editorial Footer */}
       <Footer />
