@@ -71,8 +71,8 @@ export default function Pricing() {
 
   return (
     <>
-      {/* Complete Transformation Main Tier (bg-[#F4E9DD]) */}
-      <section id="pricing" className="py-12 md:py-32 bg-[#F4E9DD]">
+      {/* Complete Transformation Main Tier (bg-[#EDEBDE]) */}
+      <section id="pricing" className="py-12 md:py-32 bg-[#EDEBDE]">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div 
             {...scrollAnimateProps}
@@ -214,16 +214,16 @@ export default function Pricing() {
                         href="https://whop.com/checkout/plan_rDsgEaLiNqGrH"
                         target="_blank"
                         rel="noopener noreferrer"
-                        whileHover={{ scale: 1.02, backgroundColor: "rgba(232, 196, 184, 0.55)" }}
+                        whileHover={{ scale: 1.02, backgroundColor: "#630102" }}
                         whileTap={{ scale: 0.98 }}
-                        className="relative overflow-hidden w-full bg-[#E8C4B8]/40 backdrop-blur-md border border-white/40 shadow-[0_0_1px_1px_rgba(255,255,255,0.2)] text-[#1A1612] font-semibold tracking-wider uppercase text-xs sm:text-sm py-4 px-6 rounded-full transition-all duration-300 text-center block cursor-pointer"
+                        className="relative overflow-hidden w-full bg-[#810100] border border-white/20 shadow-[0_0_1px_1px_rgba(255,255,255,0.15)] text-white font-semibold tracking-wider uppercase text-xs sm:text-sm py-4 px-6 rounded-full transition-all duration-300 text-center block cursor-pointer"
                       >
                         <span className="relative z-10">Start The Transformation</span>
                         <motion.div 
-                          className="absolute inset-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -skew-x-12 pointer-events-none"
+                          className="absolute inset-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/25 to-transparent -skew-x-12 pointer-events-none"
                           initial={{ left: "-100%" }}
                           whileHover={{ left: "150%" }}
-                          transition={{ duration: 0.9, ease: "easeInOut" }}
+                          transition={{ duration: 0.8, ease: "easeInOut" }}
                         />
                       </motion.a>
                     </SpotlightWrapper>
@@ -298,16 +298,16 @@ export default function Pricing() {
                       href="https://whop.com/checkout/plan_T4jvV63GgLVVH"
                       target="_blank"
                       rel="noopener noreferrer"
-                      whileHover={{ scale: 1.02, backgroundColor: "rgba(232, 196, 184, 0.55)" }}
+                      whileHover={{ scale: 1.02, backgroundColor: "#630102" }}
                       whileTap={{ scale: 0.98 }}
-                      className="relative overflow-hidden w-full bg-[#E8C4B8]/40 backdrop-blur-md border border-white/40 shadow-[0_0_1px_1px_rgba(255,255,255,0.2)] text-[#1A1612] font-semibold tracking-wider uppercase text-xs sm:text-sm py-3.5 px-6 rounded-full transition-all duration-300 text-center block cursor-pointer"
+                      className="relative overflow-hidden w-full bg-[#810100] border border-white/20 shadow-[0_0_1px_1px_rgba(255,255,255,0.15)] text-white font-semibold tracking-wider uppercase text-xs sm:text-sm py-3.5 px-6 rounded-full transition-all duration-300 text-center block cursor-pointer"
                     >
                       <span className="relative z-10">Start With Calm</span>
                       <motion.div 
-                        className="absolute inset-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -skew-x-12 pointer-events-none"
+                        className="absolute inset-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/25 to-transparent -skew-x-12 pointer-events-none"
                         initial={{ left: "-100%" }}
                         whileHover={{ left: "150%" }}
-                        transition={{ duration: 0.9, ease: "easeInOut" }}
+                        transition={{ duration: 0.8, ease: "easeInOut" }}
                       />
                     </motion.a>
                   </SpotlightWrapper>
@@ -365,16 +365,16 @@ export default function Pricing() {
                       href="https://whop.com/checkout/plan_C7Lm7D71Z9NeR"
                       target="_blank"
                       rel="noopener noreferrer"
-                      whileHover={{ scale: 1.02, backgroundColor: "rgba(232, 196, 184, 0.55)" }}
+                      whileHover={{ scale: 1.02, backgroundColor: "#630102" }}
                       whileTap={{ scale: 0.98 }}
-                      className="relative overflow-hidden w-full bg-[#E8C4B8]/40 backdrop-blur-md border border-white/40 shadow-[0_0_1px_1px_rgba(255,255,255,0.2)] text-[#1A1612] font-semibold tracking-wider uppercase text-xs sm:text-sm py-3.5 px-6 rounded-full transition-all duration-300 text-center block cursor-pointer"
+                      className="relative overflow-hidden w-full bg-[#810100] border border-white/20 shadow-[0_0_1px_1px_rgba(255,255,255,0.15)] text-white font-semibold tracking-wider uppercase text-xs sm:text-sm py-3.5 px-6 rounded-full transition-all duration-300 text-center block cursor-pointer"
                     >
                       <span className="relative z-10">Get The Roadmap</span>
                       <motion.div 
-                        className="absolute inset-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -skew-x-12 pointer-events-none"
+                        className="absolute inset-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/25 to-transparent -skew-x-12 pointer-events-none"
                         initial={{ left: "-100%" }}
                         whileHover={{ left: "150%" }}
-                        transition={{ duration: 0.9, ease: "easeInOut" }}
+                        transition={{ duration: 0.8, ease: "easeInOut" }}
                       />
                     </motion.a>
                   </SpotlightWrapper>
