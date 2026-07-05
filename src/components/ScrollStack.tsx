@@ -87,47 +87,45 @@ export default function ScrollStack() {
         <div className="absolute inset-0 bg-black/15 pointer-events-none" />
 
         {/* The Text Layout Container */}
-        <div className="relative z-10 max-w-xl w-full px-6 text-center">
-          <h2 className="font-serif text-xs uppercase tracking-widest text-[#810100] mb-2">The Protocol</h2>
+        <div className="relative z-10 max-w-2xl w-full px-6 text-center">
+          <h2 className="font-serif text-xs uppercase tracking-widest text-[#810100] mb-2 font-semibold">The Protocol</h2>
           
           {/* Loop structure generating the 3 cards safely inside the viewport zone */}
-          <div className="relative w-full h-[400px] mt-8 flex items-center justify-center">
+          <div className="relative w-full max-w-2xl h-[400px] mt-8 flex items-center justify-center mx-auto">
              
             {/* Card 1 */}
             <motion.div
               style={{
                 scale: scale0,
                 opacity: opacity0,
-                zIndex: 1,
+                zIndex: 10,
                 transform: "translateZ(0)",
                 willChange: "transform, opacity",
               }}
-              className="absolute w-full origin-top"
+              className={`absolute w-full max-w-2xl min-h-[260px] mx-auto p-8 md:p-12 flex flex-col justify-center text-left rounded-3xl border transition-all duration-300 ${
+                activeCard === 0 
+                  ? "bg-white/40 backdrop-blur-[14px] border-white/60 shadow-xl" 
+                  : "bg-transparent backdrop-blur-none border-transparent shadow-none"
+              }`}
             >
-              <div 
-                className="w-full p-8 rounded-[24px] text-left space-y-4 shadow-xl"
-                style={{
-                  backgroundColor: "rgba(255, 255, 255, 0.45)",
-                  backdropFilter: "blur(14px)",
-                  WebkitBackdropFilter: "blur(14px)",
-                  border: "1px solid rgba(255, 255, 255, 0.6)",
+              <motion.div 
+                animate={{ 
+                  opacity: activeCard === 0 ? 1 : 0,
+                  y: activeCard === 0 ? 0 : (activeCard > 0 ? -20 : 20)
                 }}
+                transition={{ duration: 0.4, ease: "easeInOut" }}
+                className="w-full h-full block text-left"
               >
-                <motion.div 
-                  animate={{ 
-                    opacity: activeCard === 0 ? 1 : 0,
-                    y: activeCard === 0 ? 0 : -10
-                  }}
-                  transition={{ duration: 0.3 }}
-                  className="pointer-events-none select-none space-y-4 text-[#1B1716]"
-                >
-                  <span className="text-[10px] uppercase font-bold text-[#810100] tracking-widest block">Phase 01 — Days 1-21</span>
-                  <h3 className="text-2xl font-serif font-semibold">CALM — Reduce inflammation.</h3>
-                  <p className="text-xs sm:text-sm text-neutral-800 leading-relaxed">
-                    Stop the flare-ups first by stabilizing the lipid barrier. Active treatment on inflamed skin only causes more reactive spots.
-                  </p>
-                </motion.div>
-              </div>
+                <span className="text-xs font-mono uppercase tracking-widest text-[#810100] font-semibold">
+                  PHASE 01 — DAYS 1-21
+                </span>
+                <h3 className="font-serif text-3xl md:text-4xl text-[#1B1716] tracking-tight mt-3 mb-4">
+                  CALM — Reduce inflammation.
+                </h3>
+                <p className="text-sm md:text-base text-neutral-700 leading-relaxed max-w-xl">
+                  Stop the flare-ups first by stabilizing the lipid barrier. Active treatment on inflamed skin only causes more reactive spots.
+                </p>
+              </motion.div>
             </motion.div>
 
             {/* Card 2 */}
@@ -136,36 +134,34 @@ export default function ScrollStack() {
                 y: y1,
                 scale: scale1,
                 opacity: opacity1,
-                zIndex: 2,
+                zIndex: 11,
                 transform: "translateZ(0)",
                 willChange: "transform, opacity",
               }}
-              className="absolute w-full origin-top"
+              className={`absolute w-full max-w-2xl min-h-[260px] mx-auto p-8 md:p-12 flex flex-col justify-center text-left rounded-3xl border transition-all duration-300 ${
+                activeCard === 1 
+                  ? "bg-white/40 backdrop-blur-[14px] border-white/60 shadow-xl" 
+                  : "bg-transparent backdrop-blur-none border-transparent shadow-none"
+              }`}
             >
-              <div 
-                className="w-full p-8 rounded-[24px] text-left space-y-4 shadow-xl"
-                style={{
-                  backgroundColor: "rgba(255, 255, 255, 0.45)",
-                  backdropFilter: "blur(14px)",
-                  WebkitBackdropFilter: "blur(14px)",
-                  border: "1px solid rgba(255, 255, 255, 0.6)",
+              <motion.div 
+                animate={{ 
+                  opacity: activeCard === 1 ? 1 : 0,
+                  y: activeCard === 1 ? 0 : (activeCard > 1 ? -20 : 20)
                 }}
+                transition={{ duration: 0.4, ease: "easeInOut" }}
+                className="w-full h-full block text-left"
               >
-                <motion.div 
-                  animate={{ 
-                    opacity: activeCard === 1 ? 1 : 0,
-                    y: activeCard === 1 ? 0 : -10
-                  }}
-                  transition={{ duration: 0.3 }}
-                  className="pointer-events-none select-none space-y-4 text-[#1B1716]"
-                >
-                  <span className="text-[10px] uppercase font-bold text-[#810100] tracking-widest block">Phase 02 — Days 22-66</span>
-                  <h3 className="text-2xl font-serif font-semibold">CLEAR — Treat stable skin.</h3>
-                  <p className="text-xs sm:text-sm text-neutral-800 leading-relaxed">
-                    Introduce targeted active ingredients once the skin is stabilized, healthy, and ready to absorb clear-agent routines.
-                  </p>
-                </motion.div>
-              </div>
+                <span className="text-xs font-mono uppercase tracking-widest text-[#810100] font-semibold">
+                  PHASE 02 — DAYS 22-66
+                </span>
+                <h3 className="font-serif text-3xl md:text-4xl text-[#1B1716] tracking-tight mt-3 mb-4">
+                  CLEAR — Treat stable skin.
+                </h3>
+                <p className="text-sm md:text-base text-neutral-700 leading-relaxed max-w-xl">
+                  Introduce targeted active ingredients once the skin is stabilized, healthy, and ready to absorb clear-agent routines.
+                </p>
+              </motion.div>
             </motion.div>
 
             {/* Card 3 */}
@@ -174,36 +170,34 @@ export default function ScrollStack() {
                 y: y2,
                 scale: scale2,
                 opacity: opacity2,
-                zIndex: 3,
+                zIndex: 12,
                 transform: "translateZ(0)",
                 willChange: "transform, opacity",
               }}
-              className="absolute w-full origin-top"
+              className={`absolute w-full max-w-2xl min-h-[260px] mx-auto p-8 md:p-12 flex flex-col justify-center text-left rounded-3xl border transition-all duration-300 ${
+                activeCard === 2 
+                  ? "bg-white/40 backdrop-blur-[14px] border-white/60 shadow-xl" 
+                  : "bg-transparent backdrop-blur-none border-transparent shadow-none"
+              }`}
             >
-              <div 
-                className="w-full p-8 rounded-[24px] text-left space-y-4 shadow-xl"
-                style={{
-                  backgroundColor: "rgba(255, 255, 255, 0.45)",
-                  backdropFilter: "blur(14px)",
-                  WebkitBackdropFilter: "blur(14px)",
-                  border: "1px solid rgba(255, 255, 255, 0.6)",
+              <motion.div 
+                animate={{ 
+                  opacity: activeCard === 2 ? 1 : 0,
+                  y: activeCard === 2 ? 0 : (activeCard > 2 ? -20 : 20)
                 }}
+                transition={{ duration: 0.4, ease: "easeInOut" }}
+                className="w-full h-full block text-left"
               >
-                <motion.div 
-                  animate={{ 
-                    opacity: activeCard === 2 ? 1 : 0,
-                    y: activeCard === 2 ? 0 : -10
-                  }}
-                  transition={{ duration: 0.3 }}
-                  className="pointer-events-none select-none space-y-4 text-[#1B1716]"
-                >
-                  <span className="text-[10px] uppercase font-bold text-[#810100] tracking-widest block">Phase 03 — Ongoing</span>
-                  <h3 className="text-2xl font-serif font-semibold">MAINTAIN — Keep results.</h3>
-                  <p className="text-xs sm:text-sm text-neutral-800 leading-relaxed">
-                    Lock in clear skin permanently with a simplified daily maintenance protocol to prevent returning blemishes.
-                  </p>
-                </motion.div>
-              </div>
+                <span className="text-xs font-mono uppercase tracking-widest text-[#810100] font-semibold">
+                  PHASE 03 — ONGOING
+                </span>
+                <h3 className="font-serif text-3xl md:text-4xl text-[#1B1716] tracking-tight mt-3 mb-4">
+                  MAINTAIN — Keep results.
+                </h3>
+                <p className="text-sm md:text-base text-neutral-700 leading-relaxed max-w-xl">
+                  Lock in clear skin permanently with a simplified daily maintenance protocol to prevent returning blemishes.
+                </p>
+              </motion.div>
             </motion.div>
 
           </div>
