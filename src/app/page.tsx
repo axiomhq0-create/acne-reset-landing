@@ -3,11 +3,11 @@
 import React from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import EverythingIncluded from "@/components/EverythingIncluded";
+import ProductShowcase from "@/components/ProductShowcase";
 import ScrollStack from "@/components/ScrollStack";
-import Proof from "@/components/Proof";
-import WhyItSticks from "@/components/WhyItSticks";
-import Guarantee from "@/components/Guarantee";
+import Unboxing from "@/components/Unboxing";
+import Results from "@/components/Results";
+import EmotionalPayoff from "@/components/EmotionalPayoff";
 import FAQ from "@/components/FAQ";
 import Pricing from "@/components/Pricing";
 import Footer from "@/components/Footer";
@@ -27,32 +27,32 @@ export default function Home() {
   };
 
   return (
-    <div className="bg-linen text-ink min-h-screen font-sans antialiased selection:bg-[#810100] selection:text-white">
+    <div className="bg-[#EDEBDE] text-[#1B1716] min-h-screen font-sans antialiased selection:bg-[#810100] selection:text-white">
       {/* Navigation Header */}
       <Header scrollToSection={scrollToSection} />
 
-      {/* 1. HERO KEYNOTE */}
+      {/* STAGE 1: HERO KEYNOTE */}
       <Hero scrollToSection={scrollToSection} />
 
-      {/* 2. EVERYTHING INCLUDED "UNBOXING" */}
-      <EverythingIncluded />
+      {/* STAGE 2: MASSIVE PRODUCT SHOWCASE */}
+      <ProductShowcase />
 
-      {/* 3. HOW THE PROTOCOL WORKS (The Clean Sequence) */}
+      {/* STAGE 3: THE SCROLL STACK */}
       <ScrollStack />
 
-      {/* 4. RESULTS & SOCIAL PROOF DOMINANCE */}
-      <Proof />
+      {/* STAGE 4: EVERYTHING INCLUDED AS AN UNBOXING */}
+      <Unboxing />
 
-      {/* 5. WHY PEOPLE FINALLY STICK WITH IT */}
-      <WhyItSticks />
+      {/* STAGE 5: EDITORIAL PROOF & IDENTITY SHIFTS */}
+      <Results />
 
-      {/* 6. THE 14-DAY FEEL CALMER GUARANTEE */}
-      <Guarantee />
+      {/* STAGE 6: THE EMOTIONAL PAYOFF */}
+      <EmotionalPayoff />
 
-      {/* 7. ACCORDION FAQ */}
+      {/* STAGE 7: ACCORDION FAQ */}
       <FAQ />
 
-      {/* 8. FINAL CLOSING CTA */}
+      {/* STAGE 8: THE MASSIVE CLOSING CTA */}
       <Pricing />
 
       {/* Footer Navigation & Legal Block */}
