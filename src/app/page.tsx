@@ -26,7 +26,7 @@ export default function Home() {
   };
 
   return (
-    <main className="w-full relative min-h-screen bg-[#EDEBDE] block overflow-x-hidden text-[#1B1716] font-sans antialiased selection:bg-[#810100] selection:text-white">
+    <main className="w-full relative min-h-screen bg-[#EDEBDE] block text-[#1B1716] font-sans antialiased selection:bg-[#810100] selection:text-white">
       {/* 1. Global Navigation Frame */}
       <Header scrollToSection={scrollToSection} />
 

@@ -20,99 +20,108 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen w-full flex flex-col justify-between pt-32 pb-16 px-6 md:px-12 bg-[#EDEBDE] text-[#1B1716] overflow-hidden z-20">
+    <section className="relative w-full min-h-screen flex items-center px-6 md:px-12 py-24 overflow-hidden bg-[#EDEBDE] block opacity-100 visible z-20">
       
-      {/* Sunlight studio subtle overlay */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-30 mix-blend-color-burn">
-        <div className="sunlight-mesh absolute inset-[-10%] w-[120%] h-[120%]" />
+      {/* Layer 0 & 1 & 2: The Absolute Background Portrait & Cinematic Overlay Stack */}
+      <div className="absolute inset-0 z-0">
+        <Image 
+          src="/ChatGPT Image Jul 1, 2026, 01_08_27 PM.png" 
+          alt="Transformation Portrait" 
+          fill
+          className="object-cover object-center lg:object-[center_35%]"
+          priority
+          sizes="100vw"
+        />
+        {/* Grey Plasma / Vignette Overlay Stack */}
+        <div className="absolute inset-0 bg-slate-900/10 mix-blend-multiply pointer-events-none" /> {/* Plasma hint */}
+        <div className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-black/70 via-black/20 to-transparent pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 via-black/30 to-transparent pointer-events-none" />
       </div>
 
-      <div className="relative z-10 w-full max-w-[1280px] mx-auto my-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-12 items-center py-8">
-        
-        {/* Left Column Copy Stack */}
-        <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-8">
-          <div className="space-y-6 w-full">
-            
-            {/* Headline with 25% upscale */}
-            <h1 className="text-5xl md:text-7xl font-serif text-[#1A1612] tracking-tight leading-[1.1] max-w-3xl font-medium mb-8">
-              You don't have to pretend the mirror doesn't matter.
-            </h1>
+      {/* Layer 3: Interactive Text Layer Bounding Box */}
+      <div className="relative z-10 block opacity-100 visible max-w-[1280px] mx-auto w-full flex flex-col items-start text-left space-y-8">
 
-            {/* Subheadline from reference text */}
-            <p className="text-neutral-600 text-sm md:text-base leading-relaxed max-w-lg pb-4">
-              This page won't tell you to love yourself first and skincare second. It's here to help with both, in the right order.
-            </p>
+        {/* Headline */}
+        <motion.h1 
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="text-5xl md:text-7xl font-serif text-[#1A1612] tracking-tight leading-[1.1] max-w-3xl font-medium drop-shadow-sm"
+        >
+          You don't have to pretend the mirror doesn't matter.
+        </motion.h1>
 
-            {/* Button Actions */}
-            <div className="flex flex-col sm:flex-row items-center gap-4 pt-2">
-              <div className="w-full sm:w-auto">
-                <SpotlightWrapper 
-                  className="rounded-full w-full overflow-hidden shadow-sm"
-                  spotlightColor="rgba(255, 255, 255, 0.45)"
-                >
-                  <a 
-                    href="#pricing"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      scrollToSection("pricing");
-                    }}
-                    className="relative overflow-hidden w-full bg-[#810100] hover:bg-[#630102] transition-transform hover:-translate-y-0.5 shadow-lg text-white rounded-full py-4 px-8 text-center font-medium tracking-wide block cursor-pointer"
-                  >
-                    <span className="relative z-10">Find Your Starting Phase</span>
-                  </a>
-                </SpotlightWrapper>
-              </div>
+        {/* Subheadline */}
+        <motion.p 
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-base md:text-lg text-neutral-800 max-w-xl font-light leading-relaxed"
+        >
+          This page won't tell you to love yourself first and skincare second. It's here to help with both, in the right order.
+        </motion.p>
 
+        {/* CTA Button Group */}
+        <motion.div 
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto"
+        >
+          <div className="w-full sm:w-auto">
+            <SpotlightWrapper 
+              className="rounded-full w-full overflow-hidden shadow-sm"
+              spotlightColor="rgba(255, 255, 255, 0.45)"
+            >
               <a 
-                href="#protocol"
+                href="#pricing"
                 onClick={(e) => {
                   e.preventDefault();
-                  scrollToSection("protocol");
+                  scrollToSection("pricing");
                 }}
-                className="w-full sm:w-auto border border-[#1A1612]/30 hover:border-[#1A1612] text-[#1A1612] bg-[#EDEBDE]/40 backdrop-blur-sm rounded-full py-4 px-8 text-center font-medium tracking-wide block transition-colors cursor-pointer"
+                className="relative overflow-hidden w-full bg-[#810100] hover:bg-[#630102] transition-transform hover:-translate-y-0.5 shadow-lg text-white rounded-full py-4 px-8 text-center font-medium tracking-wide block cursor-pointer"
               >
-                The Framework
+                <span className="relative z-10">Find Your Starting Phase</span>
               </a>
-            </div>
-
-            {/* Footnote Block */}
-            <div className="pt-2">
-              <p className="text-xs italic text-neutral-800 font-serif">
-                "A process before products. A system before routines."
-              </p>
-            </div>
-
-            {/* Divider line */}
-            <div className="w-full max-w-xl border-t border-[#1A1612]/15 pt-4" />
-
-            {/* Trust Row Matrix Text */}
-            <div className="text-[9px] sm:text-[10px] tracking-[0.25em] font-semibold text-[#1B1716]/80 leading-normal uppercase max-w-2xl">
-              90-DAY FRAMEWORK    &bull;    WORKS WITH ANY PRODUCTS    &bull;    BUILT AROUND PROCESS, NOT PRODUCTS
-            </div>
-
+            </SpotlightWrapper>
           </div>
-        </div>
 
-        {/* Right Column Display: Natural Sunlight Portrait */}
-        <div className="w-full flex items-center justify-center lg:justify-end overflow-visible">
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.98 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="relative w-full max-w-[500px] aspect-[4/5] rounded-[32px] overflow-hidden shadow-2xl border border-white/25"
+          <a 
+            href="#protocol"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection("protocol");
+            }}
+            className="w-full sm:w-auto border border-[#1A1612]/30 hover:border-[#1A1612] text-[#1A1612] bg-[#EDEBDE]/40 backdrop-blur-sm rounded-full py-4 px-8 text-center font-medium tracking-wide block transition-colors cursor-pointer"
           >
-            {/* The natural sunlight portrait */}
-            <Image 
-              src="/ChatGPT Image Jul 1, 2026, 01_08_27 PM.png"
-              alt="Protagonist woman in soft natural morning sunlight looking directly into camera with real skin texture and vulnerability"
-              fill
-              className="object-cover"
-              priority
-              sizes="(max-width: 1024px) 100vw, 500px"
-            />
-          </motion.div>
-        </div>
+            The Framework
+          </a>
+        </motion.div>
+
+        {/* Italic Footnote Block */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="pt-2"
+        >
+          <p className="text-xs italic text-neutral-800 font-serif">
+            "A process before products. A system before routines."
+          </p>
+        </motion.div>
+
+        {/* Divider line */}
+        <div className="w-full max-w-xl border-t border-[#1A1612]/15 pt-4" />
+
+        {/* Footer Trust Matrix */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="text-[9px] sm:text-[10px] tracking-[0.25em] font-semibold text-[#1B1716]/80 leading-normal uppercase max-w-2xl"
+        >
+          90-DAY FRAMEWORK    &bull;    WORKS WITH ANY PRODUCTS    &bull;    BUILT AROUND PROCESS, NOT PRODUCTS
+        </motion.div>
 
       </div>
 
